@@ -25,8 +25,44 @@ Route::get('/donasi', function () {
     return view('donasi');
 });
 
-Route::get('/tes', function () {
-    return view('tes');
+Route::get('/transaksiuser', function () {
+    return view('transaksiuser');
 });
 
+Route::get('/programuser', function () {
+    return view('programuser');
+});
+
+Route::get('/daftar', function () {
+    return view('daftar');
+});
+
+
+
+
+
+
+
+
+// ADMIN
+Route::get('/dashboardadmin', function () {
+    return view('dashboardadmin');
+});
+
+Route::get('/dashboardadmin1', function () {
+    return view('dashboardadmin1');
+});
+
+
+
+
+// TES
+Route::get('/tes2', function () {
+    return view('tes2');
+});
+
+//ALL ROLE
+Route::get('/lupapass', function () {
+    return view('lupapass');
+});
 

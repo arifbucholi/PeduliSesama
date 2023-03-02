@@ -14,12 +14,12 @@ body {
     width: 400px;
     padding: 40px;
     position: absolute;
-    top: 50%;
+    top: 25%;
     left: 50%;
     background: #191919;
     text-align: center;
     transition: 0.25s;
-    margin-top: 100px
+    margin-top: 70px
 }
 
 .box input[type="text"],
@@ -29,7 +29,7 @@ body {
     display: block;
     margin: 20px auto;
     text-align: center;
-    border: 2px solid rgb(58, 58, 58);
+    border: 2px solid rgb(125, 125, 125);
     padding: 10px 10px;
     width: 250px;
     outline: none;
@@ -47,7 +47,7 @@ body {
 .box input[type="text"]:focus,
 .box input[type="password"]:focus {
     width: 300px;
-    border-color: #ffffff
+    border-color: #353535
 }
 
 .box input[type="submit"] {
@@ -63,6 +63,7 @@ body {
     border-radius: 24px;
     transition: 0.25s;
     cursor: pointer
+    /* #f8712dbb */
 }
 
 .box input[type="submit"]:hover {

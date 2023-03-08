@@ -37,7 +37,9 @@ Route::get('/daftar', function () {
     return view('daftar');
 });
 
-
+Route::get('/berita', function () {
+    return view('berita');
+});
 
 
 

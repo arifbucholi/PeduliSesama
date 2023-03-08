@@ -27,6 +27,8 @@
     <link rel="stylesheet" href="assets/css/icomoon.css">
     <link rel="stylesheet" href="assets/css/style.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <style>
     /* Style the input field */
     #myInput {
@@ -51,18 +53,56 @@
 
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="/donasi" class="nav-link">Donasi</a></li>
-          <li class="nav-item active"><a href="/transaksiuser" class="nav-link">Transaksi</a></li>
-          <li class="nav-item"><a href="/programuser" class="nav-link">Program</a></li>
-          <!-- <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-          <li class="nav-item active"><a href="causes.html" class="nav-link">Causes</a></li>
-          <li class="nav-item"><a href="donate.html" class="nav-link">Donate</a></li>
-          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
-          <li class="nav-item"><a href="event.html" class="nav-link">Events</a></li>
-          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li> -->
-          <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/berita" class="nav-link">Berita</a></li>
+            <li class="nav-item"><a href="/donasi" class="nav-link">Donasi</a></li>
+            <li class="nav-item active"><a href="/transaksiuser" class="nav-link">Transaksi</a></li>
+            <li class="nav-item"><a href="/programuser" class="nav-link">Program</a></li>
+            <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
+                    <div class="navbar-profile">
+                        <i class="fa fa-bars"></i>
+                    </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item preview-item">
+                        <div class="preview-thumbnail">
+                            <div class="preview-icon">
+                                <i class="mdi mdi-settings text-success"></i>
+                            </div>
+                        </div>
+                        <div class="preview-item-content">
+                            <p class="preview-subject mb-1">Profile</p>
+                        </div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item preview-item">
+                        <div class="preview-thumbnail">
+                            <div class="preview-icon">
+                            <i class="mdi mdi-onepassword text-info"></i>
+                            </div>
+                        </div>
+                        <div class="preview-item-content">
+                            <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
+                        </div>
+                        </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item preview-item">
+                        <div class="preview-thumbnail">
+                            <div class="preview-icon">
+                              <i class="mdi mdi-logout text-danger"></i>
+                            </div>
+                        </div>
+                        <div class="preview-item-content">
+                            <p class="preview-subject mb-1">Log out</p>
+                        </div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    {{-- <p class="p-3 mb-0 text-center">Advanced settings</p> --}}
+                </div>
+            </li>
         </ul>
       </div>
     </div>
@@ -80,7 +120,7 @@
             <div class="row ">
                 <div class="col">
                     <div class="dropdown">
-                        <button class="btn btn-primary" type="button"  style="border-radius:25px">Donasi Sekarang
+                        <button class="btn btn-primary" type="button" style="border-radius:25px">Donasi Sekarang
                     </div>
                 </div>
             </div>
@@ -94,6 +134,7 @@
                     <th scope="col">Tanggal</th>
                     <th scope="col">Nama Program</th>
                     <th scope="col">Nominal</th>
+                    <th scope="col" class="text-center">Informasi</th>
                     {{-- <th scope="col">Edit</th> --}}
                   </tr>
                 </thead>
@@ -103,6 +144,9 @@
                     <td>22-02-2023</td>
                     <td>Glen Found</td>
                     <td>Rp1000</td>
+                    <td class="text-center">
+                        <a href="#">Lihat</a>
+                    </td>
                     {{-- <td>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -115,6 +159,9 @@
                     <td>22-02-2023</td>
                     <td>Della Found</td>
                     <td>Rp2000</td>
+                    <td class="text-center">
+                        <a href="#">Lihat</a>
+                    </td>
                     {{-- <td>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -127,6 +174,9 @@
                     <td>22-02-2023</td>
                     <td>Arif Found</td>
                     <td>Rp3000</td>
+                    <td class="text-center">
+                        <a href="#">Lihat</a>
+                    </td>
                     {{-- <td>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>

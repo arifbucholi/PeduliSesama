@@ -29,10 +29,6 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="assets2/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="assets2/vendors/flag-icon-css/css/flag-icon.min.css">
-
-
   </head>
   <body style="overflow-x:hidden">
 
@@ -45,274 +41,91 @@
 
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="/berita" class="nav-link">Berita</a></li>
-          <li class="nav-item"><a href="/donasi" class="nav-link">Donasi</a></li>
-          <li class="nav-item"><a href="/transaksiuser" class="nav-link">Transaksi</a></li>
-          <li class="nav-item"><a href="/programiuser" class="nav-link">Program</a></li>
-          <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
-          {{-- <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-bars"></i></a></li> --}}
-          <li class="nav-item dropdown">
-            <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
-              <div class="navbar-profile">
-                <i class="fa fa-bars"></i>
-              </div>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon">
-                      <i class="mdi mdi-settings text-success" style="padding: 5px"></i>
-                      <i>Profil</i>
+            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item active"><a href="/berita" class="nav-link">Berita</a></li>
+            <li class="nav-item"><a href="/donasi" class="nav-link">Donasi</a></li>
+            <li class="nav-item"><a href="/transaksiuser" class="nav-link">Transaksi</a></li>
+            <li class="nav-item"><a href="/programiuser" class="nav-link">Program</a></li>
+            <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
+                    <div class="navbar-profile">
+                        <i class="fa fa-bars"></i>
                     </div>
-                  </div>
-                  {{-- <div class="preview-item-content">
-                    <p class="preview-subject mb-1">Profile</p>
-                  </div> --}}
                 </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                      <div class="preview-icon">
-                      <i class="mdi mdi-onepassword text-info" style="padding: 5px"></i>
-                      <i>Ubah Password</i>
-                      </div>
-                  </div>
-                  {{-- <div class="preview-item-content">
-                      <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
-                  </div> --}}
-                  </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon">
-                      <i class="mdi mdi-logout text-danger" style="padding: 5px"></i>
-                      <i>Log out</i>
-                    </div>
-                  </div>
-                  {{-- <div class="preview-item-content">
-                    <p class="preview-subject mb-1">Log out</p>
-                  </div> --}}
-                </a>
-                <div class="dropdown-divider"></div>
-                {{-- <p class="p-3 mb-0 text-center">Advanced settings</p> --}}
-            </div>
-          </li>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item preview-item">
+                        <div class="preview-thumbnail">
+                            <div class="preview-icon">
+                                <i class="mdi mdi-settings text-success"></i>
+                            </div>
+                        </div>
+                        <div class="preview-item-content">
+                            <p class="preview-subject mb-1">Profile</p>
+                        </div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item preview-item">
+                        <div class="preview-thumbnail">
+                            <div class="preview-icon">
+                            <i class="mdi mdi-onepassword text-info"></i>
+                            </div>
+                        </div>
+                        <div class="preview-item-content">
+                            <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
+                        </div>
+                        </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item preview-item">
+                        <div class="preview-thumbnail">
+                            <div class="preview-icon">
+                              <i class="mdi mdi-logout text-danger"></i>
+                            </div>
+                        </div>
+                        <div class="preview-item-content">
+                            <p class="preview-subject mb-1">Log out</p>
+                        </div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    {{-- <p class="p-3 mb-0 text-center">Advanced settings</p> --}}
+                </div>
+            </li>
         </ul>
       </div>
     </div>
   </nav>
     <!-- END nav -->
 
-    <div class="hero-wrap" style="background-image: url('assets/images/bg_7.jpg');" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Bantulah mereka yang membutuhkan!!!!</h1>
-            <!-- <p class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Created by <a href="#">Colorlib.com</a></p> -->
-
-            <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="https://vimeo.com/45830194" class="btn btn-white btn-outline-white px-4 py-3 popup-vimeo"><span class="icon-play mr-2"></span>Watch Video</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- BUAT ADMIN  -->
-    <!-- <section class="ftco-counter ftco-intro" id="section-counter">
-    	<div class="container">
-    		<div class="row no-gutters">
-    			<div class="col-md-5 d-flex justify-content-center counter-wrap ftco-animate">
-            <div class="block-18 color-1 align-items-stretch">
-              <div class="text">
-              	<span>Served Over</span>
-                <strong class="number" data-number="1432805">0</strong>
-                <span>Children in 190 countries in the world</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-            <div class="block-18 color-2 align-items-stretch">
-              <div class="text">
-              	<h3 class="mb-4">Donasi Sekarang</h3>
-              	<p>Even the all-powerful Pointing has no control about the blind texts.</p>
-              	<p><a href="#" class="btn btn-white px-3 py-2 mt-2">Donasi</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-            <div class="block-18 color-3 align-items-stretch">
-              <div class="text">
-              	<h3 class="mb-4">Buat Penggalangan Dana</h3>
-              	<p>Even the all-powerful Pointing has no control about the blind texts.</p>
-              	<p><a href="#" class="btn btn-white px-3 py-2 mt-2">Buat Sekarang</a></p>
-              </div>
-            </div>
-          </div>
-    		</div>
-    	</div>
-    </section> -->
+    <section class="ftco-section" style="padding:10px; padding:47px; background:#252525"></section>
     <br>
-    <br>
-    <div class="row justify-content-center" style="padding:20px">
+    {{-- <div class="row justify-content-center" style="padding:20px">
       <div class="col-md-5 heading-section ftco-animate text-center">
-        <h1>Banner Disini</h1>
+        <h1>Berita</h1>
       </div>
-    </div>
+    </div> --}}
     <br>
     <!-- BANNER -->
     <div class="container">
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="d-block w-100" style="background-image: url('assets/images/pict1.jpg'); height:450px;" alt="First slide">
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" style="background-image: url('assets/images/pict2.jpg'); height:450px;" alt="Second slide">
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" style="background-image: url('assets/images/pict3.jpg'); height:450px;" alt="Third slide">
-          </div>
+        <div class="col-md-12 heading-section ftco-animate text-center">
+            <h1>Judul Berita</h1>
+          <img class="d-block w-100" style="background-image: url('assets/images/pict1.jpg'); height:450px;">
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
+        <br>
 
+        <div class="col-md-12 heading-section ftco-animate text-center">
+            <h1>Judul Berita</h1>
+            <img class="d-block w-100" style="background-image: url('assets/images/pict2.jpg'); height:450px;">
+        </div>
+        <br>
 
+        <div class="col-md-12 heading-section ftco-animate text-center">
+            <h1>Judul Berita</h1>
+            <img class="d-block w-100" style="background-image: url('assets/images/pict3.jpg'); height:450px;">
+        </div>
+        <br>
     </div>
     <br>
-
-    <section class="ftco-section bg-light" style="padding:50px">
-    	<div class="container-fluid">
-    		<div class="row justify-content-center" style="padding:20px">
-          <div class="col-md-5 heading-section ftco-animate text-center">
-            <h2 class="mb-4">Macam-macam Kasus</h2>
-            <p>Berbagai macam kasus yang terjadi di Indonesia saat ini marilah kita bantu mereka!!</p>
-          </div>
-        </div>
-    		<div class="row">
-    			<div class="col-md-12 ftco-animate" style="padding:20px">
-    				<div class="carousel-cause owl-carousel">
-	    				<div class="item">
-	    					<div class="cause-entry">
-		    					<a href="#" class="img" style="background-image: url(assets/images/cause-1.jpg);"></a>
-		    					<div class="text p-3 p-md-4">
-		    						<h3 style="margin-bottom:-1px"><a href="#">Judul Program</a></h3>
-                                        <div style="color:grey; padding-bottom:10px">
-                                        <a>- Nama Pemilik Program</a>
-                                        </div>
-		    						<p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
-		    						<span class="donation-time mb-3 d-block">Sisa hari disini</span>
-		                <div class="progress custom-progress-success">
-		                  <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-		                </div>
-		                <span class="fund-raised d-block">Rp75,000 Terkumpul dari Rp100,000</span>
-		    					</div>
-		    				</div>
-	    				</div>
-	    				<div class="item">
-	    					<div class="cause-entry">
-		    					<a href="#" class="img" style="background-image: url(assets/images/cause-2.jpg);"></a>
-		    					<div class="text p-3 p-md-4">
-		    						<h3 style="margin-bottom:-1px"><a href="#">Judul Program</a></h3>
-                                        <div style="color:grey; padding-bottom:10px">
-                                        <a>- Nama Pemilik Program</a>
-                                        </div>
-		    						<p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
-		    						<span class="donation-time mb-3 d-block">Sisa hari disini</span>
-		                <div class="progress custom-progress-success">
-		                  <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-		                </div>
-		                <span class="fund-raised d-block">Rp75,000 Terkumpul dari Rp100,000</span>
-		    					</div>
-		    				</div>
-	    				</div>
-	    				<div class="item">
-	    					<div class="cause-entry">
-		    					<a href="#" class="img" style="background-image: url(assets/images/cause-3.jpg);"></a>
-		    					<div class="text p-3 p-md-4">
-		    						<h3 style="margin-bottom:-1px"><a href="#">Judul Program</a></h3>
-                                        <div style="color:grey; padding-bottom:10px">
-                                        <a>- Nama Pemilik Program</a>
-                                        </div>
-		    						<p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
-		    						<span class="donation-time mb-3 d-block">Sisa hari disini</span>
-		                <div class="progress custom-progress-success">
-		                  <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-		                </div>
-		                <span class="fund-raised d-block">Rp75,000 Terkumpul dari Rp100,000</span>
-		    					</div>
-		    				</div>
-	    				</div>
-	    				<div class="item">
-	    					<div class="cause-entry">
-		    					<a href="#" class="img" style="background-image: url(assets/images/cause-4.jpg);"></a>
-		    					<div class="text p-3 p-md-4">
-		    						<h3 style="margin-bottom:-1px"><a href="#">Judul Program</a></h3>
-                                        <div style="color:grey; padding-bottom:10px">
-                                        <a>- Nama Pemilik Program</a>
-                                        </div>
-		    						<p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
-		    						<span class="donation-time mb-3 d-block">Sisa hari disini</span>
-		                <div class="progress custom-progress-success">
-		                  <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-		                </div>
-		                <span class="fund-raised d-block">Rp75,000 Terkumpul dari Rp100,000</span>
-		    					</div>
-		    				</div>
-	    				</div>
-	    				<div class="item">
-	    					<div class="cause-entry">
-		    					<a href="#" class="img" style="background-image: url(assets/images/cause-5.jpg);"></a>
-		    					<div class="text p-3 p-md-4">
-		    						<h3 style="margin-bottom:-1px"><a href="#">Judul Program</a></h3>
-                                        <div style="color:grey; padding-bottom:10px">
-                                        <a>- Nama Pemilik Program</a>
-                                        </div>
-		    						<p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
-		    						<span class="donation-time mb-3 d-block">Sisa hari disini</span>
-		                <div class="progress custom-progress-success">
-		                  <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-		                </div>
-		                <span class="fund-raised d-block">Rp75,000 Terkumpul dari Rp100,000</span>
-		    					</div>
-		    				</div>
-	    				</div>
-	    				<div class="item">
-	    					<div class="cause-entry">
-		    					<a href="#" class="img" style="background-image: url(assets/images/cause-6.jpg);"></a>
-		    					<div class="text p-3 p-md-4">
-		    						<h3 style="margin-bottom:-1px"><a href="#">Judul Program</a></h3>
-                                        <div style="color:grey; padding-bottom:10px">
-                                        <a>- Nama Pemilik Program</a>
-                                        </div>
-		    						<p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
-		    						<span class="donation-time mb-3 d-block">Sisa hari disini</span>
-		                <div class="progress custom-progress-success">
-		                  <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-		                </div>
-		                <span class="fund-raised d-block">Rp75,000 Terkumpul dari Rp100,000</span>
-		    					</div>
-		    				</div>
-	    				</div>
-    				</div>
-    			</div>
-    		</div>
-    	</div>
-    </section>
-
 
     <section class="ftco-section" style="padding:50px">
     	<div class="container">
@@ -707,7 +520,6 @@
   <script src="assets/https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="assets/js/google-map.js"></script>
   <script src="assets/js/main.js"></script>
-
 
   </body>
 </html>

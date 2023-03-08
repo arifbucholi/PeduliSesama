@@ -51,7 +51,7 @@
                                 <label class="form-check-label" for="invalidCheck">
                                     <a style="color:rgb(69, 69, 69)">Agree to terms and conditions</a>
                                 </label>
-                           <input type="submit" name="" value="Daftar" href="#">
+                            <input type="submit" name="" value="Daftar" href="#">
                         </form>
                     </div>
                 </div>

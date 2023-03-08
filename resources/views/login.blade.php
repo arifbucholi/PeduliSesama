@@ -45,8 +45,9 @@
                             <input type="text" name="" placeholder="Ketik e-mail Anda">
                             <input type="password" name="" placeholder="Password">
 
+                           {{-- <button type="button" class="btn btn-primary" name="" href="/" style="padding:14px; border-radius:20px">Login</button> --}}
                            <input type="submit" name="" value="Login" href="#">
-                                <div class="col-md-12">
+                                <div class="col-md-12" style="padding-top:10px">
                                     <a style="color:rgb(65, 65, 65)">Login with :</a>
                                     <br>
                                     <ul class="social-network social-circle">
@@ -55,7 +56,7 @@
                                         <li><a href="#" class="icoGoogle" title="Google +"><i class="fab fa-google-plus"></i></a></li>
                                     </ul>
                                 </div>
-                                <a class="text" href="#" style="color:rgb(65, 65, 65)">Forgot password?</a>
+                                <a class="text" href="/lupapass" style="color:rgb(65, 65, 65)">Lupa password?</a>
                                 <a class="forgot text" href="/daftar" style="color:rgb(0, 34, 255)">Daftar</a>
 
                             </form>

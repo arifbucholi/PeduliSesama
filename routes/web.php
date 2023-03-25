@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\SocialAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('hal.utama');
 
 Route::get('/login', function () {
     return view('login');
@@ -67,4 +68,11 @@ Route::get('/tes2', function () {
 Route::get('/lupapass', function () {
     return view('lupapass');
 });
+
+Route::get('/auth/redirect', [SocialAuthController::class, 'redirect'])
+    ->name('google.redirect');
+
+Route::get('/google/redirect', [SocialAuthController::class, 'googleCallback'])
+    ->name('google.callback');
+
 

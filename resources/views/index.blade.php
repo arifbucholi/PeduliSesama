@@ -49,7 +49,7 @@
           <li class="nav-item"><a href="/berita" class="nav-link">Berita</a></li>
           <li class="nav-item"><a href="/donasi" class="nav-link">Donasi</a></li>
           <li class="nav-item"><a href="/transaksiuser" class="nav-link">Transaksi</a></li>
-          <li class="nav-item"><a href="/programiuser" class="nav-link">Program</a></li>
+          <li class="nav-item"><a href="/programuser" class="nav-link">Program</a></li>
           <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
           {{-- <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-bars"></i></a></li> --}}
           <li class="nav-item dropdown">
@@ -337,7 +337,7 @@
                     <div class="media-body pl-4">
                         <h3 class="heading">Mari Berdonasi</h3>
                         <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-                        <button class="btn btn-primary" style="border-radius: 20px">Donasi Sekarang</button>
+                        <a href="/donasi" class="btn btn-primary" style="border-radius: 20px">Donasi Sekarang</a>
                     </div>
                 </div>
             </div>

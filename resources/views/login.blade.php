@@ -53,7 +53,9 @@
                                     <ul class="social-network social-circle">
                                         <!-- <li><a href="#" class="icoFacebook" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
                                         <li><a href="#" class="icoTwitter" title="Twitter"><i class="fab fa-twitter"></i></a></li> -->
-                                        <li><a href="#" class="icoGoogle" title="Google +"><i class="fab fa-google-plus"></i></a></li>
+
+                                            <li><a href="{{ route('google.redirect') }}" class="icoGoogle" title="Google +"><i class="fab fa-google-plus"></i></a></li>
+
                                     </ul>
                                 </div>
                                 <a class="text" href="/lupapass" style="color:rgb(65, 65, 65)">Lupa password?</a>

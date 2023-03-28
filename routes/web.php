@@ -75,4 +75,6 @@ Route::get('/auth/redirect', [SocialAuthController::class, 'redirect'])
 Route::get('/google/redirect', [SocialAuthController::class, 'googleCallback'])
     ->name('google.callback');
 
+    Route::get('/logout', [SocialAuthController::class, 'logout']);
+
 

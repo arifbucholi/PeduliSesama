@@ -84,17 +84,16 @@
                   </div> --}}
                   </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon">
-                      <i class="mdi mdi-logout text-danger" style="padding: 5px"></i>
-                      <i>Log out</i>
+                {{-- <a href="#" class="dropdown-item preview-item"> --}}
+                    <div class="preview-thumbnail">
+                        <div class="preview-icon">
+                            <a href="/logout" style="padding-left: 30px">
+                                <i class="mdi mdi-logout text-danger"></i>
+                                <i>Log out</i>
+                            </a>
+                        </div>
                     </div>
-                  </div>
-                  {{-- <div class="preview-item-content">
-                    <p class="preview-subject mb-1">Log out</p>
-                  </div> --}}
-                </a>
+                {{-- </a> --}}
                 <div class="dropdown-divider"></div>
                 {{-- <p class="p-3 mb-0 text-center">Advanced settings</p> --}}
             </div>

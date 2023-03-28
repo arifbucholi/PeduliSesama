@@ -34,4 +34,10 @@ class SocialAuthController extends Controller
         }
         Auth::login($user);
     }
+
+    public function logout (Request $request)
+    {
+        Auth::logout();
+        return redirect()->intended('/login');
+    }
 }

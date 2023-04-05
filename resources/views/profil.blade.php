@@ -26,8 +26,11 @@
     <link rel="stylesheet" href="assets/css/flaticon.css">
     <link rel="stylesheet" href="assets/css/icomoon.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> --}}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 
     <style>
     /* Style the input field */
@@ -46,7 +49,9 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-      <a class="navbar-brand" href="index.html">PeduliSesama</a>
+      <a class="navbar-brand" href="index.html">PeduliSesama
+        <img style="background-image: url('assets/images/SumberMakmur.png')">
+      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> Menu
       </button>
@@ -55,9 +60,9 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
             <li class="nav-item"><a href="/berita" class="nav-link">Berita</a></li>
-            <li class="nav-item active"><a href="/donasi" class="nav-link">Donasi</a></li>
+            <li class="nav-item"><a href="/donasi" class="nav-link">Donasi</a></li>
             <li class="nav-item"><a href="/transaksiuser" class="nav-link">Transaksi</a></li>
-            <li class="nav-item"><a href="/programuser" class="nav-link">Program</a></li>
+            <li class="nav-item"><a href="/programiuser" class="nav-link">Program</a></li>
             <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
             <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
@@ -108,128 +113,81 @@
     </div>
   </nav>
     <!-- END nav -->
-
     <section class="ftco-section" style="padding:10px; padding:47px; background:#252525"></section>
 
 
     <div class="overlay"></div>
     <br>
     <div class="container">
-        <br>
-        <h1 class="row justify-content-center">Donasi</h1>
-        <div class="container">
-            <div class="row ">
-                <div class="col">
-                    <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="border-radius:25px">Filter
-                        <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                        <input class="form-control" id="myInput" type="text" placeholder="Cari..">
-                        <li><a href="#" style="padding-left:12px;"> Pendidikan</a></li>
-                        <li><a href="#" style="padding-left:12px;"> Sosial</a></li>
-                        </ul>
+    <br>
+        <h1 class="row justify-content-center">Profile</h1>
+            <section class="vh-100" style="background-color: #ffff;">
+                <div class="container py-5 h-100">
+                  <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-md-12 col-xl-4">
+
+                        <div class="card" style="border-radius: 15px;background:#252525">
+                          <div class="card-body text-center">
+                            <div class="mt-3 mb-4">
+                              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+                                class="rounded-circle img-fluid" style="width: 100px;" />
+                            </div>
+                            <h4 class="mb-2" style="color: white">Julie L. Arsenault</h4>
+                            <p class="text-muted mb-4">
+                              <a href="#!">arifbucholi@gmail.com</a>
+                              <br>
+                              <a>081232600907</a>
+                            </p>
+                            {{-- <div class="mb-4 pb-2">
+                              <button type="button" class="btn btn-outline-primary btn-floating">
+                                <i class="fab fa-facebook-f fa-lg"></i>
+                              </button>
+                              <button type="button" class="btn btn-outline-primary btn-floating">
+                                <i class="fab fa-twitter fa-lg"></i>
+                              </button>
+                              <button type="button" class="btn btn-outline-primary btn-floating">
+                                <i class="fab fa-skype fa-lg"></i>
+                              </button>
+                            </div>
+                            <button type="button" class="btn btn-primary btn-rounded btn-lg">
+                              Message now
+                            </button> --}}
+                            <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                              <div class="px-5">
+                                <p class="mb-2 h5" style="color: white">8471</p>
+                                <p class="text-muted mb-0">Donasi</p>
+                              </div>
+                              <div class="px-5">
+                                <p class="mb-2 h5" style="color: white">8512</p>
+                                <p class="text-muted mb-0">Program</p>
+                              </div>
+                              {{-- <div>
+                                <p class="mb-2 h5" style="color: white">4751</p>
+                                <p class="text-muted mb-0"></p>
+                              </div> --}}
+                            </div>
+                          </div>
+                        </div>
+
                     </div>
+                  </div>
                 </div>
-            </div>
-        </div>
+            </section>
+        {{-- </div> --}}
     </div>
+
+
+    <br>
+    <br>
+
+
 
 
     <section class="ftco-section" style="padding:10px; padding-bottom:50px">
       <div class="container">
-      	<div class="row">
-      		<div class="col-md-4 ftco-animate">
-      			<div class="cause-entry">
-    					<a href="#" class="img" style="background-image: url(assets/images/cause-1.jpg);"></a>
-    					<div class="text p-3 p-md-4">
-    						<h3 style="margin:-2px"><a href="#">Judul Program disini</a></h3>
-                            <p>- Nama Pemilik Program</p>
-    						<p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
-		    				<span class="donation-time mb-3 d-block">Sisa hari disini</span>
-                <div class="progress custom-progress-success">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 98.5%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <span class="fund-raised d-block">Rp28,000 Terkumpul dari Rp100,000</span>
-    					</div>
-    				</div>
-      		</div>
-      		<div class="col-md-4 ftco-animate">
-      			<div class="cause-entry">
-    					<a href="#" class="img" style="background-image: url(assets/images/cause-2.jpg);"></a>
-    					<div class="text p-3 p-md-4">
-                            <h3 style="margin:-2px"><a href="#">Judul Program disini</a></h3>
-                            <p>- Nama Pemilik Program</p>
-    						<p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
-		    				<span class="donation-time mb-3 d-block">Sisa hari disini</span>
-                <div class="progress custom-progress-success">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <span class="fund-raised d-block">Rp28,000 Terkumpul dari Rp100,000</span>
-    					</div>
-    				</div>
-      		</div>
-      		<div class="col-md-4 ftco-animate">
-      			<div class="cause-entry">
-    					<a href="#" class="img" style="background-image: url(assets/images/cause-3.jpg);"></a>
-    					<div class="text p-3 p-md-4">
-                            <h3 style="margin:-2px"><a href="#">Judul Program disini</a></h3>
-                            <p>- Nama Pemilik Program</p>
-    						<p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
-		    				<span class="donation-time mb-3 d-block">Sisa hari disini</span>
-                <div class="progress custom-progress-success">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <span class="fund-raised d-block">Rp28,000 Terkumpul dari Rp100,000</span>
-    					</div>
-    				</div>
-      		</div>
-      		<div class="col-md-4 ftco-animate">
-      			<div class="cause-entry">
-    					<a href="#" class="img" style="background-image: url(assets/images/cause-4.jpg);"></a>
-    					<div class="text p-3 p-md-4">
-                            <h3 style="margin:-2px"><a href="#">Judul Program disini</a></h3>
-                            <p>- Nama Pemilik Program</p>
-    						<p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
-		    				<span class="donation-time mb-3 d-block">Sisa hari disini</span>
-                <div class="progress custom-progress-success">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <span class="fund-raised d-block">Rp28,000 Terkumpul dari Rp100,000</span>
-    					</div>
-    				</div>
-      		</div>
-      		<div class="col-md-4 ftco-animate">
-      			<div class="cause-entry">
-    					<a href="#" class="img" style="background-image: url(assets/images/cause-5.jpg);"></a>
-    					<div class="text p-3 p-md-4">
-                            <h3 style="margin:-2px"><a href="#">Judul Program disini</a></h3>
-                            <p>- Nama Pemilik Program</p>
-    						<p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
-		    				<span class="donation-time mb-3 d-block">Sisa hari disini</span>
-                <div class="progress custom-progress-success">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <span class="fund-raised d-block">Rp28,000 Terkumpul dari Rp100,000</span>
-    					</div>
-    				</div>
-      		</div>
-      		<div class="col-md-4 ftco-animate">
-      			<div class="cause-entry">
-    					<a href="#" class="img" style="background-image: url(assets/images/cause-6.jpg);"></a>
-    					<div class="text p-3 p-md-4">
-                            <h3 style="margin:-2px"><a href="#">Judul Program disini</a></h3>
-                            <p>- Nama Pemilik Program</p>
-    						<p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
-		    				<span class="donation-time mb-3 d-block">Sisa hari disini</span>
-                <div class="progress custom-progress-success">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <span class="fund-raised d-block">Rp28,000 Terkumpul dari Rp100,000</span>
-    					</div>
-    				</div>
-      		</div>
-        </div>
-        <div class="row mt-5">
+
+
+        {{-- <div class="row mt-5">
           <div class="col text-center">
             <div class="block-27">
               <ul>
@@ -243,39 +201,8 @@
               </ul>
             </div>
           </div>
-        </div>
+        </div> --}}
       </div>
-    </section>
-
-    <section class="ftco-section" style="padding:50px">
-    	<div class="container">
-    	    <div class="row">
-                <div class="col-md-6 d-flex align-self-stretch ftco-animate">
-                    <div class="media block-6 d-flex services p-3 py-4 d-block">
-                    <div class="icon d-flex mb-3">
-                        <span class="flaticon-donation-1"></span>
-                    </div>
-                    <div class="media-body pl-4">
-                        <h3 class="heading">Buat Penggalangan Dana</h3>
-                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-                        <button class="btn btn-primary" style="border-radius: 20px">Buat Sekarang</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 d-flex align-self-stretch ftco-animate">
-                <div class="media block-6 d-flex services p-3 py-4 d-block">
-                    <div class="icon d-flex mb-3">
-                        <span class="flaticon-charity"></span>
-                    </div>
-                    <div class="media-body pl-4">
-                        <h3 class="heading">Mari Berdonasi</h3>
-                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-                        <button class="btn btn-primary" style="border-radius: 20px">Donasi Sekarang</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    	</div>
     </section>
 
 
@@ -401,6 +328,10 @@
       alert(inputValue);
     });
   </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+
 
   </body>
 </html>

@@ -88,8 +88,8 @@
                     <div class="preview-thumbnail">
                         <div class="preview-icon">
                             <a href="/logout" style="padding-left: 30px">
-                                <i class="mdi mdi-logout text-danger"></i>
-                                <i>Log out</i>
+                                <i class="mdi mdi-logout text-danger"> Logout</i>
+                                {{-- <i>Log out</i> --}}
                             </a>
                         </div>
                     </div>
@@ -215,7 +215,7 @@
 		    						<p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
 		    						<span class="donation-time mb-3 d-block">Sisa hari disini</span>
 		                <div class="progress custom-progress-success">
-		                  <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
+		                  <div class="progress-bar bg-primary" role="progressbar" style="width: 100%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
 		                </div>
 		                <span class="fund-raised d-block">Rp75,000 Terkumpul dari Rp100,000</span>
 		    					</div>

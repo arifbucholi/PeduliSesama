@@ -42,6 +42,10 @@ Route::get('/berita', function () {
     return view('berita');
 });
 
+Route::get('/profil', function () {
+    return view('profil');
+});
+
 
 
 

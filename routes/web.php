@@ -81,4 +81,23 @@ Route::get('/google/redirect', [SocialAuthController::class, 'googleCallback'])
 
     Route::get('/logout', [SocialAuthController::class, 'logout']);
 
+// Admin
+Route::group([
+    'prefix' => '/admin',
+], function () {
+    Route::get('/campaign/approve/{data}', [\App\Http\Controllers\CampaignController::class, 'approveCampaign'])->name('campaign.approve');
+});
 
+// User
+Route::group([
+    'prefix' => '/users',
+], function () {
+    Route::post('/update-password/{user}', [\App\Http\Controllers\UsersController::class, 'updatePassword']);
+});
+
+// Campaign
+Route::group([
+    'prefix' => '/campaigns',
+], function () {
+    Route::post('/', [\App\Http\Controllers\CampaignController::class, 'store']);
+});

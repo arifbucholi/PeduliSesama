@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Fortify\UpdateUserPassword;
+use App\Models\User;
 use App\Models\Users;
 use App\Http\Requests\StoreUsersRequest;
 use App\Http\Requests\UpdateUsersRequest;
+use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
@@ -106,13 +109,26 @@ class UsersController extends Controller
     public function register_action(Request $request)
     {
         $users = new Users;
-        $user->nama = $request->nama;
-        $user->email = $request->email;
-        $user->password = $request->password;
+        $users->nama = $request->nama;
+        $users->email = $request->email;
+        $users->password = $request->password;
         //kurang sintaks re-password
-        $user->password = Hash::make($request->password);
-        $user->save();
+        $users->password = Hash::make($request->password);
+        $users->save();
 
         return redirect('login')->with('success', 'Registration Success');
+    }
+
+    public function updatePassword(User $user, Request $req, UpdateUserPassword $update)
+    {
+        /**
+         * req body
+         * {
+         *  "current_password",
+         *  "password"
+         * }
+         */
+        $update->update($user, $req->all());
+        return view('', ['message' => 'Success']);
     }
 }

@@ -152,46 +152,8 @@
     		</div>
     	</div>
     </section> -->
-    <br>
-    <br>
-    <div class="row justify-content-center" style="padding:20px">
-      <div class="col-md-5 heading-section ftco-animate text-center">
-        <h1>Banner Disini</h1>
-      </div>
-    </div>
-    <br>
-    <!-- BANNER -->
-    <div class="container">
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="d-block w-100" style="background-image: url('assets/images/pict1.jpg'); height:450px;" alt="First slide">
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" style="background-image: url('assets/images/pict2.jpg'); height:450px;" alt="Second slide">
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" style="background-image: url('assets/images/pict3.jpg'); height:450px;" alt="Third slide">
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
 
 
-    </div>
-    <br>
 
     <section class="ftco-section bg-light" style="padding:50px">
     	<div class="container-fluid">
@@ -311,6 +273,45 @@
     		</div>
     	</div>
     </section>
+
+    <div class="row justify-content-center" style="padding:20px">
+        <div class="col-md-5 heading-section ftco-animate text-center">
+          <h1>Banner Disini</h1>
+        </div>
+      </div>
+      <br>
+      <!-- BANNER -->
+      <div class="container">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" style="background-image: url('assets/images/pict1.jpg'); height:450px;" alt="First slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" style="background-image: url('assets/images/pict2.jpg'); height:450px;" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" style="background-image: url('assets/images/pict3.jpg'); height:450px;" alt="Third slide">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+
+
+      </div>
+      <br>
 
 
     <section class="ftco-section" style="padding:50px">

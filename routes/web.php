@@ -49,6 +49,25 @@ Route::get('/profil', function () {
 
 
 
+Route::get('/chart', function () {
+    return view('chart');
+});
+
+Route::get('/form', function () {
+    return view('form');
+});
+
+Route::get('/indextes', function () {
+    return view('indextes');
+});
+
+Route::get('/table', function () {
+    return view('table');
+});
+
+
+
+
 
 
 // ADMIN
@@ -56,8 +75,8 @@ Route::get('/dashboardadmin', function () {
     return view('dashboardadmin');
 });
 
-Route::get('/dashboardadmin1', function () {
-    return view('dashboardadmin1');
+Route::get('/programadmin', function () {
+    return view('programadmin');
 });
 
 

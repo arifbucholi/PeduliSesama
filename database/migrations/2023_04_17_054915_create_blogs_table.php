@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('blogs', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->nullable();
-            $table->string('google_id')->unique()->nullable();
-            $table->rememberToken();
+            $table->foreignId('author_id')->constrained('users');
+            $table->string('title');
+            $table->string('desc');
+            $table->string('img_url')
+                ->default('https://th.bing.com/th/id/OIP.a5YOm_1N-oe-O025Jw4PTQHaE8?pid=ImgDet&rs=1');
             $table->timestamps();
         });
     }
@@ -32,6 +31,10 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('blogs');
     }
 };
+
+
+//users   -> donation <- campaign
+//        -> blog

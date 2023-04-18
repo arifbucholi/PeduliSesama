@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('donations', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->nullable();
-            $table->string('google_id')->unique()->nullable();
-            $table->rememberToken();
+            $table->foreignId('donor_id')->constrained('users');
+            $table->foreignId('campaign_id')->constrained('campaigns');
+            $table->integer('amount');
+            $table->text('desc');
+            $table->string('category');
+            $table->boolean('is_donor_hidden')->default(false);
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('donations');
     }
 };

@@ -20,6 +20,8 @@ return new class extends Migration
             $table->integer('amount');
             $table->text('desc');
             $table->string('category');
+            $table->enum('status', ['SUCCESS', 'PENDING', 'CANCEL'])->default('PENDING');
+            $table->timestamp('paid_at')->nullable();
             $table->boolean('is_donor_hidden')->default(false);
             $table->timestamps();
         });

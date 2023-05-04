@@ -24,6 +24,7 @@ return new class extends Migration
                 ->default(
                     'https://th.bing.com/th/id/R.ede26850f78b31dcb0c104fabaeecbfd?rik=n61fK63xcRrSDg&riu=http%3a%2f%2fi.huffpost.com%2fgen%2f1398288%2fthumbs%2fo-DONATING-TO-CHARITY-facebook.jpg&ehk=MznZ4e8w9CmyTkoTvQY0S3vxU0ItINWxw1g6DVqkr0U%3d&risl=&pid=ImgRaw&r=0
                     ');
+            $table->date('start_date');
             $table->string('status');
             $table->timestamps();
         });

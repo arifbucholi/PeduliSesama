@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Campaign;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CampaignController extends Controller
 {
@@ -16,7 +17,7 @@ class CampaignController extends Controller
     {
 
         $data = auth()->user()->is_admin ? Campaign::all() : Campaign::where('author_id', auth()->id())->get();
-        return view('', compact('data'));
+        return view('', compact('data')); // TODO: need view
     }
 
     /**
@@ -26,7 +27,7 @@ class CampaignController extends Controller
      */
     public function create()
     {
-        return view('');
+        return view(''); // TODO: need view
     }
 
     /**
@@ -50,6 +51,8 @@ class CampaignController extends Controller
 //            auth()->user()->is_admin ? 'Diterima' : 'Menunggu Konfirmasi';
 
         $newCampaign->save();
+
+        return redirect()->route('')->with('success', 'Some success message'); // TODO: need route
     }
 
     /**
@@ -60,7 +63,9 @@ class CampaignController extends Controller
      */
     public function show($id)
     {
-        //
+//        $campaigns = Campaign::where('author_id', Auth::id())->orderBy('created_at', 'desc')->get();
+        $campaigns = Campaign::where('author_id', 1)->orderBy('created_at', 'desc')->get();
+        return view('', compact('campaigns')); // TODO: need view
     }
 
     /**
@@ -100,5 +105,6 @@ class CampaignController extends Controller
     public function approveCampaign(Campaign $data) {
         $data->status = 'Diterima';
         $data->save();
+        return redirect()->route('')->with('success', 'Some success message'); // TODO: need route
     }
 }

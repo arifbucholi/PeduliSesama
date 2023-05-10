@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Corona Admin</title>
+    <title>Program</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets2/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets2/vendors/css/vendor.bundle.base.css">
@@ -37,18 +37,18 @@
           <li class="nav-item nav-category">
             <span class="nav-link">Navigasi</span>
           </li>
-          <li class="nav-item menu-items active">
-            <a class="nav-link" href="index.html">
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/dashboardadmin">
               <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
+                <i class="mdi mdi-view-grid"></i>
               </span>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="/campaigns">
+          <li class="nav-item menu-items active">
+            <a class="nav-link" href="/program">
               <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
+                <i class="mdi mdi-wallet-travel"></i>
               </span>
               <span class="menu-title">Program</span>
             </a>
@@ -342,7 +342,7 @@
                     </div>
                   </a>
                   <div class="dropdown-divider"></div>
-                  {{-- <p class="p-3 mb-0 text-center">Advanced settings</p> --}}
+
                 </div>
               </li>
             </ul>
@@ -355,201 +355,105 @@
         <div class="main-panel">
           <div class="content-wrapper" style="border-radius: 10px">
 
-            <div class="row">
-                <div class="col-sm-12 grid-margin">
-                  <div class="card">
-                    <div class="card-body text-center">
-                      <h1>Total Donasi Saat Ini</h1>
-                      <br>
-                      <div class="row">
-                        {{-- <div class="col-8 col-sm-12 col-xl-8 my-auto"> --}}
-                        <div class="col-12 col-sm-12 col-xl-12 my-auto">
-                          {{-- <div class="d-flex d-sm-block d-md-flex align-items-center"> --}}
-                          <div class="text-center">
-                            <h1 class="mb-0">Rp3.000.000</h1>
-                            {{-- <p class="text-success ms-2 mb-0 font-weight-medium">+3.5%</p> --}}
-                          </div>
-                          {{-- <h6 class="text-muted font-weight-normal">11.38% Since last month</h6> --}}
-                        </div>
-                        {{-- <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                          <i class="icon-lg mdi mdi-codepen text-primary ms-auto"></i>
-                        </div> --}}
-                      </div>
+            <div class="row ">
+              <div class="col-12 grid-margin">
+                <div class="card" style="border-radius: 10px">
+                  <div class="card-body">
+                    <div class="text-center">
+                        <h1 class="card-title text-center">Permintaan Program</h1>
+                        <a class="btn btn-success create-new-button text-center" href="/addcampaigns">Buat Program</a>
+                    </div>
+                    <br>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th> No </th>
+                            <th> Nama yang Mengajukan </th>
+                            <th> Nama Program </th>
+                            <th> Tanggal Pengajuan </th>
+                            <th> Status Pengajuan </th>
+                            <th> Detail </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td> 1 </td>
+                            <td>
+                              <img src="assets2/images/faces/face1.jpg" alt="image" />
+                              <span class="ps-2">Henry Klein</span>
+                            </td>
+                            <td> Bantuan Semeru </td>
+                            <td> 04 Dec 2019 </td>
+                            <td>
+                              <div class="badge badge-outline-success">Approved</div>
+                            </td>
+                            <td class="mdi mdi-table-edit text-center"></td>
+                          </tr>
+                          <tr>
+                            <td> 2 </td>
+                            <td>
+                              <img src="assets2/images/faces/face2.jpg" alt="image" />
+                              <span class="ps-2">Estella Bryan</span>
+                            </td>
+                            <td> Merapi Meletus </td>
+                            <td> 04 Dec 2019 </td>
+                            <td>
+                              <div class="badge badge-outline-danger">Rejected</div>
+                            </td>
+                            <td class="mdi mdi-table-edit text-center"></td>
+                          </tr>
+                          <tr>
+                            <td> 3 </td>
+                            <td>
+                              <img src="assets2/images/faces/face5.jpg" alt="image" />
+                              <span class="ps-2">Lucy Abbott</span>
+                            </td>
+                            <td> Dadang Kena Kanker Ganas </td>
+                            <td> 04 Dec 2019 </td>
+                            <td>
+                              <div class="badge badge-outline-danger">Rejected</div>
+                            </td>
+                            <td class="mdi mdi-table-edit text-center"></td>
+                          </tr>
+                          <tr>
+                            <td> 4 </td>
+                            <td>
+                              <img src="assets2/images/faces/face3.jpg" alt="image" />
+                              <span class="ps-2">Peter Gill</span>
+                            </td>
+                            <td> Diablo Nakal Anaknya </td>
+                            <td> 04 Dec 2019 </td>
+                            <td>
+                              <div class="badge badge-outline-success">Approved</div>
+                            </td>
+                            <td class="mdi mdi-table-edit text-center"></td>
+                          </tr>
+                          <tr>
+                            <td> 5 </td>
+                            <td>
+                              <img src="assets2/images/faces/face4.jpg" alt="image" />
+                              <span class="ps-2">Sallie Reyes</span>
+                            </td>
+                            <td> Surabaya Butuh Makanan </td>
+                            <td> 04 Dec 2019 </td>
+                            <td>
+                              <div class="badge badge-outline-success">Approved</div>
+                            </td>
+                            <td class="mdi mdi-table-edit text-center"></td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
+              </div>
             </div>
 
-            <div class="row">
-                <div class="col-sm-6 grid-margin">
-                  <div class="card">
-                    <div class="card-body">
-                      <h2>Jumlah User</h2>
-                      <div class="row">
-                        <div class="col-8 col-sm-12 col-xl-8 my-auto">
-                          <div class="d-flex d-sm-block d-md-flex align-items-center">
-                            <h2 class="mb-0">23</h2>
-                            {{-- <p class="text-success ms-2 mb-0 font-weight-medium">+3.5%</p> --}}
-                          </div>
-                          {{-- <h6 class="text-muted font-weight-normal">11.38% Since last month</h6> --}}
-                        </div>
-                        <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                          <i class="icon-lg mdi mdi-codepen text-primary ms-auto"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6 grid-margin">
-                  <div class="card">
-                    <div class="card-body">
-                      <h2>Jumlah Program</h2>
-                      <div class="row">
-                        <div class="col-8 col-sm-12 col-xl-8 my-auto">
-                          <div class="d-flex d-sm-block d-md-flex align-items-center">
-                            <h2 class="mb-0">34</h2>
-                            {{-- <p class="text-success ms-2 mb-0 font-weight-medium">+8.3%</p> --}}
-                          </div>
-                          {{-- <h6 class="text-muted font-weight-normal"> 9.61% Since last month</h6> --}}
-                        </div>
-                        <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                          <i class="icon-lg mdi mdi-wallet-travel text-danger ms-auto"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
+          </div>
+          <!-- content-wrapper ends -->
 
-
-            <div class="row">
-                <div class="col-lg-12 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body ">
-                      <h3 class="card-title">5 Donatur Total Nominal Tertinggi</h3>
-                      <br>
-                      <div class="table-responsive">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th>Nama</th>
-                              <th>Nominal</th>
-                              <th>Keterangan</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Henry Klein</span>
-                              </td>
-                              <td>10.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Messy</span>
-                              </td>
-                              <td>9.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">John</span>
-                              </td>
-                              <td>5.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Peter</span>
-                              </td>
-                              <td>3.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Reyes</span>
-                              </td>
-                              <td>2.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
-
-
-            <div class="row">
-                <div class="col-lg-12 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body ">
-                      <h3 class="card-title">5 Donatur Sering Melakukan Donasi</h3>
-                      <br>
-                      <div class="table-responsive">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th>Nama</th>
-                              <th>Nominal</th>
-                              <th>Keterangan</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Henry Klein</span>
-                              </td>
-                              <td>10.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Messy</span>
-                              </td>
-                              <td>9.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">John</span>
-                              </td>
-                              <td>5.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Peter</span>
-                              </td>
-                              <td>3.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Reyes</span>
-                              </td>
-                              <td>2.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
+        </div>
         <!-- main-panel ends -->
       </div>
       <!-- page-body-wrapper ends -->

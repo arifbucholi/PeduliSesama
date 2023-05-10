@@ -45,12 +45,28 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
-          <li class="nav-item menu-items active">
-            <a class="nav-link" href="/program">
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/campaigns">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
               <span class="menu-title">Program</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/beritaadmin">
+              <span class="menu-icon">
+                <i class="mdi mdi-speedometer"></i>
+              </span>
+              <span class="menu-title">Berita</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items active">
+            <a class="nav-link" href="/transaksiadmin">
+              <span class="menu-icon">
+                <i class="mdi mdi-chart-bar"></i>
+              </span>
+              <span class="menu-title">Transaksi</span>
             </a>
           </li>
           <li class="nav-item menu-items">
@@ -343,16 +359,16 @@
               <div class="col-12 grid-margin">
                 <div class="card" style="border-radius: 10px">
                   <div class="card-body">
-                    <h3 class="card-title">Permintaan Program</h3>
+                    <h1 class="card-title text-center">Transaksi User</h1>
                     <div class="table-responsive">
                       <table class="table">
                         <thead>
                           <tr>
                             <th> No </th>
-                            <th> Nama yang Mengajukan </th>
+                            <th> Nama </th>
                             <th> Nama Program </th>
-                            <th> Tanggal Pengajuan </th>
-                            <th> Status Pengajuan </th>
+                            <th> Tanggal Donasi </th>
+                            <th> Nominal</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -365,7 +381,7 @@
                             <td> Bantuan Semeru </td>
                             <td> 04 Dec 2019 </td>
                             <td>
-                              <div class="badge badge-outline-success">Approved</div>
+                              Rp6.000,00
                             </td>
                           </tr>
                           <tr>
@@ -377,7 +393,7 @@
                             <td> Merapi Meletus </td>
                             <td> 04 Dec 2019 </td>
                             <td>
-                              <div class="badge badge-outline-danger">Rejected</div>
+                              Rp5000,0000000000000000000000
                             </td>
                           </tr>
                           <tr>
@@ -389,7 +405,7 @@
                             <td> Dadang Kena Kanker Ganas </td>
                             <td> 04 Dec 2019 </td>
                             <td>
-                              <div class="badge badge-outline-danger">Rejected</div>
+                              Rp5000,0000000000000000000000
                             </td>
                           </tr>
                           <tr>
@@ -401,7 +417,7 @@
                             <td> Diablo Nakal Anaknya </td>
                             <td> 04 Dec 2019 </td>
                             <td>
-                              <div class="badge badge-outline-success">Approved</div>
+                              Rp6.000,00
                             </td>
                           </tr>
                           <tr>
@@ -413,7 +429,7 @@
                             <td> Surabaya Butuh Makanan </td>
                             <td> 04 Dec 2019 </td>
                             <td>
-                              <div class="badge badge-outline-success">Approved</div>
+                              Rp6.000,00
                             </td>
                           </tr>
                         </tbody>

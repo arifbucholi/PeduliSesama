@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Corona Admin</title>
+    <title>Tambah Program</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets2/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets2/vendors/css/vendor.bundle.base.css">
@@ -37,16 +37,16 @@
           <li class="nav-item nav-category">
             <span class="nav-link">Navigasi</span>
           </li>
-          <li class="nav-item menu-items active">
-            <a class="nav-link" href="index.html">
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/dashboardadmin">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="/campaigns">
+          <li class="nav-item menu-items active">
+            <a class="nav-link" href="/programadmin">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
@@ -342,7 +342,6 @@
                     </div>
                   </a>
                   <div class="dropdown-divider"></div>
-                  {{-- <p class="p-3 mb-0 text-center">Advanced settings</p> --}}
                 </div>
               </li>
             </ul>
@@ -355,201 +354,99 @@
         <div class="main-panel">
           <div class="content-wrapper" style="border-radius: 10px">
 
-            <div class="row">
-                <div class="col-sm-12 grid-margin">
-                  <div class="card">
-                    <div class="card-body text-center">
-                      <h1>Total Donasi Saat Ini</h1>
-                      <br>
-                      <div class="row">
-                        {{-- <div class="col-8 col-sm-12 col-xl-8 my-auto"> --}}
-                        <div class="col-12 col-sm-12 col-xl-12 my-auto">
-                          {{-- <div class="d-flex d-sm-block d-md-flex align-items-center"> --}}
-                          <div class="text-center">
-                            <h1 class="mb-0">Rp3.000.000</h1>
-                            {{-- <p class="text-success ms-2 mb-0 font-weight-medium">+3.5%</p> --}}
-                          </div>
-                          {{-- <h6 class="text-muted font-weight-normal">11.38% Since last month</h6> --}}
-                        </div>
-                        {{-- <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                          <i class="icon-lg mdi mdi-codepen text-primary ms-auto"></i>
-                        </div> --}}
-                      </div>
+            <div class="row ">
+              <div class="col-12 grid-margin">
+                <div class="card" style="border-radius: 10px">
+                  <div class="card-body">
+                    <h1 class="card-title text-center">Tambah Program</h1>
+                    <div>
+                        <form method="POST" action="{{ route('campaigns.store') }}" enctype="multipart/form-data">
+                            @csrf
+
+                            <div>
+                                <label for="title">Judul berita</label>
+                                <input class="form-control" type="text" name="title" id="title" placeholder="Masukkan judul berita" style="color:#FFFFFD" required>
+                                </div>
+                                @if ($errors->has('title'))
+                                    <span class="text-danger">{{ $errors->first('title') }}</span>
+                                @endif
+                            <br>
+                            <div class="row">
+                                <div id="date-picker" class="col md-form md-outline input-with-post-icon datepicker" inline="true">
+                                    <label for="date-picker">Tanggal Mulai</label>
+                                    <input class="form-control" type="date" id="start_date" name="start_date" style="color:#FFFFFD" required>
+                                    <i class="fas fa-calendar input-prefix"></i>
+                                    @if ($errors->has('start_date'))
+                                        <span class="text-danger">{{ $errors->first('start_date') }}</span>
+                                    @endif
+                                </div>
+                                <div id="date-picker2" class="col md-form md-outline input-with-post-icon datepicker" inline="true">
+                                    <label for="date-picker2">Tanggal Selesai</label>
+                                    <input class="form-control" type="date" id="dateline" name="dateline" style="color:#FFFFFD" required>
+                                    <i class="fas fa-calendar input-prefix"></i>
+                                    @if ($errors->has('dateline'))
+                                        <span class="text-danger">{{ $errors->first('dateline') }}</span>
+                                    @endif
+                                </div>
+                            </div>
+                            <br>
+                            <label for="target_amount">Target Dana</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="padding:11px; background:white">Rp</span>
+                                </div>
+                                <input class="form-control" type="number" id="target_amount" name="target_amount" placeholder="Masukkan nominal. Contoh : 10.000" style="color:#FFFFFD" required>
+                                @if ($errors->has('target_amount'))
+                                    <span class="text-danger">{{ $errors->first('target_amount') }}</span>
+                                @endif
+                            </div>
+                            <br>
+                            <div>
+                                <label for="category">Kategori</label>
+                                {{-- <input class="form-control" type="text" id="category" name="category" value="{{ old('category') }}" required> --}}
+                                <select class="form-control" name="category" id="category" required style="color:#FFFFFD">
+                                    <option value="" disabled selected>Pilih Kategori</option>
+                                    <option value="tes">Sosial</option>
+                                    <option value="tes1">Hewan</option>
+                                    <option value="tes2">Tumbuhan</option>
+                                    <option value="tes3">Ternak</option>
+                                </select>
+                                @if ($errors->has('category'))
+                                    <span class="text-danger">{{ $errors->first('category') }}</span>
+                                @endif
+                            </div>
+                            <br>
+                            <div>
+                                <label for="no_rekening">Nomor rekening</label>
+                                <input class="form-control" type="number" name="no_rekening" id="no_rekening" placeholder="Masukkan nomor rekening Anda/perusahaan" style="color:#FFFFFD" oninvalid="this.setCustomValidity('Masukkan nomor rekening Anda/perusahaan')" data-error="Nomor rekening tidak boleh kosong" required>
+                            </div>
+                            <br>
+                            <div>
+                                <label for="img_url">Foto/gambar</label>
+                                <input class="form-control file-upload-info" type="file" name="img_url" id="img_url" oninvalid="this.setCustomValidity('Pilih gambar/foto')" data-error="Gambar/foto tidak boleh kosong" required>
+                                <p style="padding-top: 8px; margin-bottom:0px">Preview :</p>
+                                <img id="imgPreview" class="d-block" style="height:225px;width:420px">
+
+                            </div>
+                            <br>
+                            <div>
+                                <label for="desc">Deskripsi program</label>
+                                <textarea class="form-control" name="desc" id="desc" style="height: 200px; color:#FFFFFD" placeholder="Masukkan deskripsi program" oninvalid="this.setCustomValidity('Masukkan deskripsi program')" data-error="Deskripsi program tidak boleh kosong" required></textarea>
+                            </div>
+                            <br>
+
+                            <button class="nav-link btn btn-success create-new-button" type="submit">Create</button>
+                        </form>
                     </div>
                   </div>
                 </div>
+              </div>
             </div>
 
-            <div class="row">
-                <div class="col-sm-6 grid-margin">
-                  <div class="card">
-                    <div class="card-body">
-                      <h2>Jumlah User</h2>
-                      <div class="row">
-                        <div class="col-8 col-sm-12 col-xl-8 my-auto">
-                          <div class="d-flex d-sm-block d-md-flex align-items-center">
-                            <h2 class="mb-0">23</h2>
-                            {{-- <p class="text-success ms-2 mb-0 font-weight-medium">+3.5%</p> --}}
-                          </div>
-                          {{-- <h6 class="text-muted font-weight-normal">11.38% Since last month</h6> --}}
-                        </div>
-                        <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                          <i class="icon-lg mdi mdi-codepen text-primary ms-auto"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6 grid-margin">
-                  <div class="card">
-                    <div class="card-body">
-                      <h2>Jumlah Program</h2>
-                      <div class="row">
-                        <div class="col-8 col-sm-12 col-xl-8 my-auto">
-                          <div class="d-flex d-sm-block d-md-flex align-items-center">
-                            <h2 class="mb-0">34</h2>
-                            {{-- <p class="text-success ms-2 mb-0 font-weight-medium">+8.3%</p> --}}
-                          </div>
-                          {{-- <h6 class="text-muted font-weight-normal"> 9.61% Since last month</h6> --}}
-                        </div>
-                        <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                          <i class="icon-lg mdi mdi-wallet-travel text-danger ms-auto"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
+          </div>
+          <!-- content-wrapper ends -->
 
-
-            <div class="row">
-                <div class="col-lg-12 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body ">
-                      <h3 class="card-title">5 Donatur Total Nominal Tertinggi</h3>
-                      <br>
-                      <div class="table-responsive">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th>Nama</th>
-                              <th>Nominal</th>
-                              <th>Keterangan</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Henry Klein</span>
-                              </td>
-                              <td>10.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Messy</span>
-                              </td>
-                              <td>9.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">John</span>
-                              </td>
-                              <td>5.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Peter</span>
-                              </td>
-                              <td>3.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Reyes</span>
-                              </td>
-                              <td>2.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
-
-
-            <div class="row">
-                <div class="col-lg-12 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body ">
-                      <h3 class="card-title">5 Donatur Sering Melakukan Donasi</h3>
-                      <br>
-                      <div class="table-responsive">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th>Nama</th>
-                              <th>Nominal</th>
-                              <th>Keterangan</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Henry Klein</span>
-                              </td>
-                              <td>10.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Messy</span>
-                              </td>
-                              <td>9.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">John</span>
-                              </td>
-                              <td>5.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Peter</span>
-                              </td>
-                              <td>3.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Reyes</span>
-                              </td>
-                              <td>2.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
+        </div>
         <!-- main-panel ends -->
       </div>
       <!-- page-body-wrapper ends -->
@@ -576,5 +473,33 @@
     <!-- Custom js for this page -->
     <script src="assets2/js/dashboard.js"></script>
     <!-- End custom js for this page -->
+    <script>
+        // Data Picker Initialization
+        $('.date-picker').datepicker({
+        inline: true
+        });
+    </script>
+    <script>
+        // ambil element input dan img preview
+        const img_url = document.querySelector('#img_url');
+        const imgPreview = document.querySelector('#imgPreview');
+
+        // event listener untuk input file diubah
+        img_url.addEventListener('change', function() {
+          // cek apakah file yang diupload adalah gambar
+          if (this.files && this.files[0]) {
+            const file = this.files[0];
+            const reader = new FileReader();
+
+            // saat file telah dibaca, tampilkan preview gambar
+            reader.addEventListener('load', function() {
+              imgPreview.src = reader.result;
+            });
+
+            // baca file sebagai data URL
+            reader.readAsDataURL(file);
+          }
+        });
+    </script>
   </body>
 </html>

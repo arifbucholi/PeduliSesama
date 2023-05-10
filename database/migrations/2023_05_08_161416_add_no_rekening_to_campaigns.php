@@ -13,12 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->boolean('is_admin')->default(false);
-        });
-
         Schema::table('campaigns', function (Blueprint $table) {
-            $table->date('start_date');
+            $table->integer('no_rekening');
         });
     }
 
@@ -29,7 +25,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('campaigns', function (Blueprint $table) {
             //
         });
     }

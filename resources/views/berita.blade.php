@@ -106,25 +106,18 @@
     </div> --}}
     <br>
     <!-- BANNER -->
+    @foreach ($blogs as $blog)
     <div class="container">
         <div class="col-md-12 heading-section ftco-animate text-center">
-            <h1>Judul Berita</h1>
-          <img class="d-block w-100" style="background-image: url('assets/images/pict1.jpg'); height:450px;">
+            <h1>{{ $blog->title }}</h1>
+        <img src="{{ asset($blog->img_url) }}" alt="{{ $blog->img_url }}" class="text-center" style="height:500px; width:840px">
         </div>
+        <p style="padding:60px ; padding-top:25px">{{ $blog->desc }}</p>
         <br>
-
-        <div class="col-md-12 heading-section ftco-animate text-center">
-            <h1>Judul Berita</h1>
-            <img class="d-block w-100" style="background-image: url('assets/images/pict2.jpg'); height:450px;">
-        </div>
         <br>
-
-        <div class="col-md-12 heading-section ftco-animate text-center">
-            <h1>Judul Berita</h1>
-            <img class="d-block w-100" style="background-image: url('assets/images/pict3.jpg'); height:450px;">
-        </div>
         <br>
     </div>
+    @endforeach
     <br>
 
     <section class="ftco-section" style="padding:50px">

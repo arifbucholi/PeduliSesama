@@ -37,8 +37,8 @@
           <li class="nav-item nav-category">
             <span class="nav-link">Navigasi</span>
           </li>
-          <li class="nav-item menu-items active">
-            <a class="nav-link" href="index.html">
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/dashboardadmin">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
@@ -53,7 +53,7 @@
               <span class="menu-title">Program</span>
             </a>
           </li>
-          <li class="nav-item menu-items">
+          <li class="nav-item menu-items active">
             <a class="nav-link" href="/beritaadmin">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
@@ -355,201 +355,46 @@
         <div class="main-panel">
           <div class="content-wrapper" style="border-radius: 10px">
 
-            <div class="row">
-                <div class="col-sm-12 grid-margin">
-                  <div class="card">
-                    <div class="card-body text-center">
-                      <h1>Total Donasi Saat Ini</h1>
-                      <br>
-                      <div class="row">
-                        {{-- <div class="col-8 col-sm-12 col-xl-8 my-auto"> --}}
-                        <div class="col-12 col-sm-12 col-xl-12 my-auto">
-                          {{-- <div class="d-flex d-sm-block d-md-flex align-items-center"> --}}
-                          <div class="text-center">
-                            <h1 class="mb-0">Rp3.000.000</h1>
-                            {{-- <p class="text-success ms-2 mb-0 font-weight-medium">+3.5%</p> --}}
-                          </div>
-                          {{-- <h6 class="text-muted font-weight-normal">11.38% Since last month</h6> --}}
-                        </div>
-                        {{-- <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                          <i class="icon-lg mdi mdi-codepen text-primary ms-auto"></i>
-                        </div> --}}
-                      </div>
+            <div class="row ">
+              <div class="col-12 grid-margin">
+                <div class="card" style="border-radius: 10px">
+                  <div class="card-body">
+                    <h1 class="card-title text-center">Tambah Berita</h1>
+                    <div class="table-responsive">
+                        <form action="{{ route('blogs.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+
+                            <div>
+                                <label for="title">Judul berita</label>
+                                <input class="form-control" type="text" name="title" id="title" placeholder="Masukkan judul berita" required>
+                            </div>
+                            <br>
+                            <div>
+                                <label for="img_url">Foto/gambar</label>
+                                <input class="form-control file-upload-info" type="file" name="img_url" id="img_url" required>
+                            </div>
+                            <br>
+                            <div>
+                                <label for="desc">Deskripsi berita</label>
+                                <textarea class="form-control" name="desc" id="desc" style="height: 200px" placeholder="Masukkan deskripsi berita serta nama sumber berita
+
+Contoh: Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups. Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups. Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups. -ARIFBUCHOLI 2 MEI 2023" required></textarea>
+                            </div>
+                            <br>
+
+                            <button class="nav-link btn btn-success create-new-button" type="submit">Create</button>
+                        </form>
+
                     </div>
                   </div>
                 </div>
+              </div>
             </div>
 
-            <div class="row">
-                <div class="col-sm-6 grid-margin">
-                  <div class="card">
-                    <div class="card-body">
-                      <h2>Jumlah User</h2>
-                      <div class="row">
-                        <div class="col-8 col-sm-12 col-xl-8 my-auto">
-                          <div class="d-flex d-sm-block d-md-flex align-items-center">
-                            <h2 class="mb-0">23</h2>
-                            {{-- <p class="text-success ms-2 mb-0 font-weight-medium">+3.5%</p> --}}
-                          </div>
-                          {{-- <h6 class="text-muted font-weight-normal">11.38% Since last month</h6> --}}
-                        </div>
-                        <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                          <i class="icon-lg mdi mdi-codepen text-primary ms-auto"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6 grid-margin">
-                  <div class="card">
-                    <div class="card-body">
-                      <h2>Jumlah Program</h2>
-                      <div class="row">
-                        <div class="col-8 col-sm-12 col-xl-8 my-auto">
-                          <div class="d-flex d-sm-block d-md-flex align-items-center">
-                            <h2 class="mb-0">34</h2>
-                            {{-- <p class="text-success ms-2 mb-0 font-weight-medium">+8.3%</p> --}}
-                          </div>
-                          {{-- <h6 class="text-muted font-weight-normal"> 9.61% Since last month</h6> --}}
-                        </div>
-                        <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                          <i class="icon-lg mdi mdi-wallet-travel text-danger ms-auto"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
+          </div>
+          <!-- content-wrapper ends -->
 
-
-            <div class="row">
-                <div class="col-lg-12 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body ">
-                      <h3 class="card-title">5 Donatur Total Nominal Tertinggi</h3>
-                      <br>
-                      <div class="table-responsive">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th>Nama</th>
-                              <th>Nominal</th>
-                              <th>Keterangan</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Henry Klein</span>
-                              </td>
-                              <td>10.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Messy</span>
-                              </td>
-                              <td>9.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">John</span>
-                              </td>
-                              <td>5.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Peter</span>
-                              </td>
-                              <td>3.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Reyes</span>
-                              </td>
-                              <td>2.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
-
-
-            <div class="row">
-                <div class="col-lg-12 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body ">
-                      <h3 class="card-title">5 Donatur Sering Melakukan Donasi</h3>
-                      <br>
-                      <div class="table-responsive">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th>Nama</th>
-                              <th>Nominal</th>
-                              <th>Keterangan</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Henry Klein</span>
-                              </td>
-                              <td>10.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Messy</span>
-                              </td>
-                              <td>9.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">John</span>
-                              </td>
-                              <td>5.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Peter</span>
-                              </td>
-                              <td>3.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Reyes</span>
-                              </td>
-                              <td>2.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
+        </div>
         <!-- main-panel ends -->
       </div>
       <!-- page-body-wrapper ends -->

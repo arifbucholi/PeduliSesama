@@ -6,21 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Corona Admin</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="assets2/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="assets2/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="{{ asset('assets2/vendors/mdi/css/materialdesignicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets2/vendors/css/vendor.bundle.base.css') }}">
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="assets2/vendors/jvectormap/jquery-jvectormap.css">
-    <link rel="stylesheet" href="assets2/vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="assets2/vendors/owl-carousel-2/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets2/vendors/owl-carousel-2/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="{{ asset('assets2/vendors/jvectormap/jquery-jvectormap.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets2/vendors/flag-icon-css/css/flag-icon.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets2/vendors/owl-carousel-2/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets2/vendors/owl-carousel-2/owl.theme.default.min.css') }}">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="assets2/css/style.css">
+    <link rel="stylesheet" href="{{ asset('assets2/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('') }}">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="assets2/images/favicon.png" />
+    <link rel="stylesheet" href="{{ asset('assets2/images/favicon.png') }}">
   </head>
   <body>
     <div class="container-scroller">
@@ -37,8 +39,8 @@
           <li class="nav-item nav-category">
             <span class="nav-link">Navigasi</span>
           </li>
-          <li class="nav-item menu-items active">
-            <a class="nav-link" href="index.html">
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/dashboardadmin">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
@@ -53,7 +55,7 @@
               <span class="menu-title">Program</span>
             </a>
           </li>
-          <li class="nav-item menu-items">
+          <li class="nav-item menu-items active">
             <a class="nav-link" href="/beritaadmin">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
@@ -355,226 +357,119 @@
         <div class="main-panel">
           <div class="content-wrapper" style="border-radius: 10px">
 
-            <div class="row">
-                <div class="col-sm-12 grid-margin">
-                  <div class="card">
-                    <div class="card-body text-center">
-                      <h1>Total Donasi Saat Ini</h1>
-                      <br>
-                      <div class="row">
-                        {{-- <div class="col-8 col-sm-12 col-xl-8 my-auto"> --}}
-                        <div class="col-12 col-sm-12 col-xl-12 my-auto">
-                          {{-- <div class="d-flex d-sm-block d-md-flex align-items-center"> --}}
-                          <div class="text-center">
-                            <h1 class="mb-0">Rp3.000.000</h1>
-                            {{-- <p class="text-success ms-2 mb-0 font-weight-medium">+3.5%</p> --}}
-                          </div>
-                          {{-- <h6 class="text-muted font-weight-normal">11.38% Since last month</h6> --}}
-                        </div>
-                        {{-- <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                          <i class="icon-lg mdi mdi-codepen text-primary ms-auto"></i>
-                        </div> --}}
-                      </div>
+            <div class="row ">
+              <div class="col-12 grid-margin">
+                <div class="card" style="border-radius: 10px">
+                  <div class="card-body">
+                    <h1 class="card-title text-center">Edit Berita</h1>
+                    <div class="table-responsive">
+                        <form action="{{ route('blogs.update', $blog->id) }}" method="POST" enctype="multipart/form-data">
+                            @method('PUT')
+                            @csrf
+
+
+                            <div>
+                                <label for="title">Judul berita</label>
+                                    <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title', $blog->title) }}" autocomplete="title" autofocus>
+
+                                    @error('title')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                            </div>
+                            <br>
+                                <label for="img_url">Foto/gambar</label>
+                                    <input id="img_url" type="file" class="form-control @error('img_url') is-invalid @enderror" name="img_url" autocomplete="img_url" autofocus>
+                                    <br>
+                                    <img src="{{ $blog->img_url }}" alt="{{ $blog->title }}" id="imgPreview" class="d-block" style="height:225px;width:420px">
+
+
+
+                                    @error('img_url')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                            <br>
+                                <label for="desc">Deskripsi berita</label>
+                                    <textarea id="desc" style="height: 200px" class="form-control @error('desc') is-invalid @enderror" name="desc" autocomplete="desc">{{ old('desc', $blog->desc) }}</textarea>
+
+                                    @error('desc')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                            <br>
+
+                            <div class="">
+                                    <button type="submit" class="btn btn-primary">
+                                        Submit
+                                    </button>
+                                    <a href="{{ route('blogs.index') }}" class="btn btn-secondary">
+                                        Cancel
+                                    </a>
+                            </div>
+                        </form>
+
                     </div>
                   </div>
                 </div>
+              </div>
             </div>
 
-            <div class="row">
-                <div class="col-sm-6 grid-margin">
-                  <div class="card">
-                    <div class="card-body">
-                      <h2>Jumlah User</h2>
-                      <div class="row">
-                        <div class="col-8 col-sm-12 col-xl-8 my-auto">
-                          <div class="d-flex d-sm-block d-md-flex align-items-center">
-                            <h2 class="mb-0">23</h2>
-                            {{-- <p class="text-success ms-2 mb-0 font-weight-medium">+3.5%</p> --}}
-                          </div>
-                          {{-- <h6 class="text-muted font-weight-normal">11.38% Since last month</h6> --}}
-                        </div>
-                        <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                          <i class="icon-lg mdi mdi-codepen text-primary ms-auto"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6 grid-margin">
-                  <div class="card">
-                    <div class="card-body">
-                      <h2>Jumlah Program</h2>
-                      <div class="row">
-                        <div class="col-8 col-sm-12 col-xl-8 my-auto">
-                          <div class="d-flex d-sm-block d-md-flex align-items-center">
-                            <h2 class="mb-0">34</h2>
-                            {{-- <p class="text-success ms-2 mb-0 font-weight-medium">+8.3%</p> --}}
-                          </div>
-                          {{-- <h6 class="text-muted font-weight-normal"> 9.61% Since last month</h6> --}}
-                        </div>
-                        <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                          <i class="icon-lg mdi mdi-wallet-travel text-danger ms-auto"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
+          </div>
+          <!-- content-wrapper ends -->
 
-
-            <div class="row">
-                <div class="col-lg-12 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body ">
-                      <h3 class="card-title">5 Donatur Total Nominal Tertinggi</h3>
-                      <br>
-                      <div class="table-responsive">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th>Nama</th>
-                              <th>Nominal</th>
-                              <th>Keterangan</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Henry Klein</span>
-                              </td>
-                              <td>10.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Messy</span>
-                              </td>
-                              <td>9.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">John</span>
-                              </td>
-                              <td>5.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Peter</span>
-                              </td>
-                              <td>3.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Reyes</span>
-                              </td>
-                              <td>2.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
-
-
-            <div class="row">
-                <div class="col-lg-12 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body ">
-                      <h3 class="card-title">5 Donatur Sering Melakukan Donasi</h3>
-                      <br>
-                      <div class="table-responsive">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th>Nama</th>
-                              <th>Nominal</th>
-                              <th>Keterangan</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Henry Klein</span>
-                              </td>
-                              <td>10.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Messy</span>
-                              </td>
-                              <td>9.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">John</span>
-                              </td>
-                              <td>5.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Peter</span>
-                              </td>
-                              <td>3.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Reyes</span>
-                              </td>
-                              <td>2.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
+        </div>
         <!-- main-panel ends -->
       </div>
       <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="assets2/vendors/js/vendor.bundle.base.js"></script>
+    <script src="{{ asset('assets2/vendors/js/vendor.bundle.base.js') }}"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
-    <script src="assets2/vendors/chart.js/Chart.min.js"></script>
-    <script src="assets2/vendors/progressbar.js/progressbar.min.js"></script>
-    <script src="assets2/vendors/jvectormap/jquery-jvectormap.min.js"></script>
-    <script src="assets2/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="assets2/vendors/owl-carousel-2/owl.carousel.min.js"></script>
-    <script src="assets2/js/jquery.cookie.js" type="text/javascript"></script>
+
+    <script src="{{ asset('assets2/vendors/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ asset('assets2/vendors/progressbar.js/progressbar.min.js') }}"></script>
+    <script src="{{ asset('assets2/vendors/jvectormap/jquery-jvectormap.min.js') }}"></script>
+    <script src="{{ asset('assets2/vendors/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+    <script src="{{ asset('assets2/vendors/owl-carousel-2/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('assets2/js/jquery.cookie.js" type="text/javascript') }}"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="assets2/js/off-canvas.js"></script>
-    <script src="assets2/js/hoverable-collapse.js"></script>
-    <script src="assets2/js/misc.js"></script>
-    <script src="assets2/js/settings.js"></script>
-    <script src="assets2/js/todolist.js"></script>
+    <script src="{{ asset('assets2/js/off-canvas.js') }}"></script>
+    <script src="{{ asset('assets2/js/hoverable-collapse.js') }}"></script>
+    <script src="{{ asset('assets2/js/misc.js') }}"></script>
+    <script src="{{ asset('assets2/js/settings.js') }}"></script>
+    <script src="{{ asset('assets2/js/todolist.js') }}"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
-    <script src="assets2/js/dashboard.js"></script>
+    <script src="{{ asset('assets2/js/dashboard.js') }}"></script>
+    <script>
+        // ambil element input dan img preview
+        const img_url = document.querySelector('#img_url');
+        const imgPreview = document.querySelector('#imgPreview');
+
+        // event listener untuk input file diubah
+        img_url.addEventListener('change', function() {
+          // cek apakah file yang diupload adalah gambar
+          if (this.files && this.files[0]) {
+            const file = this.files[0];
+            const reader = new FileReader();
+
+            // saat file telah dibaca, tampilkan preview gambar
+            reader.addEventListener('load', function() {
+              imgPreview.src = reader.result;
+            });
+
+            // baca file sebagai data URL
+            reader.readAsDataURL(file);
+          }
+        });
+    </script>
     <!-- End custom js for this page -->
   </body>
 </html>

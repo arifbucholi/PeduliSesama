@@ -17,6 +17,8 @@ class Campaign extends Model
         'dateline',
         'target_amount',
         'img_url',
-        'status'
+        'status',
+        'category',
+        'no_rekening'
     ];
 }

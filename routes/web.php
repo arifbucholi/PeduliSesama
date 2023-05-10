@@ -1,6 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\CampaignController;
+use App\Http\Controllers\DonationController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\API\SocialAuthController;
 
 /*
@@ -14,38 +21,28 @@ use App\Http\Controllers\API\SocialAuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('hal.utama');
 
-Route::get('/login', function () {
-    return view('login');
-});
 
-Route::get('/donasi', function () {
-    return view('donasi');
-});
 
-Route::get('/transaksiuser', function () {
-    return view('transaksiuser');
-});
 
-Route::get('/programuser', function () {
-    return view('programuser');
-});
 
-Route::get('/daftar', function () {
-    return view('daftar');
-});
 
-Route::get('/berita', function () {
-    return view('berita');
-});
+// Route::get('/profil', function () {
+//     return view('profil');
+// });
 
-Route::get('/profil', function () {
-    return view('profil');
-});
+// Route::get('/daftar', function () {
+    //     return view('daftar');
+    // });
 
+    // Route::get('/login', function () {
+        //     return view('login');
+        // });
+
+
+        // Route::get('/berita', function () {
+        //     return view('berita');
+        // });
 
 
 
@@ -70,14 +67,7 @@ Route::get('/table', function () {
 
 
 
-// ADMIN
-Route::get('/dashboardadmin', function () {
-    return view('dashboardadmin');
-});
 
-Route::get('/programadmin', function () {
-    return view('programadmin');
-});
 
 
 
@@ -86,6 +76,10 @@ Route::get('/programadmin', function () {
 Route::get('/tes2', function () {
     return view('tes2');
 });
+
+// Route::get('/beritaedit', function () {
+//     return view('beritaedit');
+// })->name('beritaadmin');
 
 //ALL ROLE
 Route::get('/lupapass', function () {
@@ -99,6 +93,8 @@ Route::get('/google/redirect', [SocialAuthController::class, 'googleCallback'])
     ->name('google.callback');
 
     Route::get('/logout', [SocialAuthController::class, 'logout']);
+
+
 // TODO: route dikelompokan seperti dibawah. Buat baru jika dibutuhkan!
 // Admin
 Route::group([
@@ -121,7 +117,21 @@ Route::group([
     'prefix' => '/campaigns',
     'as' => 'campaigns.'
 ], function () {
-    Route::post('/', [\App\Http\Controllers\CampaignController::class, 'store']);
+    Route::get('/', [\App\Http\Controllers\CampaignController::class, 'index'])->name('index');
+    // Route::get('/create', [\App\Http\Controllers\CampaignController::class, 'create'])->name('create');
+    Route::post('/store', [\App\Http\Controllers\CampaignController::class, 'store'])->name('store');
+});
+// Route::post('/', [\App\Http\Controllers\CampaignController::class, 'store'])->name('store');
+
+// addCampaign
+Route::group([
+    'prefix' => '/addcampaigns',
+    'as' => 'addcampaigns.'
+], function () {
+    // Route::get('/', [\App\Http\Controllers\CampaignController::class, ''])->name('index');
+    Route::get('/create', [\App\Http\Controllers\CampaignController::class, 'create'])->name('create');
+    // Route::post('/store', [\App\Http\Controllers\CampaignController::class, 'store'])->name('store');
+
 });
 
 // Donation
@@ -133,3 +143,104 @@ Route::group([
     Route::post('/', [\App\Http\Controllers\DonationController::class, 'donate'])->name('donate');
     Route::get('/user-donation', [\App\Http\Controllers\DonationController::class, 'getUserDonation'])->name('user');
 });
+
+
+// Blog
+
+// Route::post('/beritaadmin', [BlogController::class, 'store'])->name('blogs.store');
+// Route::post('/beritaadmin', [BlogController::class, 'index'])->name('blogs.index');
+
+
+
+// ------------------------------------Halaman Admin---------------------------------------------//
+
+// Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth', 'cekrole'])->group(function () {
+    // Dashboard Admin
+    // Route::get('/dashboardadmin', [LoginController::class, 'authenticated'])->name('dashboardadmin');
+    Route::get('/dashboardadmin', [App\Http\Controllers\HomeController::class, 'indexAdmin'])->name('dashboardadmin.indexAdmin');
+
+    // Program Admin
+    Route::get('/programadmin', function () {
+        return view('programadmin');
+    });
+
+
+    // Berita Admin
+    Route::get('/beritaadmin', [BlogController::class, 'index'])->name('blogs.index');
+    Route::get('/beritaadmin/create', [BlogController::class, 'create'])->name('blogs.create');
+    Route::post('/beritaadmin/store', [BlogController::class, 'store'])->name('blogs.store');
+    Route::get('/beritaedit/{id}/edit', [BlogController::class, 'edit'])->name('blogs.edit');
+    Route::put('/beritaedit/{id}/update', [BlogController::class, 'update'])->name('blogs.update');
+    Route::delete('/beritadelete/{id}/destroy', [BlogController::class, 'destroy'])->name('blogs.destroy');
+
+    Route::get('/tambahberita', function () {
+        return view('tambahberita');
+    });
+
+    Route::get('/addcampaigns', function () {
+        return view('addcampaigns');
+    });
+
+    // Transaksi Admin
+    Route::get('/transaksiadmin', function () {
+        return view('transaksiadmin');
+    });
+
+    // ADMIN
+
+    // Route::get('/beritaadmin', function () {
+    //     return view('beritaadmin');
+    // });
+
+
+});
+
+
+
+// ------------------------------------Halaman Guest---------------------------------------------//
+
+// Google
+Route::get('/', function () {
+    return view('index');
+})->name('hal.utama');
+
+Route::get('/berita', [App\Http\Controllers\BlogController::class, 'index2'])->name('blogs.index2');
+
+Route::get('/donasi', function () {
+    return view('donasi');
+});
+
+
+
+// ------------------------------------Halaman User---------------------------------------------//
+
+
+// Middleware
+Route::middleware(['auth'])->group(function(){
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::get('/transaksiuser', function () {
+        return view('transaksiuser');
+    });
+
+    Route::get('/programuser', function () {
+        return view('programuser');
+    });
+
+
+    // Route::get('/berita', [BlogController::class, 'index2'])->name('blogs.index2');
+
+    // Route::get('/donasi', [BlogController::class, 'index'])->name('index');
+
+
+});
+
+
+
+
+
+
+
+Auth::routes();
+

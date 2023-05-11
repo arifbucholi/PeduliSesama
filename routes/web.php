@@ -67,8 +67,33 @@ Route::get('/table', function () {
 
 
 
+Route::get('/basic_elements', function () {
+    return view('basic_elements');
+});
 
+Route::get('/basic-table', function () {
+    return view('basic-table');
+});
 
+Route::get('/buttons', function () {
+    return view('buttons');
+});
+
+Route::get('/chartjs', function () {
+    return view('chartjs');
+});
+
+Route::get('/dropdowns', function () {
+    return view('dropdowns');
+});
+
+Route::get('/mdi', function () {
+    return view('mdi');
+});
+
+Route::get('/typography', function () {
+    return view('typography');
+});
 
 // ADMIN
 Route::get('/dashboardadmin', function () {

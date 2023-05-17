@@ -203,9 +203,13 @@ Route::get('/', function () {
     return view('index');
 })->name('hal.utama');
 
+Route::get('/', [\App\Http\Controllers\CampaignController::class, 'index3'])->name('index3');
+
+
 Route::get('/berita', [App\Http\Controllers\BlogController::class, 'index2'])->name('blogs.index2');
 
 Route::get('/donasi', [\App\Http\Controllers\CampaignController::class, 'index2'])->name('index2');
+
 // Route::get('/donasi', [\App\Http\Controllers\CampaignController::class, 'filter2'])->name('filter2');
 
 // Route::get('/donasi', [\App\Http\Controllers\CampaignController::class, 'index2'])->name('index2');

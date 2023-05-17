@@ -32,6 +32,9 @@
     <link rel="stylesheet" href="assets2/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets2/vendors/flag-icon-css/css/flag-icon.min.css">
 
+    <link rel="stylesheet" href="assets/css/readmore.css">
+
+
 
   </head>
   <body style="overflow-x:hidden">
@@ -157,33 +160,43 @@
 
     <section class="ftco-section bg-light" style="padding:50px">
     	<div class="container-fluid">
-    		<div class="row justify-content-center" style="padding:20px">
-          <div class="col-md-5 heading-section ftco-animate text-center">
-            <h2 class="mb-4">Macam-macam Kasus</h2>
-            <p>Berbagai macam kasus yang terjadi di Indonesia saat ini marilah kita bantu mereka!!</p>
-          </div>
-        </div>
+            <div class="row justify-content-center" style="padding:20px">
+                <div class="col-md-5 heading-section ftco-animate text-center">
+                    <h2 class="mb-4">Macam-macam Kasus</h2>
+                    <p>Berbagai macam kasus yang terjadi di Indonesia saat ini marilah kita bantu mereka!!</p>
+                </div>
+            </div>
     		<div class="row">
-    			<div class="col-md-12 ftco-animate" style="padding:20px">
+                <div class="col-md-12 ftco-animate" style="padding:20px">
     				<div class="carousel-cause owl-carousel">
-	    				<div class="item">
-	    					<div class="cause-entry">
-		    					<a href="#" class="img" style="background-image: url(assets/images/cause-1.jpg);"></a>
+                        <div class="item">
+                            @foreach ($campaigns as $campaign )
+                            <div class="cause-entry">
+                                <a href="#" class="img" style="background-image: url('{{ $campaign->img_url }}'); z-index: -1;"></a>
 		    					<div class="text p-3 p-md-4">
-		    						<h3 style="margin-bottom:-1px"><a href="#">Judul Program</a></h3>
+		    						<h3 style="margin-bottom:-1px"><a href="#">{{ $campaign->title }}</a></h3>
                                         <div style="color:grey; padding-bottom:10px">
-                                        <a>- Nama Pemilik Program</a>
+                                            <p style="margin-bottom:-5px">Pembuat Program:</p>
+                                            <p>{{ $campaign->user->name }}</p>
                                         </div>
-		    						<p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
-		    						<span class="donation-time mb-3 d-block">Sisa hari disini</span>
-		                <div class="progress custom-progress-success">
-		                  <div class="progress-bar bg-primary" role="progressbar" style="width: 100%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-		                </div>
-		                <span class="fund-raised d-block">Rp75,000 Terkumpul dari Rp100,000</span>
+                                        <p style="margin-bottom:0px">{{ Str::limit($campaign->desc, 90, '...') }}</p>
+                                        <a href="">Baca Selengkapnya</a>
+
+                                        @php
+                                        $endDate = \Carbon\Carbon::parse($campaign->dateline);
+                                        $remainingDays = $endDate->diffInDays(\Carbon\Carbon::now());
+                                        @endphp
+                                        <span class="donation-time mb-3 d-block">Sisa : {{ $remainingDays }} hari</span>
+                                        <div class="progress custom-progress-success">
+                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 100%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+		                            <span class="fund-raised d-block">Rp75,000 Terkumpul dari Rp100,000</span>
 		    					</div>
 		    				</div>
-	    				</div>
-	    				<div class="item">
+
+                            @endforeach
+                        </div>
+	    				{{-- <div class="item">
 	    					<div class="cause-entry">
 		    					<a href="#" class="img" style="background-image: url(assets/images/cause-2.jpg);"></a>
 		    					<div class="text p-3 p-md-4">
@@ -267,7 +280,8 @@
 		                <span class="fund-raised d-block">Rp75,000 Terkumpul dari Rp100,000</span>
 		    					</div>
 		    				</div>
-	    				</div>
+	    				</div> --}}
+
     				</div>
     			</div>
     		</div>

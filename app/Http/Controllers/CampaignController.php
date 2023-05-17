@@ -14,6 +14,7 @@ class CampaignController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // admin
     public function index()
     {
 
@@ -25,11 +26,21 @@ class CampaignController extends Controller
 
     }
 
+    // view campaign
     public function index2()
     {
 
         $campaigns =Campaign::all();
         return view('donasi', compact('campaigns')); // TODO: need view
+
+    }
+
+    //view dashboard
+    public function index3()
+    {
+
+        $campaigns =Campaign::all();
+        return view('index', compact('campaigns')); // TODO: need view
 
     }
 
@@ -97,6 +108,7 @@ class CampaignController extends Controller
         $campaigns->target_amount = $request->input('target_amount');
         $campaigns->img_url = '/uploadCampaign/' . $imageName;
         $campaigns->status = 0;
+        $campaigns->no_rekening = $request->input('no_rekening');
 
 
 

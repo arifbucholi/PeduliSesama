@@ -8,3 +8,7 @@
     <td></td>
 </tr>
 @endforeach
+
+Schema::table('campaigns', function (Blueprint $table) {
+            $table->string('category');
+        });

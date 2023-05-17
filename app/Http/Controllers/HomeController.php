@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Campaign;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -31,7 +32,8 @@ class HomeController extends Controller
         // } else {
         //     return redirect()->route('index');
         // }
-        return view('index');
+        $campaigns = Campaign::all();
+        return view('index', compact('campaigns'));
     }
 
 

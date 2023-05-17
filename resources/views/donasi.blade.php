@@ -133,7 +133,7 @@
         <div class="container">
             <div class="row ">
                 <div class="col">
-                    // filter
+                    {{-- // filter
                     <div class="filter-section">
                         <label for="category-filter">Filter Kategori:</label>
                         <select id="category-filter" name="category" onchange="filterCampaigns()">
@@ -142,7 +142,7 @@
                                 <option value="{{ $category }}" {{ $selectedCategory == $category ? 'selected' : '' }}>{{ $category }}</option>
                             @endforeach
                         </select>
-                    </div>
+                    </div> --}}
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="border-radius:25px">Filter
                         <span class="caret"></span></button>
@@ -173,7 +173,7 @@
                         <p>{{ $campaign->user->name }}</p>
                         {{-- <p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p> --}}
 
-                        <p style="margin-bottom:0px">{{ Str::limit($campaign->desc, 115, '...') }}</p>
+                        <p style="margin-bottom:0px">{{ Str::limit($campaign->desc, 90, '...') }}</p>
                         <a href="">Baca Selengkapnya</a>
 
                         @php

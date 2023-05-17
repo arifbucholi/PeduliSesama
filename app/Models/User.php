@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Blog;
+use App\Models\Campaign;
 
 class User extends Authenticatable
 {
@@ -54,8 +55,8 @@ class User extends Authenticatable
         return $this->hasMany(Blog::class);
     }
 
-    public function isAdmin()
+    public function campaigns()
     {
-        return $this->is_admin == 1;
+        return $this->hasMany(Campaign::class);
     }
 }

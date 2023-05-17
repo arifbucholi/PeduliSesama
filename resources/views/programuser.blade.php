@@ -149,9 +149,8 @@
                     <th scope="col">No</th>
                     <th scope="col">Nama Program</th>
                     <th scope="col">Tanggal-Program</th>
-                    <th scope="col" class="text-center">Keterangan</th>
-                    <th scope="col" class="text-center">Edit</th>
                     <th scope="col" class="text-center">Status Program</th>
+                    <th scope="col" class="text-center">Edit</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -160,7 +159,7 @@
                     <td>Program Arif</td>
                     <td>2 Maret - 2 Mei</td>
                     <td class="text-center">
-                        <a href="#">Lihat</a>
+                        <span class="btn btn-success" style="border-radius: 10px">Diterima</span>
                     </td>
                     <td class="text-center">
                         <a href="#">
@@ -169,9 +168,6 @@
                                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                             </svg>
                         </a>
-                    </td>
-                    <td class="text-center">
-                        <span class="btn btn-success" style="border-radius: 10px">Diterima</span>
                     </td>
                   </tr>
                   <tr>
@@ -179,7 +175,7 @@
                     <td>Program Rifqi</td>
                     <td>2 Maret - 2 Mei</td>
                     <td class="text-center">
-                        <a href="#">Lihat</a>
+                        <span class="btn btn-danger" style="border-radius: 10px">Ditolak</span>
                     </td>
                     <td class="text-center">
                         <a href="#">
@@ -188,9 +184,6 @@
                                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                             </svg>
                         </a>
-                    </td>
-                    <td class="text-center">
-                        <span class="btn btn-danger" style="border-radius: 10px">Ditolak</span>
                     </td>
                   </tr>
                   <tr>
@@ -198,7 +191,7 @@
                     <td>Program Carissa</td>
                     <td>2 Maret - 2 Mei</td>
                     <td class="text-center">
-                        <a href="#">Lihat</a>
+                        <span class="btn btn-success" style="border-radius: 10px">Diterima</span>
                     </td>
                     <td class="text-center">
                         <a href="#">
@@ -207,9 +200,6 @@
                                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                             </svg>
                         </a>
-                    </td>
-                    <td class="text-center">
-                        <span class="btn btn-success" style="border-radius: 10px">Diterima</span>
                     </td>
                   </tr>
                 </tbody>

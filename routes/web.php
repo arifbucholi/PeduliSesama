@@ -112,27 +112,9 @@ Route::group([
     Route::post('/update-password/{user}', [\App\Http\Controllers\UsersController::class, 'updatePassword']);
 });
 
-// Campaign
-Route::group([
-    'prefix' => '/campaigns',
-    'as' => 'campaigns.'
-], function () {
-    Route::get('/', [\App\Http\Controllers\CampaignController::class, 'index'])->name('index');
-    // Route::get('/create', [\App\Http\Controllers\CampaignController::class, 'create'])->name('create');
-    Route::post('/store', [\App\Http\Controllers\CampaignController::class, 'store'])->name('store');
-});
-// Route::post('/', [\App\Http\Controllers\CampaignController::class, 'store'])->name('store');
 
-// addCampaign
-Route::group([
-    'prefix' => '/addcampaigns',
-    'as' => 'addcampaigns.'
-], function () {
-    // Route::get('/', [\App\Http\Controllers\CampaignController::class, ''])->name('index');
-    Route::get('/create', [\App\Http\Controllers\CampaignController::class, 'create'])->name('create');
-    // Route::post('/store', [\App\Http\Controllers\CampaignController::class, 'store'])->name('store');
 
-});
+
 
 // Donation
 Route::group([
@@ -156,9 +138,14 @@ Route::group([
 
 // Route::middleware(['auth'])->group(function(){
 Route::middleware(['auth', 'cekrole'])->group(function () {
+    Route::get('/dashboardadmin', [App\Http\Controllers\HomeController::class, 'indexAdmin'])->name('indexAdmin');
+
     // Dashboard Admin
     // Route::get('/dashboardadmin', [LoginController::class, 'authenticated'])->name('dashboardadmin');
-    Route::get('/dashboardadmin', [App\Http\Controllers\HomeController::class, 'indexAdmin'])->name('dashboardadmin.indexAdmin');
+    // Route::get('/dashboardadmin', [App\Http\Controllers\HomeController::class, 'indexAdmin'])->name('dashboardadmin.indexAdmin');
+    Route::get('/dashboardadmin', function () {
+        return view('dashboardadmin');
+    });
 
     // Program Admin
     Route::get('/programadmin', function () {
@@ -178,21 +165,32 @@ Route::middleware(['auth', 'cekrole'])->group(function () {
         return view('tambahberita');
     });
 
-    Route::get('/addcampaigns', function () {
-        return view('addcampaigns');
-    });
+    Route::get('/campaigns', [\App\Http\Controllers\CampaignController::class, 'index'])->name('index');
+
+    Route::get('/addcampaigns', [\App\Http\Controllers\CampaignController::class, 'create'])->name('create');
+    Route::post('/campaigns/store', [\App\Http\Controllers\CampaignController::class, 'store'])->name('store');
+    Route::get('/campaigns/show/{id}', [\App\Http\Controllers\CampaignController::class, 'show'])->name('show');
+
+    // Route::get('/addcampaigns', function () {
+    //     return view('addcampaigns');
+    // });
+    // Route::get('/addcampaigns', [\App\Http\Controllers\CampaignController::class, 'store']);
+
+    // // addCampaign
+    // Route::group([
+    //     'prefix' => '/addcampaigns',
+    //     'as' => 'addcampaigns.'
+    // ], function () {
+    //     // Route::get('/', [\App\Http\Controllers\CampaignController::class, 'index'])->name('index');
+    //     Route::get('/create', [\App\Http\Controllers\CampaignController::class, 'create'])->name('create');
+        // Route::post('/store', [\App\Http\Controllers\CampaignController::class, 'store'])->name('store');
+
+    // });
 
     // Transaksi Admin
     Route::get('/transaksiadmin', function () {
         return view('transaksiadmin');
     });
-
-    // ADMIN
-
-    // Route::get('/beritaadmin', function () {
-    //     return view('beritaadmin');
-    // });
-
 
 });
 
@@ -207,9 +205,16 @@ Route::get('/', function () {
 
 Route::get('/berita', [App\Http\Controllers\BlogController::class, 'index2'])->name('blogs.index2');
 
-Route::get('/donasi', function () {
-    return view('donasi');
-});
+Route::get('/donasi', [\App\Http\Controllers\CampaignController::class, 'index2'])->name('index2');
+// Route::get('/donasi', [\App\Http\Controllers\CampaignController::class, 'filter2'])->name('filter2');
+
+// Route::get('/donasi', [\App\Http\Controllers\CampaignController::class, 'index2'])->name('index2');
+
+
+
+// Route::get('/donasi', function () {
+//     return view('donasi');
+// });
 
 
 
@@ -219,6 +224,7 @@ Route::get('/donasi', function () {
 // Middleware
 Route::middleware(['auth'])->group(function(){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
     Route::get('/transaksiuser', function () {
         return view('transaksiuser');

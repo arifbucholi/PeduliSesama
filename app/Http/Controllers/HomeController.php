@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
@@ -33,13 +34,15 @@ class HomeController extends Controller
         return view('index');
     }
 
+
+
     public function indexAdmin()
     {
-        // if (Auth::check() && Auth::user()->is_admin) {
-        //     return redirect()->route('dashboardadmin');
-        // } else {
-        //     return redirect()->route('index');
-        // }
+    //     if (Auth::check() && Auth::user()->is_admin) {
+    //         return redirect()->route('dashboardadmin');
+    //     } else {
+    //         return redirect()->route('index');
+    //     }
         return view('dashboardadmin');
     }
 }

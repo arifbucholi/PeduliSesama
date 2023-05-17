@@ -360,9 +360,22 @@
                   <div class="card-body">
                     <h1 class="card-title text-center">Tambah Program</h1>
                     <div>
-                        <form method="POST" action="{{ route('campaigns.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="/campaigns/store" enctype="multipart/form-data">
                             @csrf
 
+                            <div>
+                                <label class="form-label">Email</label>
+                            <input type="text" style="background-color:#2A3038" class="form-control" disabled value="{{ Auth::user()->email }}">
+                            </div>
+                            <br>
+                            <div>
+                                <label class="form-label">Nama</label>
+                            <input disabled type="text" style="background-color:#2A3038" class="form-control" value="{{ Auth::user()->name }}">
+                            {{-- @foreach ($campaigns as $campaign) --}}
+                            <input name="author_id" style="background-color:#2A3038" class="form-control" value="{{ Auth::id() }}" hidden>
+                            {{-- @endforeach --}}
+                            </div>
+                            <br>
                             <div>
                                 <label for="title">Judul berita</label>
                                 <input class="form-control" type="text" name="title" id="title" placeholder="Masukkan judul berita" style="color:#FFFFFD" required>
@@ -393,9 +406,9 @@
                             <label for="target_amount">Target Dana</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" style="padding:11px; background:white">Rp</span>
+                                    <span class="input-group-text" style="padding:11.5px; background:white">Rp</span>
                                 </div>
-                                <input class="form-control" type="number" id="target_amount" name="target_amount" placeholder="Masukkan nominal. Contoh : 10.000" style="color:#FFFFFD" required>
+                                <input class="form-control" type="number" id="angkaInput" name="target_amount" placeholder="Masukkan nominal. Contoh : 10.000" style="color:#FFFFFD" required>
                                 @if ($errors->has('target_amount'))
                                     <span class="text-danger">{{ $errors->first('target_amount') }}</span>
                                 @endif
@@ -405,11 +418,10 @@
                                 <label for="category">Kategori</label>
                                 {{-- <input class="form-control" type="text" id="category" name="category" value="{{ old('category') }}" required> --}}
                                 <select class="form-control" name="category" id="category" required style="color:#FFFFFD">
-                                    <option value="" disabled selected>Pilih Kategori</option>
-                                    <option value="tes">Sosial</option>
-                                    <option value="tes1">Hewan</option>
-                                    <option value="tes2">Tumbuhan</option>
-                                    <option value="tes3">Ternak</option>
+                                    {{-- <option value="" disabled style="color:#FFFFFD" selected>Pilih Kategori :</option> --}}
+                                    <option value="Sosial">Sosial</option>
+                                    <option value="Pendidikan">Pendidikan</option>
+                                    <option value="Kesehatan">Kesehatan</option>
                                 </select>
                                 @if ($errors->has('category'))
                                     <span class="text-danger">{{ $errors->first('category') }}</span>
@@ -501,5 +513,7 @@
           }
         });
     </script>
+
+
   </body>
 </html>

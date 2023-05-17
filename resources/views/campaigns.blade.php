@@ -377,7 +377,17 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
+                            @foreach ($campaigns as $campaign )
+                            <tr>
+                                <td>{{ $no++ }} </td>
+                                <td>{{ Auth::user()->name }}</td>
+                                <td>{{ $campaign->title }}</td>
+                                <td>{{ $campaign->start_date }}</td>
+                                <td>{{ $campaign->status }}</td>
+                                <td class="mdi mdi-table-edit text-center"></td>
+                            </tr>
+                            @endforeach
+                          {{-- <tr>
                             <td> 1 </td>
                             <td>
                               <img src="assets2/images/faces/face1.jpg" alt="image" />
@@ -389,59 +399,8 @@
                               <div class="badge badge-outline-success">Approved</div>
                             </td>
                             <td class="mdi mdi-table-edit text-center"></td>
-                          </tr>
-                          <tr>
-                            <td> 2 </td>
-                            <td>
-                              <img src="assets2/images/faces/face2.jpg" alt="image" />
-                              <span class="ps-2">Estella Bryan</span>
-                            </td>
-                            <td> Merapi Meletus </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              <div class="badge badge-outline-danger">Rejected</div>
-                            </td>
-                            <td class="mdi mdi-table-edit text-center"></td>
-                          </tr>
-                          <tr>
-                            <td> 3 </td>
-                            <td>
-                              <img src="assets2/images/faces/face5.jpg" alt="image" />
-                              <span class="ps-2">Lucy Abbott</span>
-                            </td>
-                            <td> Dadang Kena Kanker Ganas </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              <div class="badge badge-outline-danger">Rejected</div>
-                            </td>
-                            <td class="mdi mdi-table-edit text-center"></td>
-                          </tr>
-                          <tr>
-                            <td> 4 </td>
-                            <td>
-                              <img src="assets2/images/faces/face3.jpg" alt="image" />
-                              <span class="ps-2">Peter Gill</span>
-                            </td>
-                            <td> Diablo Nakal Anaknya </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              <div class="badge badge-outline-success">Approved</div>
-                            </td>
-                            <td class="mdi mdi-table-edit text-center"></td>
-                          </tr>
-                          <tr>
-                            <td> 5 </td>
-                            <td>
-                              <img src="assets2/images/faces/face4.jpg" alt="image" />
-                              <span class="ps-2">Sallie Reyes</span>
-                            </td>
-                            <td> Surabaya Butuh Makanan </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              <div class="badge badge-outline-success">Approved</div>
-                            </td>
-                            <td class="mdi mdi-table-edit text-center"></td>
-                          </tr>
+                          </tr> --}}
+
                         </tbody>
                       </table>
                     </div>

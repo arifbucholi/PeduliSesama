@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Campaign;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class CampaignController extends Controller
 {
@@ -18,9 +19,33 @@ class CampaignController extends Controller
 
         // $data = auth()->user()->is_admin ? Campaign::all() : Campaign::where('author_id', auth()->id())->get();
         // return view('programadmin', compact('data')); // TODO: need view
-        $data =Campaign::all();
-        return view('campaigns', compact('data')); // TODO: need view
+        $campaigns =Campaign::all();
+        $no=1;
+        return view('campaigns', compact('campaigns','no')); // TODO: need view
+
     }
+
+    public function index2()
+    {
+
+        $campaigns =Campaign::all();
+        return view('donasi', compact('campaigns')); // TODO: need view
+
+    }
+
+    // public function filter2(Request $request)
+    // {
+    //     $campaigns =Campaign::all();
+    //     $selectedCategory = $request->input('category');
+
+    //     $campaigns = Campaign::when($selectedCategory !== 'all', function ($query) use ($selectedCategory) {
+    //         $query->where('category', $selectedCategory);
+    //     })->paginate(10);
+
+    //     $categories = Campaign::distinct('category')->pluck('category');
+
+    //     return view('donasi', compact('campaigns', 'categories' ,'selectedCategory'));
+    // }
 
     // public function addCampaigns()
     // {
@@ -35,7 +60,8 @@ class CampaignController extends Controller
      */
     public function create()
     {
-        return view('addcampaigns'); // TODO: need view
+        $campaigns = Campaign::all();
+        return view('addcampaigns', compact('campaigns')); // TODO: need view
     }
 
     /**
@@ -48,6 +74,7 @@ class CampaignController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required',
+            'author_id' => 'required',
             'desc' => 'required',
             'dateline' => 'required|date',
             'target_amount' => 'required|integer',
@@ -60,31 +87,30 @@ class CampaignController extends Controller
         $image = $request->file('img_url');
         $imageName = time().'.'.$image->getClientOriginalExtension();
         $image->move(public_path('uploadCampaign/'), $imageName);
+        // dd($request);
+        $campaigns = new Campaign();
+        $campaigns->title = $request->input('title');
+        $campaigns->desc = $request->input('desc');
+        $campaigns->author_id = $request->author_id;
+        $campaigns->start_date = $request->input('start_date');
+        $campaigns->dateline = $request->input('dateline');
+        $campaigns->target_amount = $request->input('target_amount');
+        $campaigns->img_url = '/uploadCampaign/' . $imageName;
+        $campaigns->status = 0;
 
-        $newCampaign = new Campaign();
-        $newCampaign->title = $request->input('title');
-        $newCampaign->desc = $request->input('desc');
-        $newCampaign->author_id = 1;
-        $newCampaign->start_date = $request->input('start_date');
-        $newCampaign->dateline = $request->input('dateline');
-        $newCampaign->target_amount = $request->input('target_amount');
-        $newCampaign->img_url = '/uploadCampaign/' . $imageName;
 
-        // $is_admin = auth()->user()->is_admin;
-        if (Auth::user()->is_admin==1) {
-            $newCampaign->status = 1; // status "diterima"
-        } else {
-            $newCampaign->status = 0; // status "menunggu konfirmasi"
-        }
-        // $newCampaign->status =
+
+        // $campaigns->status =
         //     'Menunggu Konfirmasi';
 //            auth()->user()->is_admin ? 'Diterima' : 'Menunggu Konfirmasi';
-        $newCampaign->category = $request->input('category');
-        dd($newCampaign);
+        $campaigns->category = $request->input('category');
+        // dd($campaigns);
 
-        $newCampaign->save();
-
-        return redirect()->route('campaigns.index')->with('success', 'Some success message'); // TODO: need route
+        $campaigns->save();
+        // return view('addcampaigns', [
+        //     'campaigns' => $campaigns
+        // ]);
+        return redirect('/campaigns')->with('success', 'Some success message'); // TODO: need route
     }
 
     /**
@@ -95,10 +121,15 @@ class CampaignController extends Controller
      */
     public function show($id)
     {
-//        $campaigns = Campaign::where('author_id', Auth::id())->orderBy('created_at', 'desc')->get();
-        $campaigns = Campaign::where('author_id', 1)->orderBy('created_at', 'desc')->get();
+        $campaigns = Campaign::find($id);
         return view('campaigns.show', compact('campaigns')); // TODO: need view
     }
+
+    // public function showDonasi($id)
+    // {
+    //     $campaign = Campaign::find($id);
+    //     return view('donasi.show', compact('campaign')); // TODO: need view
+    // }
 
     /**
      * Show the form for editing the specified resource.

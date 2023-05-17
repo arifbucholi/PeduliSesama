@@ -29,6 +29,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <link rel="stylesheet" href="assets/css/readmore.css">
+
     <style>
     /* Style the input field */
     #myInput {
@@ -60,13 +62,24 @@
             <li class="nav-item"><a href="/programuser" class="nav-link">Program</a></li>
             <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
             <li class="nav-item dropdown">
+
                 <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
                     <div class="navbar-profile">
                         <i class="fa fa-bars"></i>
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
-                    <div class="dropdown-divider"></div>
+                    {{-- <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item preview-item">
+                        <div class="preview-thumbnail">
+                            <div class="preview-icon">
+                                <i class="mdi mdi-settings text-success"></i>
+                            </div>
+                        </div>
+                        <div class="preview-item-content">
+                            <p class="preview-subject mb-1">{{ Auth::user()->name }}</p>
+                        </div>
+                    </a> --}}
                     <a href="#" class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
                             <div class="preview-icon">
@@ -120,6 +133,16 @@
         <div class="container">
             <div class="row ">
                 <div class="col">
+                    // filter
+                    <div class="filter-section">
+                        <label for="category-filter">Filter Kategori:</label>
+                        <select id="category-filter" name="category" onchange="filterCampaigns()">
+                            <option value="all" {{ $selectedCategory === 'all' ? 'selected' : '' }}>Semua Kategori</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category }}" {{ $selectedCategory == $category ? 'selected' : '' }}>{{ $category }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="border-radius:25px">Filter
                         <span class="caret"></span></button>
@@ -138,21 +161,34 @@
     <section class="ftco-section" style="padding:10px; padding-bottom:50px">
       <div class="container">
       	<div class="row">
+            @foreach ($campaigns as $campaign)
       		<div class="col-md-4 ftco-animate">
-      			<div class="cause-entry">
-    					<a href="#" class="img" style="background-image: url(assets/images/cause-1.jpg);"></a>
-    					<div class="text p-3 p-md-4">
-    						<h3 style="margin:-2px"><a href="#">Judul Program disini</a></h3>
-                            <p>- Nama Pemilik Program</p>
-    						<p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
-		    				<span class="donation-time mb-3 d-block">Sisa hari disini</span>
-                <div class="progress custom-progress-success">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 98.5%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="cause-entry">
+                    <a href="#" class="img" style="background-image: url('{{ $campaign->img_url }}'); z-index: -1;"></a>
+
+                    {{-- <a href="#" class="img" ></a> --}}
+                    <div class="text p-3 p-md-4">
+                        <h3 style="margin-bottom:4px"><a href="#">{{ $campaign->title }}</a></h3>
+                        <p style="margin-bottom:-5px">Pembuat Program:</p>
+                        <p>{{ $campaign->user->name }}</p>
+                        {{-- <p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p> --}}
+
+                        <p style="margin-bottom:0px">{{ Str::limit($campaign->desc, 115, '...') }}</p>
+                        <a href="">Baca Selengkapnya</a>
+
+                        @php
+                            $endDate = \Carbon\Carbon::parse($campaign->dateline);
+                            $remainingDays = $endDate->diffInDays(\Carbon\Carbon::now());
+                        @endphp
+                        <span class="donation-time mb-3 d-block">Sisa : {{ $remainingDays }} hari</span>
+                        <div class="progress custom-progress-success">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 98.5%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <span class="fund-raised d-block">Rp28,000 Terkumpul dari Rp100,000</span>
+                    </div>
                 </div>
-                <span class="fund-raised d-block">Rp28,000 Terkumpul dari Rp100,000</span>
-    					</div>
-    				</div>
-      		</div>
+            </div>
+            @endforeach
       		<div class="col-md-4 ftco-animate">
       			<div class="cause-entry">
     					<a href="#" class="img" style="background-image: url(assets/images/cause-2.jpg);"></a>
@@ -401,6 +437,37 @@
       alert(inputValue);
     });
   </script>
+
+
+  // Readmore
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elements = document.getElementsByClassName('text-limit');
+        Array.from(elements).forEach(function(element) {
+            var text = element.innerHTML;
+            var words = text.split(' ');
+            var maxWords = 20; // Jumlah kata yang ingin ditampilkan
+            if (words.length > maxWords) {
+            var limitedText = words.slice(0, maxWords).join(' ');
+            element.innerHTML = limitedText + '... <a href="#" class="read-more">Read More</a>';
+            var readMoreLink = element.querySelector('.read-more');
+            readMoreLink.addEventListener('click', function(event) {
+                event.preventDefault();
+                // Ganti dengan URL halaman detail yang sesuai
+                window.location.href = 'detail-page-url';
+            });
+            }
+        });
+    });
+  </script>
+
+  // js filter
+    <script>
+        function filterCampaigns() {
+            var selectedCategory = document.getElementById('category-filter').value;
+            window.location.href = '/campaigns?category=' + selectedCategory;
+        }
+    </script>
 
   </body>
 </html>

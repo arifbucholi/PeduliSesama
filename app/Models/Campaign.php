@@ -21,4 +21,19 @@ class Campaign extends Model
         'category',
         'no_rekening'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'author_id');
+    }
+
+    // public function author_id()
+    // {
+    //     return $this->belongsTo()
+    // }
+
+    public static function findById($id)
+    {
+        return static::find($id);
+    }
 }

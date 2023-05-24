@@ -44,9 +44,14 @@
             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
             <li class="nav-item active"><a href="/berita" class="nav-link">Berita</a></li>
             <li class="nav-item"><a href="/donasi" class="nav-link">Donasi</a></li>
+            @if (Auth::check())
             <li class="nav-item"><a href="/transaksiuser" class="nav-link">Transaksi</a></li>
             <li class="nav-item"><a href="/programiuser" class="nav-link">Program</a></li>
+            @endif
+            @if (!Auth::check())
             <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+            @endif
+            @if (Auth::check())
             <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
                     <div class="navbar-profile">
@@ -91,6 +96,7 @@
                     {{-- <p class="p-3 mb-0 text-center">Advanced settings</p> --}}
                 </div>
             </li>
+            @endif
         </ul>
       </div>
     </div>
@@ -106,25 +112,18 @@
     </div> --}}
     <br>
     <!-- BANNER -->
+    @foreach ($blogs as $blog)
     <div class="container">
         <div class="col-md-12 heading-section ftco-animate text-center">
-            <h1>Judul Berita</h1>
-          <img class="d-block w-100" style="background-image: url('assets/images/pict1.jpg'); height:450px;">
+            <h1>{{ $blog->title }}</h1>
+        <img src="{{ asset($blog->img_url) }}" alt="{{ $blog->img_url }}" class="text-center" style="height:500px; width:840px">
         </div>
+        <p style="padding:60px ; padding-top:25px">{{ $blog->desc }}</p>
         <br>
-
-        <div class="col-md-12 heading-section ftco-animate text-center">
-            <h1>Judul Berita</h1>
-            <img class="d-block w-100" style="background-image: url('assets/images/pict2.jpg'); height:450px;">
-        </div>
         <br>
-
-        <div class="col-md-12 heading-section ftco-animate text-center">
-            <h1>Judul Berita</h1>
-            <img class="d-block w-100" style="background-image: url('assets/images/pict3.jpg'); height:450px;">
-        </div>
         <br>
     </div>
+    @endforeach
     <br>
 
     <section class="ftco-section" style="padding:50px">

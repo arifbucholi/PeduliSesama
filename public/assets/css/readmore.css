@@ -1,0 +1,6 @@
+.text-limit {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Jumlah kata yang ingin ditampilkan */
+    -webkit-box-orient: vertical;
+  }

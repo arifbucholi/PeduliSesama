@@ -45,12 +45,28 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
-          <li class="nav-item menu-items active">
-            <a class="nav-link" href="/program">
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/campaigns">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
               <span class="menu-title">Program</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items active">
+            <a class="nav-link" href="/beritaadmin">
+              <span class="menu-icon">
+                <i class="mdi mdi-speedometer"></i>
+              </span>
+              <span class="menu-title">Berita</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/transaksiadmin">
+              <span class="menu-icon">
+                <i class="mdi mdi-chart-bar"></i>
+              </span>
+              <span class="menu-title">Transaksi</span>
             </a>
           </li>
           <li class="nav-item menu-items">
@@ -286,7 +302,7 @@
                 <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
                   <div class="navbar-profile">
                     <img class="img-xs rounded-circle" src="assets2/images/faces/face15.jpg" alt="">
-                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Henry Klein</p>
+                    <p class="mb-0 d-none d-sm-block navbar-profile-name">{{ Auth::user()->name }}</p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
                 </a>
@@ -343,81 +359,39 @@
               <div class="col-12 grid-margin">
                 <div class="card" style="border-radius: 10px">
                   <div class="card-body">
-                    <h3 class="card-title">Permintaan Program</h3>
+                    <div class="text-center">
+                        <h1 class="card-title text-center">Berita</h1>
+                        <a class="btn btn-success create-new-button text-center" href="/tambahberita">Tambah Berita</a>
+                    </div>
+
+                    <br>
+                    <br>
                     <div class="table-responsive">
-                      <table class="table">
-                        <thead>
-                          <tr>
-                            <th> No </th>
-                            <th> Nama yang Mengajukan </th>
-                            <th> Nama Program </th>
-                            <th> Tanggal Pengajuan </th>
-                            <th> Status Pengajuan </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td> 1 </td>
-                            <td>
-                              <img src="assets2/images/faces/face1.jpg" alt="image" />
-                              <span class="ps-2">Henry Klein</span>
-                            </td>
-                            <td> Bantuan Semeru </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              <div class="badge badge-outline-success">Approved</div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td> 2 </td>
-                            <td>
-                              <img src="assets2/images/faces/face2.jpg" alt="image" />
-                              <span class="ps-2">Estella Bryan</span>
-                            </td>
-                            <td> Merapi Meletus </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              <div class="badge badge-outline-danger">Rejected</div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td> 3 </td>
-                            <td>
-                              <img src="assets2/images/faces/face5.jpg" alt="image" />
-                              <span class="ps-2">Lucy Abbott</span>
-                            </td>
-                            <td> Dadang Kena Kanker Ganas </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              <div class="badge badge-outline-danger">Rejected</div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td> 4 </td>
-                            <td>
-                              <img src="assets2/images/faces/face3.jpg" alt="image" />
-                              <span class="ps-2">Peter Gill</span>
-                            </td>
-                            <td> Diablo Nakal Anaknya </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              <div class="badge badge-outline-success">Approved</div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td> 5 </td>
-                            <td>
-                              <img src="assets2/images/faces/face4.jpg" alt="image" />
-                              <span class="ps-2">Sallie Reyes</span>
-                            </td>
-                            <td> Surabaya Butuh Makanan </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              <div class="badge badge-outline-success">Approved</div>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
+                        @foreach ($blogs as $blog)
+                        <div class="container">
+                            <div class="col-md-12 heading-section ftco-animate text-center">
+                                <h1>{{ $blog->title }}</h1>
+                            <img src="{{ asset($blog->img_url) }}" alt="{{ $blog->img_url }}" class="col-4 img-fluid" style="height:auto; width:700px;">
+                            </div>
+                            <br>
+                            <p>{{ $blog->desc }}</p>
+                            <br>
+                            <div class="">
+                                <a href="{{ route('blogs.edit', $blog->id) }}" class="btn btn-secondary">Edit</a>
+                                <a>
+                                <form action="{{ route('blogs.destroy', $blog->id) }}" method="POST"  class="btn" >
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                                </a>
+                            </div>
+                            <br>
+                            <br>
+                            <br>
+                        </div>
+                        @endforeach
+
                     </div>
                   </div>
                 </div>

@@ -61,54 +61,64 @@
             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
             <li class="nav-item"><a href="/berita" class="nav-link">Berita</a></li>
             <li class="nav-item"><a href="/donasi" class="nav-link">Donasi</a></li>
+            @if (Auth::check())
             <li class="nav-item"><a href="/transaksiuser" class="nav-link">Transaksi</a></li>
-            <li class="nav-item active"><a href="/programiuser" class="nav-link">Program</a></li>
-            <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+            <li class="nav-item active"><a href="/programuser" class="nav-link">Program</a></li>
+            @endif
+            @if (!Auth::check())
+              <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+            @endif
+            {{-- <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-bars"></i></a></li> --}}
+            @if (Auth::check())
             <li class="nav-item dropdown">
-                <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
-                    <div class="navbar-profile">
-                        <i class="fa fa-bars"></i>
-                    </div>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item preview-item">
-                        <div class="preview-thumbnail">
-                            <div class="preview-icon">
-                                <i class="mdi mdi-settings text-success"></i>
-                            </div>
-                        </div>
-                        <div class="preview-item-content">
-                            <p class="preview-subject mb-1">Profile</p>
-                        </div>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item preview-item">
-                        <div class="preview-thumbnail">
-                            <div class="preview-icon">
-                            <i class="mdi mdi-onepassword text-info"></i>
-                            </div>
-                        </div>
-                        <div class="preview-item-content">
-                            <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
-                        </div>
-                        </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item preview-item">
-                        <div class="preview-thumbnail">
-                            <div class="preview-icon">
-                              <i class="mdi mdi-logout text-danger"></i>
-                            </div>
-                        </div>
-                        <div class="preview-item-content">
-                            <p class="preview-subject mb-1">Log out</p>
-                        </div>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    {{-- <p class="p-3 mb-0 text-center">Advanced settings</p> --}}
+            <a href="">{{ Auth::user()->name }}</a>
+              <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
+                <div class="navbar-profile">
+                  <i class="fa fa-bars"></i>
                 </div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
+                  <div class="dropdown-divider"></div>
+                  <a href="#" class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon">
+                        <i class="mdi mdi-settings text-success" style="padding: 5px"></i>
+                        <i>Profil</i>
+                      </div>
+                    </div>
+                    {{-- <div class="preview-item-content">
+                      <p class="preview-subject mb-1">Profile</p>
+                    </div> --}}
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a href="#" class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                        <div class="preview-icon">
+                        <i class="mdi mdi-onepassword text-info" style="padding: 5px"></i>
+                        <i>Ubah Password</i>
+                        </div>
+                    </div>
+                    {{-- <div class="preview-item-content">
+                        <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
+                    </div> --}}
+                    </a>
+                  <div class="dropdown-divider"></div>
+                  {{-- <a href="#" class="dropdown-item preview-item"> --}}
+                      <div class="preview-thumbnail">
+                          <div class="preview-icon">
+                              <a href="/logout" style="padding-left: 30px">
+                                  <i class="mdi mdi-logout text-danger"> Logout</i>
+                                  {{-- <i>Log out</i> --}}
+                              </a>
+                          </div>
+                      </div>
+                  {{-- </a> --}}
+                  <div class="dropdown-divider"></div>
+                  {{-- <p class="p-3 mb-0 text-center">Advanced settings</p> --}}
+              </div>
             </li>
-        </ul>
+            @endif
+          </ul>
       </div>
     </div>
   </nav>
@@ -121,100 +131,99 @@
     <div class="container">
         <br>
         <h1 class="row justify-content-center">Program Anda</h1>
+
         <div class="container">
-            <div class="row ">
-                <div class="col">
-                    <div class="dropdown">
-                        <button class="btn btn-primary" type="button" data-toggle="dropdown" style="border-radius:25px">Buat Program
-                        <span class="caret"></span></button>
-                        {{-- <ul class="dropdown-menu">
-                        <input class="form-control" id="myInput" type="text" placeholder="Cari..">
-                        <li><a href="#" style="padding-left:12px;"> 1</a></li>
-                        <li><a href="#" style="padding-left:12px;"> 2</a></li>
-                        <li><a href="#" style="padding-left:12px;"> 3</a></li>
-                        <li><a href="#" style="padding-left:12px;"> 4</a></li>
-                        <li><a href="#" style="padding-left:12px;"> 5</a></li>
-                        <li><a href="#" style="padding-left:12px;"> 6</a></li>
-                        </ul> --}}
-                    </div>
+            @if(count($campaigns->where('author_id', Auth::user()->id)) > 0)
+                <section class="ftco-section" style="padding:30px; padding-bottom:10px">
+                    {{-- <div class="containerr" style="display: flex; justify-content: center; align-items: center;"> --}}
+                        {{-- <div class="media block-6 d-flex services p-3 py-4 d-block"> --}}
+                            <div class="media-body text-center">
+                                <a href="/addprogramuser">
+                                    <button class="btn btn-primary" style="border-radius: 20px;">Buat Penggalangan Dana</button>
+                                </a>
+                            </div>
+                        {{-- </div> --}}
+                    {{-- </div> --}}
+                </section>
+                <section class="ftco-section" style="padding:30px;">
+                    @if(count($campaigns->where('author_id', Auth::user()->id)) > 0)
+                <div class="container" style=" background:#252525; border-radius:7px; padding-top:10px">
+                    <table class="table table-hover table-dark" style="background:#252525">
+                    {{-- <table class="table table-dark" style="background:#252525"> --}}
+                        <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Nama Program</th>
+                            <th scope="col" class="text-center">Tanggal-Program</th>
+                            <th scope="col" class="text-center">Status Program</th>
+                            <th scope="col" class="text-center">Detail</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                            @php
+                                $no = 1;
+                            @endphp
+
+                            @foreach ($campaigns->where('author_id', Auth::user()->id) as $campaign)
+                            <tr>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $campaign->title }}</td>
+                                <td class="text-center">2 Maret - 2 Mei</td>
+                                <?php if($campaign->status == '0') : ?>
+                                <td class="text-center">
+                                  <span class="btn btn-success" >Diterima</span>
+                                </td>
+
+                                <?php elseif($campaign->status == '1') : ?>
+                                <td class="text-center">
+                                  <span class="btn btn-danger" >Ditolak</span>
+                                </td>
+
+                                <?php elseif($campaign->status == '2') : ?>
+                                <td class="text-center">
+                                  <span class="btn btn-warning" >Proses</span>
+                                </td>
+                                <?php endif; ?>
+                                <td class="text-center">
+                                    <a class="hover-effect" href="javascript:void(0)" id="show-user" data-url="{{ route('showprogramuser', $campaign->id) }}">
+                                        <img style="width: 22px; height: 22px; filter: invert(93%) sepia(0%) saturate(7491%) hue-rotate(120deg) brightness(108%) contrast(99%);" srcset="https://img.icons8.com/?size=512&id=30M9wv1iFkcH&format=png 2x, https://img.icons8.com/?size=512&id=30M9wv1iFkcH&format=png 1x"
+                                        src="https://img.icons8.com/?size=512&id=986&format=png 2x" width="26" alt="" >
+                                    </a>
+                                </td>
+                            </tr>
+
+                            @endforeach
+
+                            {{-- <svg  style="padding-top:8px" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                            </svg> --}}
+
+                        </tbody>
+                    </table>
                 </div>
-            </div>
+                {{-- @else
+                    <p class="text-center">Anda belum membuat program.</p> --}}
+                @endif
+                </section>
+            @else
+                <!-- Kode jika belum membuat program -->
+                <section class="ftco-section" style="padding:50px">
+                    <div class="containerr" style="display: flex; justify-content: center; align-items: center;">
+                        <div class="media block-6 d-flex services p-3 py-4 d-block">
+                            <div class="media-body text-center">
+                                <p>Anda belum membuat penggalangan dana.</p>
+                                <a href="/addprogramuser " class="btn btn-primary" style="border-radius: 20px">Buat Sekarang</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            @endif
         </div>
         <br>
-        <div class="container" style=" background:#252525; border-radius:7px; padding-top:10px">
-            <table class="table table-hover table-dark" style="background:#252525">
-            {{-- <table class="table table-dark" style="background:#252525"> --}}
-                <thead>
-                  <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Nama Program</th>
-                    <th scope="col">Tanggal-Program</th>
-                    <th scope="col" class="text-center">Keterangan</th>
-                    <th scope="col" class="text-center">Edit</th>
-                    <th scope="col" class="text-center">Status Program</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Program Arif</td>
-                    <td>2 Maret - 2 Mei</td>
-                    <td class="text-center">
-                        <a href="#">Lihat</a>
-                    </td>
-                    <td class="text-center">
-                        <a href="#">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                            </svg>
-                        </a>
-                    </td>
-                    <td class="text-center">
-                        <span class="btn btn-success" style="border-radius: 10px">Diterima</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Program Rifqi</td>
-                    <td>2 Maret - 2 Mei</td>
-                    <td class="text-center">
-                        <a href="#">Lihat</a>
-                    </td>
-                    <td class="text-center">
-                        <a href="#">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                            </svg>
-                        </a>
-                    </td>
-                    <td class="text-center">
-                        <span class="btn btn-danger" style="border-radius: 10px">Ditolak</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Program Carissa</td>
-                    <td>2 Maret - 2 Mei</td>
-                    <td class="text-center">
-                        <a href="#">Lihat</a>
-                    </td>
-                    <td class="text-center">
-                        <a href="#">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                            </svg>
-                        </a>
-                    </td>
-                    <td class="text-center">
-                        <span class="btn btn-success" style="border-radius: 10px">Diterima</span>
-                    </td>
-                  </tr>
-                </tbody>
-            </table>
-        </div>
+
+
     </div>
 
 
@@ -326,6 +335,34 @@
       </div>
     </footer>
 
+    // Modal
+    <div class="modal fade" id="userShowModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <b>
+                  <h3 class="modal-title" id="exampleModalLabel">Detail Program</h3>
+              </b>
+              {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                <img srcset="https://img.icons8.com/?size=512&id=111057&format=png 2x, https://img.icons8.com/?size=512&id=111057&format=png 1x"
+                src="https://img.icons8.com/?size=512&id=111057&format=png 2x" width="26" alt="">
+              </button> --}}
+            </div>
+            <div class="modal-body">
+              <p><strong>Judul :</strong> <span id="user-title"></span>{{ $campaign->title }}</p>
+              <img class="img-fluid" src="{{ $campaign->img_url }}" alt="" style="padding-bottom:20px">
+              <p><strong>Deskripsi :</strong> <span id="user-desc"></span>{{ $campaign->desc }}</p>
+              <p><strong>Target dana :</strong> <span id="user-target_amount"></span>{{ $campaign->target_amount }}</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+
 
 
   <!-- loader -->
@@ -371,6 +408,28 @@
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+  @section('script')
+  <script type="text/javascript">
+
+      $(document).ready(function () {
+
+          $('body').on('click', '#show-user', function () {
+          var userURL = $(this).data('url');
+          $.get(userURL, function (data) {
+              $('#userShowModal').modal('show');
+              $('#user-title').text(data.title);
+              $('#user-desc').text(data.desc);
+              $('#user-target_amount').text(data.target_amount);
+          })
+      });
+
+      });
+
+  </script>
+  @endsection
+
+  @yield('script')
 
 
 

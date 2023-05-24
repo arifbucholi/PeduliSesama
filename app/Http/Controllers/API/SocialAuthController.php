@@ -19,7 +19,7 @@ class SocialAuthController extends Controller
     {
         $user = Socialite::driver('google')->user();
         $this->googleAuth($user);
-        return redirect()->route('hal.utama');
+        return redirect()->route('index');
     }
 
     public function googleAuth($incomingUser)

@@ -46,11 +46,27 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="/programadmin">
+            <a class="nav-link" href="/campaigns">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
               <span class="menu-title">Program</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/beritaadmin">
+              <span class="menu-icon">
+                <i class="mdi mdi-speedometer"></i>
+              </span>
+              <span class="menu-title">Berita</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/transaksiadmin">
+              <span class="menu-icon">
+                <i class="mdi mdi-chart-bar"></i>
+              </span>
+              <span class="menu-title">Transaksi</span>
             </a>
           </li>
           <li class="nav-item menu-items">
@@ -286,7 +302,7 @@
                 <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
                   <div class="navbar-profile">
                     <img class="img-xs rounded-circle" src="assets2/images/faces/face15.jpg" alt="">
-                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Henry Klein</p>
+                    <p class="mb-0 d-none d-sm-block navbar-profile-name">{{ Auth::user()->name }}</p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
                 </a>
@@ -343,7 +359,7 @@
                 <div class="col-sm-12 grid-margin">
                   <div class="card">
                     <div class="card-body text-center">
-                      <h3>Total Donasi Saat Ini</h3>
+                      <h1>Total Donasi Saat Ini</h1>
                       <br>
                       <div class="row">
                         {{-- <div class="col-8 col-sm-12 col-xl-8 my-auto"> --}}
@@ -368,11 +384,11 @@
                 <div class="col-sm-6 grid-margin">
                   <div class="card">
                     <div class="card-body">
-                      <h4>Jumlah User</h4>
+                      <h2>Jumlah User</h2>
                       <div class="row">
                         <div class="col-8 col-sm-12 col-xl-8 my-auto">
                           <div class="d-flex d-sm-block d-md-flex align-items-center">
-                            <h2 class="mb-0">23</h2>
+                            <h2 class="mb-0">{{ $userCount }}</h2>
                             {{-- <p class="text-success ms-2 mb-0 font-weight-medium">+3.5%</p> --}}
                           </div>
                           {{-- <h6 class="text-muted font-weight-normal">11.38% Since last month</h6> --}}
@@ -387,11 +403,11 @@
                 <div class="col-sm-6 grid-margin">
                   <div class="card">
                     <div class="card-body">
-                      <h4>Jumlah Program</h4>
+                      <h2>Jumlah Program</h2>
                       <div class="row">
                         <div class="col-8 col-sm-12 col-xl-8 my-auto">
                           <div class="d-flex d-sm-block d-md-flex align-items-center">
-                            <h2 class="mb-0">34</h2>
+                            <h2 class="mb-0">{{ $campaignCount }}</h2>
                             {{-- <p class="text-success ms-2 mb-0 font-weight-medium">+8.3%</p> --}}
                           </div>
                           {{-- <h6 class="text-muted font-weight-normal"> 9.61% Since last month</h6> --}}
@@ -560,5 +576,16 @@
     <!-- Custom js for this page -->
     <script src="assets2/js/dashboard.js"></script>
     <!-- End custom js for this page -->
+
+    {{-- <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            fetch('{{ route("dashboardadmin.count") }}')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('userCount').innerText = data.count;
+                });
+        });
+    </script> --}}
+
   </body>
 </html>

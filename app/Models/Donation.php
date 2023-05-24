@@ -9,4 +9,12 @@ class Donation extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function campaigns()
+    {
+        return $this->belongsTo(Campaign::class);
+    }
 }
+
+
+

@@ -20,13 +20,13 @@ class CampaignController extends Controller
 
         // $data = auth()->user()->is_admin ? Campaign::all() : Campaign::where('author_id', auth()->id())->get();
         // return view('programadmin', compact('data')); // TODO: need view
-        $campaigns =Campaign::all();
+        $campaigns =Campaign::orderByDesc('created_at')->get();
         $no=1;
         return view('campaigns', compact('campaigns','no')); // TODO: need view
 
     }
 
-    // view campaign
+    // view user
     public function index2()
     {
 
@@ -137,6 +137,12 @@ class CampaignController extends Controller
         return view('campaigns.show', compact('campaigns')); // TODO: need view
     }
 
+    public function shows($id)
+    {
+        $campaigns = Campaign::find($id);
+        return response()->json($campaigns);
+    }
+
     // public function showDonasi($id)
     // {
     //     $campaign = Campaign::find($id);
@@ -182,4 +188,9 @@ class CampaignController extends Controller
         $data->save();
         return redirect()->route('')->with('success', 'Some success message'); // TODO: need route
     }
+
+
+
+
+
 }

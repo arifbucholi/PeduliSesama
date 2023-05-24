@@ -377,8 +377,8 @@
                             </div>
                             <br>
                             <div>
-                                <label for="title">Judul berita</label>
-                                <input class="form-control" type="text" name="title" id="title" placeholder="Masukkan judul berita" style="color:#FFFFFD" required>
+                                <label for="title">Judul program</label>
+                                <input class="form-control" type="text" name="title" id="title" placeholder="Masukkan judul program" style="color:#FFFFFD" required>
                                 </div>
                                 @if ($errors->has('title'))
                                     <span class="text-danger">{{ $errors->first('title') }}</span>
@@ -422,6 +422,8 @@
                                     <option value="Sosial">Sosial</option>
                                     <option value="Pendidikan">Pendidikan</option>
                                     <option value="Kesehatan">Kesehatan</option>
+                                    <option value="Bencana Alam">Bencana Alam</option>
+
                                 </select>
                                 @if ($errors->has('category'))
                                     <span class="text-danger">{{ $errors->first('category') }}</span>
@@ -435,9 +437,9 @@
                             <br>
                             <div>
                                 <label for="img_url">Foto/gambar</label>
-                                <input class="form-control file-upload-info" type="file" name="img_url" id="img_url" oninvalid="this.setCustomValidity('Pilih gambar/foto')" data-error="Gambar/foto tidak boleh kosong" required>
+                                <input style="padding:11.5px;" class="form-control file-upload-info" type="file" name="img_url" id="img_url" oninvalid="this.setCustomValidity('Pilih gambar/foto')" data-error="Gambar/foto tidak boleh kosong" required>
                                 <p style="padding-top: 8px; margin-bottom:0px">Preview :</p>
-                                <img id="imgPreview" class="d-block" style="height:225px;width:420px">
+                                <img id="imgPreview" class="d-block" style="height:225px;width:390px">
 
                             </div>
                             <br>

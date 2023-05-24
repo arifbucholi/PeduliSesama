@@ -1,10 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="assets/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+
+
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
+        <div class="col-md-7">
+            <div class="card" style="background: rgb(235 235 235 / 59%);">
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
@@ -64,6 +70,19 @@
                                 @endif
                             </div>
                         </div>
+
+                        <div class="row mb-3 text-center">
+                            <div class="col-md-6 offset-md-3" style="padding-top:10px">
+                                <br>
+                                <a style="color:rgb(65, 65, 65)">OR</a><br>
+                                <a style="color:rgb(65, 65, 65)">Login with :</a>
+                                <br>
+                                <ul class="social-network social-circle">
+                                    <li><a href="{{ route('google.redirect') }}" class="icoGoogle" title="Google +"><i class="fab fa-google-plus" style="color:rgb(255, 255, 255)"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
                     </form>
                 </div>
             </div>

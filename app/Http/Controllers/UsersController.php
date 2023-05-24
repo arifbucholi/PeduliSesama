@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Actions\Fortify\UpdateUserPassword;
 use App\Models\User;
 use App\Models\Users;
+use App\Models\Campaign;
 use App\Http\Requests\StoreUsersRequest;
 use App\Http\Requests\UpdateUsersRequest;
 use Illuminate\Http\Request;
@@ -130,5 +131,15 @@ class UsersController extends Controller
          */
         $update->update($user, $req->all());
         return view('', ['message' => 'Success']);
+    }
+
+    public function count()
+    {
+        $campaignCount = Campaign::count();
+        $userCount = User::count();
+        return view('dashboardadmin', [
+            'userCount' => $userCount,
+            'campaignCount' => $campaignCount
+        ]);
     }
 }

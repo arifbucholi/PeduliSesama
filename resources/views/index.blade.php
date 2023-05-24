@@ -51,10 +51,15 @@
           <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
           <li class="nav-item"><a href="/berita" class="nav-link">Berita</a></li>
           <li class="nav-item"><a href="/donasi" class="nav-link">Donasi</a></li>
+          @if (Auth::check())
           <li class="nav-item"><a href="/transaksiuser" class="nav-link">Transaksi</a></li>
           <li class="nav-item"><a href="/programuser" class="nav-link">Program</a></li>
-          <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+          @endif
+          @if (!Auth::check())
+            <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+          @endif
           {{-- <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-bars"></i></a></li> --}}
+          @if (Auth::check())
           <li class="nav-item dropdown">
             <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
               <div class="navbar-profile">
@@ -101,6 +106,7 @@
                 {{-- <p class="p-3 mb-0 text-center">Advanced settings</p> --}}
             </div>
           </li>
+          @endif
         </ul>
       </div>
     </div>
@@ -169,8 +175,12 @@
     		<div class="row">
                 <div class="col-md-12 ftco-animate" style="padding:20px">
     				<div class="carousel-cause owl-carousel">
+                        @php
+                        $urgentCampaigns = \App\Models\Campaign::orderBy('dateline', 'asc')->limit(10)->get();
+                        @endphp
+
+                        @foreach ($urgentCampaigns as $campaign )
                         <div class="item">
-                            @foreach ($campaigns as $campaign )
                             <div class="cause-entry">
                                 <a href="#" class="img" style="background-image: url('{{ $campaign->img_url }}'); z-index: -1;"></a>
 		    					<div class="text p-3 p-md-4">
@@ -179,7 +189,7 @@
                                             <p style="margin-bottom:-5px">Pembuat Program:</p>
                                             <p>{{ $campaign->user->name }}</p>
                                         </div>
-                                        <p style="margin-bottom:0px">{{ Str::limit($campaign->desc, 90, '...') }}</p>
+                                        <p style="margin-bottom:0px; word-wrap:break-word">{{ Str::limit($campaign->desc, 90, '...') }}</p>
                                         <a href="">Baca Selengkapnya</a>
 
                                         @php
@@ -190,103 +200,104 @@
                                         <div class="progress custom-progress-success">
                                             <div class="progress-bar bg-primary" role="progressbar" style="width: 100%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
-		                            <span class="fund-raised d-block">Rp75,000 Terkumpul dari Rp100,000</span>
+		                            <span class="fund-raised d-block">Rp75,000 Terkumpul dari Rp{{ $campaign->target_amount }}</span>
 		    					</div>
 		    				</div>
 
-                            @endforeach
                         </div>
-	    				{{-- <div class="item">
-	    					<div class="cause-entry">
-		    					<a href="#" class="img" style="background-image: url(assets/images/cause-2.jpg);"></a>
-		    					<div class="text p-3 p-md-4">
-		    						<h3 style="margin-bottom:-1px"><a href="#">Judul Program</a></h3>
-                                        <div style="color:grey; padding-bottom:10px">
-                                        <a>- Nama Pemilik Program</a>
-                                        </div>
-		    						<p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
-		    						<span class="donation-time mb-3 d-block">Sisa hari disini</span>
-		                <div class="progress custom-progress-success">
-		                  <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-		                </div>
-		                <span class="fund-raised d-block">Rp75,000 Terkumpul dari Rp100,000</span>
-		    					</div>
-		    				</div>
-	    				</div>
-	    				<div class="item">
-	    					<div class="cause-entry">
-		    					<a href="#" class="img" style="background-image: url(assets/images/cause-3.jpg);"></a>
-		    					<div class="text p-3 p-md-4">
-		    						<h3 style="margin-bottom:-1px"><a href="#">Judul Program</a></h3>
-                                        <div style="color:grey; padding-bottom:10px">
-                                        <a>- Nama Pemilik Program</a>
-                                        </div>
-		    						<p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
-		    						<span class="donation-time mb-3 d-block">Sisa hari disini</span>
-		                <div class="progress custom-progress-success">
-		                  <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-		                </div>
-		                <span class="fund-raised d-block">Rp75,000 Terkumpul dari Rp100,000</span>
-		    					</div>
-		    				</div>
-	    				</div>
-	    				<div class="item">
-	    					<div class="cause-entry">
-		    					<a href="#" class="img" style="background-image: url(assets/images/cause-4.jpg);"></a>
-		    					<div class="text p-3 p-md-4">
-		    						<h3 style="margin-bottom:-1px"><a href="#">Judul Program</a></h3>
-                                        <div style="color:grey; padding-bottom:10px">
-                                        <a>- Nama Pemilik Program</a>
-                                        </div>
-		    						<p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
-		    						<span class="donation-time mb-3 d-block">Sisa hari disini</span>
-		                <div class="progress custom-progress-success">
-		                  <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-		                </div>
-		                <span class="fund-raised d-block">Rp75,000 Terkumpul dari Rp100,000</span>
-		    					</div>
-		    				</div>
-	    				</div>
-	    				<div class="item">
-	    					<div class="cause-entry">
-		    					<a href="#" class="img" style="background-image: url(assets/images/cause-5.jpg);"></a>
-		    					<div class="text p-3 p-md-4">
-		    						<h3 style="margin-bottom:-1px"><a href="#">Judul Program</a></h3>
-                                        <div style="color:grey; padding-bottom:10px">
-                                        <a>- Nama Pemilik Program</a>
-                                        </div>
-		    						<p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
-		    						<span class="donation-time mb-3 d-block">Sisa hari disini</span>
-		                <div class="progress custom-progress-success">
-		                  <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-		                </div>
-		                <span class="fund-raised d-block">Rp75,000 Terkumpul dari Rp100,000</span>
-		    					</div>
-		    				</div>
-	    				</div>
-	    				<div class="item">
-	    					<div class="cause-entry">
-		    					<a href="#" class="img" style="background-image: url(assets/images/cause-6.jpg);"></a>
-		    					<div class="text p-3 p-md-4">
-		    						<h3 style="margin-bottom:-1px"><a href="#">Judul Program</a></h3>
-                                        <div style="color:grey; padding-bottom:10px">
-                                        <a>- Nama Pemilik Program</a>
-                                        </div>
-		    						<p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
-		    						<span class="donation-time mb-3 d-block">Sisa hari disini</span>
-		                <div class="progress custom-progress-success">
-		                  <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-		                </div>
-		                <span class="fund-raised d-block">Rp75,000 Terkumpul dari Rp100,000</span>
-		    					</div>
-		    				</div>
-	    				</div> --}}
+                        @endforeach
 
     				</div>
     			</div>
     		</div>
     	</div>
     </section>
+
+    {{-- <div class="item">
+        <div class="cause-entry">
+            <a href="#" class="img" style="background-image: url(assets/images/cause-2.jpg);"></a>
+            <div class="text p-3 p-md-4">
+                <h3 style="margin-bottom:-1px"><a href="#">Judul Program</a></h3>
+                    <div style="color:grey; padding-bottom:10px">
+                    <a>- Nama Pemilik Program</a>
+                    </div>
+                <p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
+                <span class="donation-time mb-3 d-block">Sisa hari disini</span>
+    <div class="progress custom-progress-success">
+      <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <span class="fund-raised d-block">Rp75,000 Terkumpul dari Rp100,000</span>
+            </div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="cause-entry">
+            <a href="#" class="img" style="background-image: url(assets/images/cause-3.jpg);"></a>
+            <div class="text p-3 p-md-4">
+                <h3 style="margin-bottom:-1px"><a href="#">Judul Program</a></h3>
+                    <div style="color:grey; padding-bottom:10px">
+                    <a>- Nama Pemilik Program</a>
+                    </div>
+                <p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
+                <span class="donation-time mb-3 d-block">Sisa hari disini</span>
+    <div class="progress custom-progress-success">
+      <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <span class="fund-raised d-block">Rp75,000 Terkumpul dari Rp100,000</span>
+            </div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="cause-entry">
+            <a href="#" class="img" style="background-image: url(assets/images/cause-4.jpg);"></a>
+            <div class="text p-3 p-md-4">
+                <h3 style="margin-bottom:-1px"><a href="#">Judul Program</a></h3>
+                    <div style="color:grey; padding-bottom:10px">
+                    <a>- Nama Pemilik Program</a>
+                    </div>
+                <p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
+                <span class="donation-time mb-3 d-block">Sisa hari disini</span>
+    <div class="progress custom-progress-success">
+      <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <span class="fund-raised d-block">Rp75,000 Terkumpul dari Rp100,000</span>
+            </div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="cause-entry">
+            <a href="#" class="img" style="background-image: url(assets/images/cause-5.jpg);"></a>
+            <div class="text p-3 p-md-4">
+                <h3 style="margin-bottom:-1px"><a href="#">Judul Program</a></h3>
+                    <div style="color:grey; padding-bottom:10px">
+                    <a>- Nama Pemilik Program</a>
+                    </div>
+                <p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
+                <span class="donation-time mb-3 d-block">Sisa hari disini</span>
+    <div class="progress custom-progress-success">
+      <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <span class="fund-raised d-block">Rp75,000 Terkumpul dari Rp100,000</span>
+            </div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="cause-entry">
+            <a href="#" class="img" style="background-image: url(assets/images/cause-6.jpg);"></a>
+            <div class="text p-3 p-md-4">
+                <h3 style="margin-bottom:-1px"><a href="#">Judul Program</a></h3>
+                    <div style="color:grey; padding-bottom:10px">
+                    <a>- Nama Pemilik Program</a>
+                    </div>
+                <p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
+                <span class="donation-time mb-3 d-block">Sisa hari disini</span>
+    <div class="progress custom-progress-success">
+      <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <span class="fund-raised d-block">Rp75,000 Terkumpul dari Rp100,000</span>
+            </div>
+        </div>
+    </div> --}}
 
     <div class="row justify-content-center" style="padding:20px">
         <div class="col-md-5 heading-section ftco-animate text-center">

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Campaign;
 
 class Campaign extends Model
 {
@@ -35,5 +36,10 @@ class Campaign extends Model
     public static function findById($id)
     {
         return static::find($id);
+    }
+
+    public function donations()
+    {
+        return $this->belongsTo(Donations::class);
     }
 }

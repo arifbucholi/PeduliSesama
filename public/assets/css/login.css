@@ -95,7 +95,9 @@ ul.social-network li {
 }
 
 .social-network a.icoGoogle:hover {
-    background-color: #BD3518
+    background-color: #0d6efd
+    /* background-color: #BD3518 */
+
 }
 
 .social-network a.icoFacebook:hover i,

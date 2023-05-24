@@ -18,14 +18,14 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::all();
+        $blogs = Blog::orderByDesc('created_at')->get();
 
         return view('beritaadmin', compact('blogs'));
     }
 
     public function index2()
     {
-        $blogs = Blog::all();
+        $blogs = Blog::orderByDesc('created_at')->get();
 
         return view('berita', compact('blogs'));
     }

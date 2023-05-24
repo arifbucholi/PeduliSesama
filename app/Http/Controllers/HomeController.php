@@ -47,4 +47,16 @@ class HomeController extends Controller
     //     }
         return view('dashboardadmin');
     }
+
+    // public function userCount()
+    // {
+    //     $userCount = User::count();
+    //     return view('dashboardadmin', compact('userCount'));
+    // }
+
+    // public function campaignCount()
+    // {
+    //     $campaignCount = Campaign::count();
+    //     return view('dashboardadmin', compact('campaignCount'));
+    // }
 }

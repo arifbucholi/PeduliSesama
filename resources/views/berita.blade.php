@@ -44,9 +44,14 @@
             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
             <li class="nav-item active"><a href="/berita" class="nav-link">Berita</a></li>
             <li class="nav-item"><a href="/donasi" class="nav-link">Donasi</a></li>
+            @if (Auth::check())
             <li class="nav-item"><a href="/transaksiuser" class="nav-link">Transaksi</a></li>
             <li class="nav-item"><a href="/programiuser" class="nav-link">Program</a></li>
+            @endif
+            @if (!Auth::check())
             <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+            @endif
+            @if (Auth::check())
             <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
                     <div class="navbar-profile">
@@ -91,6 +96,7 @@
                     {{-- <p class="p-3 mb-0 text-center">Advanced settings</p> --}}
                 </div>
             </li>
+            @endif
         </ul>
       </div>
     </div>

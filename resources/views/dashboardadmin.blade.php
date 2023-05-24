@@ -388,7 +388,7 @@
                       <div class="row">
                         <div class="col-8 col-sm-12 col-xl-8 my-auto">
                           <div class="d-flex d-sm-block d-md-flex align-items-center">
-                            <h2 class="mb-0">23</h2>
+                            <h2 class="mb-0">{{ $userCount }}</h2>
                             {{-- <p class="text-success ms-2 mb-0 font-weight-medium">+3.5%</p> --}}
                           </div>
                           {{-- <h6 class="text-muted font-weight-normal">11.38% Since last month</h6> --}}
@@ -407,7 +407,7 @@
                       <div class="row">
                         <div class="col-8 col-sm-12 col-xl-8 my-auto">
                           <div class="d-flex d-sm-block d-md-flex align-items-center">
-                            <h2 class="mb-0">34</h2>
+                            <h2 class="mb-0">{{ $campaignCount }}</h2>
                             {{-- <p class="text-success ms-2 mb-0 font-weight-medium">+8.3%</p> --}}
                           </div>
                           {{-- <h6 class="text-muted font-weight-normal"> 9.61% Since last month</h6> --}}
@@ -576,5 +576,16 @@
     <!-- Custom js for this page -->
     <script src="assets2/js/dashboard.js"></script>
     <!-- End custom js for this page -->
+
+    {{-- <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            fetch('{{ route("dashboardadmin.count") }}')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('userCount').innerText = data.count;
+                });
+        });
+    </script> --}}
+
   </body>
 </html>

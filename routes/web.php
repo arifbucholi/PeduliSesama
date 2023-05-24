@@ -8,6 +8,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CampaignUserController;
 use App\Http\Controllers\API\SocialAuthController;
 
 /*
@@ -82,9 +83,9 @@ Route::get('/tes2', function () {
 // })->name('beritaadmin');
 
 //ALL ROLE
-Route::get('/lupapass', function () {
-    return view('lupapass');
-});
+// Route::get('/lupapass', function () {
+//     return view('lupapass');
+// });
 
 Route::get('/auth/redirect', [SocialAuthController::class, 'redirect'])
     ->name('google.redirect');
@@ -143,9 +144,14 @@ Route::middleware(['auth', 'cekrole'])->group(function () {
     // Dashboard Admin
     // Route::get('/dashboardadmin', [LoginController::class, 'authenticated'])->name('dashboardadmin');
     // Route::get('/dashboardadmin', [App\Http\Controllers\HomeController::class, 'indexAdmin'])->name('dashboardadmin.indexAdmin');
-    Route::get('/dashboardadmin', function () {
-        return view('dashboardadmin');
-    });
+    // Route::get('/dashboardadmin', function () {
+    //     return view('dashboardadmin');
+    // });
+
+    Route::get('/dashboardadmin', [App\Http\Controllers\UsersController::class, 'count']);
+    // Route::get('/dashboardadmin', [App\Http\Controllers\CampaignController::class, 'campaignCount'])->name('campaignCount');
+
+
 
     // Program Admin
     Route::get('/programadmin', function () {
@@ -170,6 +176,8 @@ Route::middleware(['auth', 'cekrole'])->group(function () {
     Route::get('/addcampaigns', [\App\Http\Controllers\CampaignController::class, 'create'])->name('create');
     Route::post('/campaigns/store', [\App\Http\Controllers\CampaignController::class, 'store'])->name('store');
     Route::get('/campaigns/show/{id}', [\App\Http\Controllers\CampaignController::class, 'show'])->name('show');
+    Route::get('/campaigns/shows/{id}', [\App\Http\Controllers\CampaignController::class, 'shows'])->name('shows');
+
 
     // Route::get('/addcampaigns', function () {
     //     return view('addcampaigns');
@@ -234,9 +242,16 @@ Route::middleware(['auth'])->group(function(){
         return view('transaksiuser');
     });
 
-    Route::get('/programuser', function () {
-        return view('programuser');
-    });
+    // Route::get('/programuser', function () {
+    //     return view('programuser');
+    // });
+
+
+    Route::get('/addprogramuser', [\App\Http\Controllers\CampaignUserController::class, 'createprogram'])->name('createprogram');
+    Route::post('/programuser/storeprogramuser', [\App\Http\Controllers\CampaignUserController::class, 'storeprogramuser'])->name('storeprogramuser');
+    Route::get('/programuser', [\App\Http\Controllers\CampaignUserController::class, 'showprogramuser'])->name('showprogramuser');
+
+
 
 
     // Route::get('/berita', [BlogController::class, 'index2'])->name('blogs.index2');
@@ -253,4 +268,7 @@ Route::middleware(['auth'])->group(function(){
 
 
 Auth::routes();
+// Route::get('/home', function () {
+//     // Tampilkan halaman login
+// })->middleware('disableLoginPage');
 

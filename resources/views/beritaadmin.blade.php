@@ -302,7 +302,7 @@
                 <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
                   <div class="navbar-profile">
                     <img class="img-xs rounded-circle" src="assets2/images/faces/face15.jpg" alt="">
-                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Henry Klein</p>
+                    <p class="mb-0 d-none d-sm-block navbar-profile-name">{{ Auth::user()->name }}</p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
                 </a>
@@ -371,7 +371,7 @@
                         <div class="container">
                             <div class="col-md-12 heading-section ftco-animate text-center">
                                 <h1>{{ $blog->title }}</h1>
-                            <img src="{{ asset($blog->img_url) }}" alt="{{ $blog->img_url }}" class="d-block w-100" style="height:450px;">
+                            <img src="{{ asset($blog->img_url) }}" alt="{{ $blog->img_url }}" class="col-4 img-fluid" style="height:auto; width:700px;">
                             </div>
                             <br>
                             <p>{{ $blog->desc }}</p>

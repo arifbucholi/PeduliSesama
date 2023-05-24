@@ -58,9 +58,14 @@
             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
             <li class="nav-item"><a href="/berita" class="nav-link">Berita</a></li>
             <li class="nav-item active"><a href="/donasi" class="nav-link">Donasi</a></li>
+            @if (Auth::check())
             <li class="nav-item"><a href="/transaksiuser" class="nav-link">Transaksi</a></li>
             <li class="nav-item"><a href="/programuser" class="nav-link">Program</a></li>
+            @endif
+            @if (!Auth::check())
             <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+            @endif
+            @if (Auth::check())
             <li class="nav-item dropdown">
 
                 <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
@@ -116,6 +121,7 @@
                     {{-- <p class="p-3 mb-0 text-center">Advanced settings</p> --}}
                 </div>
             </li>
+            @endif
         </ul>
       </div>
     </div>
@@ -173,7 +179,7 @@
                         <p>{{ $campaign->user->name }}</p>
                         {{-- <p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p> --}}
 
-                        <p style="margin-bottom:0px">{{ Str::limit($campaign->desc, 90, '...') }}</p>
+                        <p style="margin-bottom:0px; word-wrap:break-word">{{ Str::limit($campaign->desc, 90, '...') }}</p>
                         <a href="">Baca Selengkapnya</a>
 
                         @php
@@ -181,15 +187,24 @@
                             $remainingDays = $endDate->diffInDays(\Carbon\Carbon::now());
                         @endphp
                         <span class="donation-time mb-3 d-block">Sisa : {{ $remainingDays }} hari</span>
-                        <div class="progress custom-progress-success">
+                        {{-- <div class="progress custom-progress-success">
                             <div class="progress-bar bg-primary" role="progressbar" style="width: 98.5%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div> --}}
+                        <div class="progress custom-progress-success">
+                            <div id="progress-bar" class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <span class="fund-raised d-block">Rp28,000 Terkumpul dari Rp100,000</span>
+
+                        <span class="fund-raised d-block" style="padding-bottom:15px">Rp28,000 Terkumpul dari Rp {{ number_format($campaign->target_amount,0,',','.') }}</span>
+                        {{-- {{ number_format($attributes['goal'], 0, ',', '.')  --}}
+                        {{-- <a href="/donations">Donasi Sekarang</a> --}}
+                        <a href="/donations">
+                            <button class="btn btn-primary d-flex " >Donasi Sekarang</button>
+                        </a>
                     </div>
                 </div>
             </div>
             @endforeach
-      		<div class="col-md-4 ftco-animate">
+      		{{-- <div class="col-md-4 ftco-animate">
       			<div class="cause-entry">
     					<a href="#" class="img" style="background-image: url(assets/images/cause-2.jpg);"></a>
     					<div class="text p-3 p-md-4">
@@ -263,9 +278,9 @@
                 <span class="fund-raised d-block">Rp28,000 Terkumpul dari Rp100,000</span>
     					</div>
     				</div>
-      		</div>
+      		</div> --}}
         </div>
-        <div class="row mt-5">
+        {{-- <div class="row mt-5">
           <div class="col text-center">
             <div class="block-27">
               <ul>
@@ -279,7 +294,7 @@
               </ul>
             </div>
           </div>
-        </div>
+        </div> --}}
       </div>
     </section>
 

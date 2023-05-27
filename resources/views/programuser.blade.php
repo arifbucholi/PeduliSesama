@@ -172,21 +172,21 @@
                                 <td class="text-center">2 Maret - 2 Mei</td>
                                 <?php if($campaign->status == '0') : ?>
                                 <td class="text-center">
-                                  <span class="btn btn-success" >Diterima</span>
+                                  <span class="btn btn-success" style="border-radius:3px" >Diterima</span>
                                 </td>
 
                                 <?php elseif($campaign->status == '1') : ?>
                                 <td class="text-center">
-                                  <span class="btn btn-danger" >Ditolak</span>
+                                  <span class="btn btn-danger" style="border-radius:3px" >Ditolak</span>
                                 </td>
 
                                 <?php elseif($campaign->status == '2') : ?>
                                 <td class="text-center">
-                                  <span class="btn btn-warning" >Proses</span>
+                                  <span class="btn btn-warning" style="border-radius:3px" >Proses</span>
                                 </td>
                                 <?php endif; ?>
                                 <td class="text-center">
-                                    <a class="hover-effect" href="javascript:void(0)" id="show-user" data-url="{{ route('showprogramuser', $campaign->id) }}">
+                                    <a class="hover-effect" href="javascript:void(0)" id="show-user" data-url="{{ url('programuser', $campaign->id) }}">
                                         <img style="width: 22px; height: 22px; filter: invert(93%) sepia(0%) saturate(7491%) hue-rotate(120deg) brightness(108%) contrast(99%);" srcset="https://img.icons8.com/?size=512&id=30M9wv1iFkcH&format=png 2x, https://img.icons8.com/?size=512&id=30M9wv1iFkcH&format=png 1x"
                                         src="https://img.icons8.com/?size=512&id=986&format=png 2x" width="26" alt="" >
                                     </a>
@@ -349,13 +349,15 @@
               </button> --}}
             </div>
             <div class="modal-body">
-              <p><strong>Judul :</strong> <span id="user-title"></span>{{ $campaign->title }}</p>
-              <img class="img-fluid" src="{{ $campaign->img_url }}" alt="" style="padding-bottom:20px">
-              <p><strong>Deskripsi :</strong> <span id="user-desc"></span>{{ $campaign->desc }}</p>
-              <p><strong>Target dana :</strong> <span id="user-target_amount"></span>{{ $campaign->target_amount }}</p>
+
+              <p><strong>Judul :</strong> <span id="user-title"></span></p>
+              <div id="user-image" class="img-fluid" style="padding-bottom:20px"></div>
+              <p><strong>Deskripsi :</strong> <span id="user-desc"></span></p>
+              <p><strong>Target dana :</strong> <span id="user-target_amount"></span></p>
+
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 25px">Close</button>
             </div>
           </div>
         </div>
@@ -421,6 +423,9 @@
               $('#user-title').text(data.title);
               $('#user-desc').text(data.desc);
               $('#user-target_amount').text(data.target_amount);
+
+              var imgElement = $('<img>').attr('src', data.img_url).addClass('img-fluid');
+                $('#user-image').empty().append(imgElement);
           })
       });
 

@@ -74,4 +74,12 @@ class CampaignUserController extends Controller
         return view('programuser', compact('campaigns'));
     }
 
+    public function detailprogram($id)
+    {
+        $campaign = Campaign::find($id);
+
+        // Mengembalikan data program sebagai respons JSON
+        return response()->json($campaign);
+    }
+
 }

@@ -120,8 +120,6 @@
         </div>
         <p style="padding:60px ; padding-top:25px">{{ $blog->desc }}</p>
         <br>
-        <br>
-        <br>
     </div>
     @endforeach
     <br>

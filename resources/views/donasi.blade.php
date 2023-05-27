@@ -149,7 +149,7 @@
                             @endforeach
                         </select>
                     </div> --}}
-                    <div class="dropdown">
+                    {{-- <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="border-radius:25px">Filter
                         <span class="caret"></span></button>
                         <ul class="dropdown-menu">
@@ -157,148 +157,100 @@
                         <li><a href="#" style="padding-left:12px;"> Pendidikan</a></li>
                         <li><a href="#" style="padding-left:12px;"> Sosial</a></li>
                         </ul>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
     </div>
 
+    <br>
+
 
     <section class="ftco-section" style="padding:10px; padding-bottom:50px">
       <div class="container">
-      	<div class="row">
-            @foreach ($campaigns as $campaign)
-      		<div class="col-md-4 ftco-animate">
-                <div class="cause-entry">
-                    <a href="#" class="img" style="background-image: url('{{ $campaign->img_url }}'); z-index: -1;"></a>
-
-                    {{-- <a href="#" class="img" ></a> --}}
-                    <div class="text p-3 p-md-4">
-                        <h3 style="margin-bottom:4px"><a href="#">{{ $campaign->title }}</a></h3>
-                        <p style="margin-bottom:-5px">Pembuat Program:</p>
-                        <p>{{ $campaign->user->name }}</p>
-                        {{-- <p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p> --}}
-
-                        <p style="margin-bottom:0px; word-wrap:break-word">{{ Str::limit($campaign->desc, 90, '...') }}</p>
-                        <a href="">Baca Selengkapnya</a>
-
-                        @php
-                            $endDate = \Carbon\Carbon::parse($campaign->dateline);
-                            $remainingDays = $endDate->diffInDays(\Carbon\Carbon::now());
-                        @endphp
-                        <span class="donation-time mb-3 d-block">Sisa : {{ $remainingDays }} hari</span>
-                        {{-- <div class="progress custom-progress-success">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 98.5%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div> --}}
-                        <div class="progress custom-progress-success">
-                            <div id="progress-bar" class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-
-                        <span class="fund-raised d-block" style="padding-bottom:15px">Rp28,000 Terkumpul dari Rp {{ number_format($campaign->target_amount,0,',','.') }}</span>
-                        {{-- {{ number_format($attributes['goal'], 0, ',', '.')  --}}
-                        {{-- <a href="/donations">Donasi Sekarang</a> --}}
-                        <a href="/donations">
-                            <button class="btn btn-primary d-flex " >Donasi Sekarang</button>
-                        </a>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row justify-content-center filter-btns">
+                    <div class="col-md-6 mb-3">
+                        <input type="text" id="campaign-filter" placeholder="Filter berdasarkan judul..." oninput="filterCampaigns('all')">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <button class="btn btn-primary mr-2 mb-3" style="border-radius:25px;" onclick="filterCampaigns('all')">Semua</button>
+                        <button class="btn btn-primary mr-2 mb-3" style="border-radius:25px;" onclick="filterCampaigns('Sosial')">Sosial</button>
+                        <button class="btn btn-primary mr-2 mb-3" style="border-radius:25px;" onclick="filterCampaigns('Kesehatan')">Kesehatan</button>
+                        <button class="btn btn-primary mr-2 mb-3" style="border-radius:25px;" onclick="filterCampaigns('Pendidikan')">Pendidikan</button>
+                        <button class="btn btn-primary mr-2 mb-3" style="border-radius:25px;" onclick="filterCampaigns('BencanaAlam')">Bencana Alam</button>
                     </div>
                 </div>
             </div>
-            @endforeach
-      		{{-- <div class="col-md-4 ftco-animate">
-      			<div class="cause-entry">
-    					<a href="#" class="img" style="background-image: url(assets/images/cause-2.jpg);"></a>
-    					<div class="text p-3 p-md-4">
-                            <h3 style="margin:-2px"><a href="#">Judul Program disini</a></h3>
-                            <p>- Nama Pemilik Program</p>
-    						<p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
-		    				<span class="donation-time mb-3 d-block">Sisa hari disini</span>
-                <div class="progress custom-progress-success">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <span class="fund-raised d-block">Rp28,000 Terkumpul dari Rp100,000</span>
-    					</div>
-    				</div>
-      		</div>
-      		<div class="col-md-4 ftco-animate">
-      			<div class="cause-entry">
-    					<a href="#" class="img" style="background-image: url(assets/images/cause-3.jpg);"></a>
-    					<div class="text p-3 p-md-4">
-                            <h3 style="margin:-2px"><a href="#">Judul Program disini</a></h3>
-                            <p>- Nama Pemilik Program</p>
-    						<p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
-		    				<span class="donation-time mb-3 d-block">Sisa hari disini</span>
-                <div class="progress custom-progress-success">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <span class="fund-raised d-block">Rp28,000 Terkumpul dari Rp100,000</span>
-    					</div>
-    				</div>
-      		</div>
-      		<div class="col-md-4 ftco-animate">
-      			<div class="cause-entry">
-    					<a href="#" class="img" style="background-image: url(assets/images/cause-4.jpg);"></a>
-    					<div class="text p-3 p-md-4">
-                            <h3 style="margin:-2px"><a href="#">Judul Program disini</a></h3>
-                            <p>- Nama Pemilik Program</p>
-    						<p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
-		    				<span class="donation-time mb-3 d-block">Sisa hari disini</span>
-                <div class="progress custom-progress-success">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <span class="fund-raised d-block">Rp28,000 Terkumpul dari Rp100,000</span>
-    					</div>
-    				</div>
-      		</div>
-      		<div class="col-md-4 ftco-animate">
-      			<div class="cause-entry">
-    					<a href="#" class="img" style="background-image: url(assets/images/cause-5.jpg);"></a>
-    					<div class="text p-3 p-md-4">
-                            <h3 style="margin:-2px"><a href="#">Judul Program disini</a></h3>
-                            <p>- Nama Pemilik Program</p>
-    						<p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
-		    				<span class="donation-time mb-3 d-block">Sisa hari disini</span>
-                <div class="progress custom-progress-success">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <span class="fund-raised d-block">Rp28,000 Terkumpul dari Rp100,000</span>
-    					</div>
-    				</div>
-      		</div>
-      		<div class="col-md-4 ftco-animate">
-      			<div class="cause-entry">
-    					<a href="#" class="img" style="background-image: url(assets/images/cause-6.jpg);"></a>
-    					<div class="text p-3 p-md-4">
-                            <h3 style="margin:-2px"><a href="#">Judul Program disini</a></h3>
-                            <p>- Nama Pemilik Program</p>
-    						<p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p>
-		    				<span class="donation-time mb-3 d-block">Sisa hari disini</span>
-                <div class="progress custom-progress-success">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <span class="fund-raised d-block">Rp28,000 Terkumpul dari Rp100,000</span>
-    					</div>
-    				</div>
-      		</div> --}}
         </div>
-        {{-- <div class="row mt-5">
-          <div class="col text-center">
-            <div class="block-27">
-              <ul>
-                <li><a href="#">&lt;</a></li>
-                <li class="active"><span>1</span></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&gt;</a></li>
-              </ul>
+      	<div class="row grid justify-content-center" id="campaign-container">
+            <div id="no-campaign-alert" class="alert alert-info mt-5" style="display: none;">
+                Tidak ada kampanye dalam kategori ini.
             </div>
-          </div>
-        </div> --}}
+            @foreach ($campaigns as $campaign)
+                @if ($campaign->status == 0)
+      		    {{-- <div class="col-md-4 ftco-animate filter-item {{ $campaign->category }}"> --}}
+      		    <div class="col-md-4 filter-item {{ $campaign->category }}">
+
+                    <div class="cause-entry">
+                        <a href="#" class="img" style="background-image: url('{{ $campaign->img_url }}'); z-index: -1;"></a>
+
+                        {{-- <a href="#" class="img" ></a> --}}
+                        <div class="text p-3 p-md-4">
+                            <h3 style="margin-bottom:4px"><a href="#">{{ $campaign->title }}</a></h3>
+                            <p style="margin-bottom:-5px">Pembuat Program:</p>
+                            <p>{{ $campaign->user->name }}</p>
+                            {{-- <p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p> --}}
+
+                            <p style="margin-bottom:0px; word-wrap:break-word">{{ Str::limit($campaign->desc, 90, '...') }}</p>
+                            <a href="">Baca Selengkapnya</a>
+
+                            @php
+                                $endDate = \Carbon\Carbon::parse($campaign->dateline);
+                                $remainingDays = $endDate->diffInDays(\Carbon\Carbon::now());
+                            @endphp
+                            <span class="donation-time mb-3 d-block">Sisa : {{ $remainingDays }} hari</span>
+                            {{-- <div class="progress custom-progress-success">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 98.5%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div> --}}
+                            <div class="progress custom-progress-success">
+                                <div id="progress-bar" class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+
+                            <span class="fund-raised d-block" style="padding-bottom:15px">Rp28,000 Terkumpul dari Rp {{ number_format($campaign->target_amount,0,',','.') }}</span>
+                            {{-- {{ number_format($attributes['goal'], 0, ',', '.')  --}}
+                            {{-- <a href="/donations">Donasi Sekarang</a> --}}
+                            <a href="/donations" class="row justify-content-center" >
+                                <button class="btn btn-primary d-flex" style="border-radius:25px">Donasi Sekarang</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endif
+            @endforeach
+
+        </div>
       </div>
     </section>
 
-    <section class="ftco-section" style="padding:50px">
+{{-- <div class="row mt-5">
+  <div class="col text-center">
+    <div class="block-27">
+      <ul>
+        <li><a href="#">&lt;</a></li>
+        <li class="active"><span>1</span></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&gt;</a></li>
+      </ul>
+    </div>
+  </div>
+</div> --}}
+
+    {{-- <section class="ftco-section" style="padding:50px">
     	<div class="container">
     	    <div class="row">
                 <div class="col-md-6 d-flex align-self-stretch ftco-animate">
@@ -327,7 +279,7 @@
             </div>
         </div>
     	</div>
-    </section>
+    </section> --}}
 
 
     <footer class="ftco-footer ftco-section img">
@@ -476,13 +428,88 @@
     });
   </script>
 
-  // js filter
-    <script>
-        function filterCampaigns() {
-            var selectedCategory = document.getElementById('category-filter').value;
-            window.location.href = '/campaigns?category=' + selectedCategory;
+  // js filter kategori
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Panggil fungsi untuk menampilkan kampanye awal saat halaman dimuat
+      displayAllCampaigns();
+    });
+
+    function displayAllCampaigns() {
+      // Ambil semua kampanye yang ada
+      var allCampaigns = document.querySelectorAll('.filter-item');
+
+      // Tampilkan semua kampanye
+      allCampaigns.forEach(function(campaign) {
+        campaign.style.display = 'block';
+      });
+    }
+
+    function filterCampaigns(category) {
+    // Ambil semua kampanye yang ada
+    var allCampaigns = document.querySelectorAll('.filter-item');
+    var matchingCampaigns = [];
+
+    // Loop melalui kampanye dan terapkan filter
+    allCampaigns.forEach(function(campaign) {
+        // Periksa apakah kampanye sesuai dengan kategori yang dipilih
+        if (category === 'all' || campaign.classList.contains(category)) {
+        // Tampilkan kampanye yang sesuai
+        campaign.style.display = 'block';
+        matchingCampaigns.push(campaign);
+        } else {
+        // Sembunyikan kampanye yang tidak sesuai
+        campaign.style.display = 'none';
         }
-    </script>
+    });
+
+    // Periksa apakah ada kampanye yang sesuai
+    if (matchingCampaigns.length === 0) {
+        // Tampilkan pesan tidak ada kampanye
+        document.getElementById('no-campaign-alert').style.display = 'block';
+    } else {
+        // Sembunyikan pesan tidak ada kampanye
+        document.getElementById('no-campaign-alert').style.display = 'none';
+    }
+  }
+  </script>
+
+
+  // FILTER JUDUL
+  <script>
+    function filterCampaigns(category) {
+    var filterText = document.getElementById('campaign-filter').value.trim().toLowerCase();
+
+    // Ambil semua kampanye yang ada
+    var allCampaigns = document.querySelectorAll('.filter-item');
+
+    // Variabel untuk melacak apakah ada kampanye yang sesuai dengan filter
+    var isCampaignFound = false;
+
+    // Loop melalui kampanye dan terapkan filter
+    allCampaigns.forEach(function(campaign) {
+        var campaignTitle = campaign.querySelector('h3 a').innerText.toLowerCase();
+        var campaignCategory = campaign.classList.contains(category) || category === 'all';
+
+        // Periksa apakah kampanye sesuai dengan kategori dan judul yang dipilih
+        if (campaignCategory && campaignTitle.includes(filterText)) {
+        // Tampilkan kampanye yang sesuai
+        campaign.style.display = 'block';
+        isCampaignFound = true;
+        } else {
+        // Sembunyikan kampanye yang tidak sesuai
+        campaign.style.display = 'none';
+        }
+    });
+
+    // Periksa apakah ada kampanye yang sesuai dengan filter
+    if (!isCampaignFound) {
+        alert('Belum ada kampanye dengan kategori ini.');
+    }
+  }
+
+  </script>
 
   </body>
 </html>

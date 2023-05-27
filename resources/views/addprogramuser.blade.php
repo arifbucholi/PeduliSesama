@@ -191,7 +191,7 @@
                                       <option value="Sosial">Sosial</option>
                                       <option value="Pendidikan">Pendidikan</option>
                                       <option value="Kesehatan">Kesehatan</option>
-                                      <option value="Bencana Alam">Bencana Alam</option>
+                                      <option value="BencanaAlam">Bencana Alam</option>
 
                                   </select>
                                   @if ($errors->has('category'))

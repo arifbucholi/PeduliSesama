@@ -422,7 +422,7 @@
                                     <option value="Sosial">Sosial</option>
                                     <option value="Pendidikan">Pendidikan</option>
                                     <option value="Kesehatan">Kesehatan</option>
-                                    <option value="Bencana Alam">Bencana Alam</option>
+                                    <option value="BencanaAlam">Bencana Alam</option>
 
                                 </select>
                                 @if ($errors->has('category'))
@@ -494,26 +494,43 @@
         });
     </script>
     <script>
-        // ambil element input dan img preview
-        const img_url = document.querySelector('#img_url');
-        const imgPreview = document.querySelector('#imgPreview');
+    $(document).ready(function() {
+    // Inisialisasi filter
+    $('.filter-btn').on('click', function() {
+        $('.filter-btn').removeClass('active');
+        $(this).addClass('active');
+        filterCampaigns($(this).data('filter'));
+    });
 
-        // event listener untuk input file diubah
-        img_url.addEventListener('change', function() {
-          // cek apakah file yang diupload adalah gambar
-          if (this.files && this.files[0]) {
-            const file = this.files[0];
-            const reader = new FileReader();
+    // Fungsi untuk memfilter kampanye menggunakan AJAX
+    function filterCampaigns(category) {
+        $.ajax({
+        url: '/campaigns', // Ganti dengan URL endpoint untuk mengambil data kampanye dari server
+        type: 'GET',
+        dataType: 'json',
+        data: { category: category },
+        success: function(response) {
+            // Hapus semua kampanye yang ada sebelumnya
+            $('#campaign-list').empty();
 
-            // saat file telah dibaca, tampilkan preview gambar
-            reader.addEventListener('load', function() {
-              imgPreview.src = reader.result;
+            // Tampilkan kampanye baru
+            response.forEach(function(campaign) {
+            var campaignHtml = '<div class="campaign">' +
+                '<h3>' + campaign.title + '</h3>' +
+                '<p>' + campaign.description + '</p>' +
+                '<span>' + campaign.category + '</span>' +
+                '</div>';
+
+            $('#campaign-list').append(campaignHtml);
             });
-
-            // baca file sebagai data URL
-            reader.readAsDataURL(file);
-          }
+        },
+        error: function(xhr, status, error) {
+            console.log(error);
+        }
         });
+    }
+    });
+
     </script>
 
 

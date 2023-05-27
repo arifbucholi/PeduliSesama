@@ -383,8 +383,12 @@
                         <tbody>
                             @foreach ($campaigns as $campaign )
                             <tr>
+                                @php
+                                    $author = \App\Models\User::find($campaign->author_id);
+                                    $authorName = $author ? $author->name : 'Pembuat tidak ditemukan';
+                                @endphp
                                 <td>{{ $no++ }} </td>
-                                <td>{{ Auth::user()->name }}</td>
+                                <td>{{ $campaign->user->name}}</td>
                                 <td>{{ $campaign->title }}</td>
                                 <td>{{ $campaign->start_date }}</td>
 
@@ -446,6 +450,7 @@
                 </div>
                 <div class="modal-body">
                   <p><strong>Judul :</strong> <span id="user-title" style="word-wrap:break-word"></span></p>
+                  <div id="user-image" class="img-fluid" style="padding-bottom:20px"></div>
                   <p><strong>Deskripsi :</strong> <span id="user-desc" style="word-wrap:break-word"></span></p>
                   <p><strong>Target Donasi:</strong> <span id="user-target_amount" style="word-wrap:break-word"></span></p>
                 </div>
@@ -485,6 +490,9 @@
                   $('#user-title').text(data.title);
                   $('#user-desc').text(data.desc);
                   $('#user-target_amount').text(data.target_amount);
+
+                  var imgElement = $('<img>').attr('src', data.img_url).addClass('img-fluid');
+                    $('#user-image').empty().append(imgElement);
               })
           });
 

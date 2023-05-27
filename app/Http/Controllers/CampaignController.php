@@ -20,7 +20,7 @@ class CampaignController extends Controller
 
         // $data = auth()->user()->is_admin ? Campaign::all() : Campaign::where('author_id', auth()->id())->get();
         // return view('programadmin', compact('data')); // TODO: need view
-        $campaigns =Campaign::orderByDesc('created_at')->get();
+        $campaigns =Campaign::with('user')->orderByDesc('created_at')->get();
         $no=1;
         return view('campaigns', compact('campaigns','no')); // TODO: need view
 

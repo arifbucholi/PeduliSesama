@@ -63,6 +63,8 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+            // tambahan
+            'is_admin' => 'is_admin',
         ],
 
         // 'users' => [

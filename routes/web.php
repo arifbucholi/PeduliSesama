@@ -275,6 +275,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/addprogramuser', [\App\Http\Controllers\CampaignUserController::class, 'createprogram'])->name('createprogram');
     Route::post('/programuser/storeprogramuser', [\App\Http\Controllers\CampaignUserController::class, 'storeprogramuser'])->name('storeprogramuser');
     Route::get('/programuser', [\App\Http\Controllers\CampaignUserController::class, 'showprogramuser'])->name('showprogramuser');
+    Route::get('/programuser/{id}', [\App\Http\Controllers\CampaignUserController::class, 'detailprogram'])->name('detailprogram');
+
 
 
 

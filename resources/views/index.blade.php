@@ -180,31 +180,33 @@
                         @endphp
 
                         @foreach ($urgentCampaigns as $campaign )
-                        <div class="item">
-                            <div class="cause-entry">
-                                <a href="#" class="img" style="background-image: url('{{ $campaign->img_url }}'); z-index: -1;"></a>
-		    					<div class="text p-3 p-md-4">
-		    						<h3 style="margin-bottom:-1px"><a href="#">{{ $campaign->title }}</a></h3>
-                                        <div style="color:grey; padding-bottom:10px">
-                                            <p style="margin-bottom:-5px">Pembuat Program:</p>
-                                            <p>{{ $campaign->user->name }}</p>
-                                        </div>
-                                        <p style="margin-bottom:0px; word-wrap:break-word">{{ Str::limit($campaign->desc, 90, '...') }}</p>
-                                        <a href="">Baca Selengkapnya</a>
+                            @if ($campaign->status == 0)
+                            <div class="item">
+                                <div class="cause-entry">
+                                    <a href="#" class="img" style="background-image: url('{{ $campaign->img_url }}'); z-index: -1;"></a>
+		    			    		<div class="text p-3 p-md-4">
+		    			    			<h3 style="margin-bottom:-1px"><a href="#">{{ $campaign->title }}</a></h3>
+                                            <div style="color:grey; padding-bottom:10px">
+                                                <p style="margin-bottom:-5px">Pembuat Program:</p>
+                                                <p>{{ $campaign->user->name }}</p>
+                                            </div>
+                                            <p style="margin-bottom:0px; word-wrap:break-word">{{ Str::limit($campaign->desc, 90, '...') }}</p>
+                                            <a href="">Baca Selengkapnya</a>
 
-                                        @php
-                                        $endDate = \Carbon\Carbon::parse($campaign->dateline);
-                                        $remainingDays = $endDate->diffInDays(\Carbon\Carbon::now());
-                                        @endphp
-                                        <span class="donation-time mb-3 d-block">Sisa : {{ $remainingDays }} hari</span>
-                                        <div class="progress custom-progress-success">
-                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 100%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-		                            <span class="fund-raised d-block">Rp75,000 Terkumpul dari Rp{{ $campaign->target_amount }}</span>
-		    					</div>
-		    				</div>
+                                            @php
+                                            $endDate = \Carbon\Carbon::parse($campaign->dateline);
+                                            $remainingDays = $endDate->diffInDays(\Carbon\Carbon::now());
+                                            @endphp
+                                            <span class="donation-time mb-3 d-block">Sisa : {{ $remainingDays }} hari</span>
+                                            <div class="progress custom-progress-success">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 100%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+		                                <span class="fund-raised d-block">Rp75,000 Terkumpul dari Rp{{ $campaign->target_amount }}</span>
+		    			    		</div>
+		    			    	</div>
 
-                        </div>
+                            </div>
+                            @endif
                         @endforeach
 
     				</div>

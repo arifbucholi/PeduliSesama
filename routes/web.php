@@ -268,7 +268,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     Route::get('/userProfiles', [App\Http\Controllers\HomeController::class, 'userProfile'])->name('userProfiles');
-    // Route::resource('profilepage', EditProfilUserController::class);
+    Route::get('/profilepage/{id}', [EditProfilUserController::class, 'edit']);
+    Route::post('profilepage.update', [EditProfilUserController::class, 'update']);
 
     Route::get('/transaksiuser', function () {
         return view('transaksiuser');

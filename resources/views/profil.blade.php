@@ -165,7 +165,7 @@
                     <p class="text-muted mb-0"></p>
                   </div> --}}
                 </div>
-                <a href="{{ route('profilepage.edit', 0) }}">
+                <a href="/profilepage/{{ auth()->user()->id }}">
                   <button class="btn btn-primary" style="border-radius: 20px;">Edit</button>
                 </a>
               </div>

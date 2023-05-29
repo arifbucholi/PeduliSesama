@@ -40,6 +40,6 @@ class Campaign extends Model
 
     public function donations()
     {
-        return $this->belongsTo(Donations::class);
+        return $this->hasMany(Donations::class);
     }
 }

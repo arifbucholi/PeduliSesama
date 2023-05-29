@@ -71,7 +71,6 @@
             {{-- <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-bars"></i></a></li> --}}
             @if (Auth::check())
             <li class="nav-item dropdown">
-            <a href="">{{ Auth::user()->name }}</a>
               <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
                 <div class="navbar-profile">
                   <i class="fa fa-bars"></i>
@@ -79,11 +78,11 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
                   <div class="dropdown-divider"></div>
-                  <a href="#" class="dropdown-item preview-item">
+                  <a href="{{ route('userProfiles') }}" class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
                       <div class="preview-icon">
                         <i class="mdi mdi-settings text-success" style="padding: 5px"></i>
-                        <i>Profil</i>
+                        <i>Profile</i>
                       </div>
                     </div>
                     {{-- <div class="preview-item-content">

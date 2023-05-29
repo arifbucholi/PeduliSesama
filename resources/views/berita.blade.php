@@ -46,7 +46,7 @@
             <li class="nav-item"><a href="/donasi" class="nav-link">Donasi</a></li>
             @if (Auth::check())
             <li class="nav-item"><a href="/transaksiuser" class="nav-link">Transaksi</a></li>
-            <li class="nav-item"><a href="/programiuser" class="nav-link">Program</a></li>
+            <li class="nav-item"><a href="/programuser" class="nav-link">Program</a></li>
             @endif
             @if (!Auth::check())
             <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
@@ -60,7 +60,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
                     <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item preview-item">
+                    <a href="{{ route('userProfiles') }}" class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
                             <div class="preview-icon">
                                 <i class="mdi mdi-settings text-success"></i>

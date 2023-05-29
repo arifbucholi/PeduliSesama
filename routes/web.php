@@ -28,9 +28,6 @@ use App\Http\Controllers\API\SocialAuthController;
 
 
 
-// Route::get('/profil', function () {
-//     return view('profil');
-// });
 
 // Route::get('/daftar', function () {
     //     return view('daftar');
@@ -262,6 +259,7 @@ Route::get('/donasi', [\App\Http\Controllers\CampaignController::class, 'index2'
 Route::middleware(['auth'])->group(function(){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+    Route::get('/userProfiles', [App\Http\Controllers\HomeController::class, 'userProfile'])->name('userProfiles');
 
     Route::get('/transaksiuser', function () {
         return view('transaksiuser');

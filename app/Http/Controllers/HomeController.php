@@ -36,7 +36,10 @@ class HomeController extends Controller
         return view('index', compact('campaigns'));
     }
 
-
+    public function userProfile()
+    {
+        return view('profil');
+    }
 
     public function indexAdmin()
     {

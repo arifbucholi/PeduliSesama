@@ -63,7 +63,6 @@
             <li class="nav-item"><a href="/donasi" class="nav-link">Donasi</a></li>
             <li class="nav-item"><a href="/transaksiuser" class="nav-link">Transaksi</a></li>
             <li class="nav-item"><a href="/programiuser" class="nav-link">Program</a></li>
-            <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
             <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
                     <div class="navbar-profile">
@@ -94,7 +93,7 @@
                         </div>
                         </a>
                     <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item preview-item">
+                    <a href="/logout" class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
                             <div class="preview-icon">
                               <i class="mdi mdi-logout text-danger"></i>
@@ -132,9 +131,9 @@
                               <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
                                 class="rounded-circle img-fluid" style="width: 100px;" />
                             </div>
-                            <h4 class="mb-2" style="color: white">Julie L. Arsenault</h4>
+                            <h4 class="mb-2" style="color: white">{{ Auth::user()->name }}</h4>
                             <p class="text-muted mb-4">
-                              <a href="#!">arifbucholi@gmail.com</a>
+                              <a href="#!">{{ Auth::user()->email }}</a>
                               <br>
                               <a>081232600907</a>
                             </p>

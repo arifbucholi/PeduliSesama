@@ -138,7 +138,7 @@
                               </div>
                               <br>
                               <div>
-                                  <label class="form-label">Nama</label>
+                                  <label class="form-label">Nama Pembuat Program</label>
                               <input disabled type="text" style="background-color:#2A3038" class="form-control" value="{{ Auth::user()->name }}">
                               {{-- @foreach ($campaigns as $campaign) --}}
                               <input name="author_id" style="background-color:#2A3038" class="form-control" value="{{ Auth::id() }}" hidden>

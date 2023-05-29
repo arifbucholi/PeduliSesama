@@ -221,7 +221,7 @@
                             <span class="fund-raised d-block" style="padding-bottom:15px">Rp28,000 Terkumpul dari Rp {{ number_format($campaign->target_amount,0,',','.') }}</span>
                             {{-- {{ number_format($attributes['goal'], 0, ',', '.')  --}}
                             {{-- <a href="/donations">Donasi Sekarang</a> --}}
-                            <a href="/donations" class="row justify-content-center" >
+                            <a href="/donations/donate?title={{ $campaign->id }}" class="row justify-content-center">
                                 <button class="btn btn-primary d-flex" style="border-radius:25px">Donasi Sekarang</button>
                             </a>
                         </div>

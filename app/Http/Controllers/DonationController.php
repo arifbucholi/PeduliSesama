@@ -3,20 +3,36 @@
 namespace App\Http\Controllers;
 
 use App\Models\Donation;
+use App\Models\Campaign;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
+use Midtrans\Config;
+use Midtrans\Snap;
+use Illuminate\Support\Arr;
+
 
 class DonationController extends Controller
 {
     public function index() {
-        return view('donations.index');
+        $campaign=Campaign::all();
+        return view('donations.index', compact('campaign'));
     }
 
     public function donate(Request $request) {
         // insert donation
-//        $request->request->add(['donor_id' => Auth::id()]);
-//        $newDonation = Donation::create($request->all());
+        $newDonation = Donation::create([
+            'amount' => $request->input('amount'),
+            'donor_id' => Auth::id(),
+            'campaign_id' => $request->input('campaign_id'),
+            'desc' => $request->input('desc'),
+            'category' => $request->input('category'),
+            // tambahkan kolom-kolom lain yang sesuai dengan request
+        ]);
+
+        // $newDonation = Donation::create($request->all()->except['title']);
+        $newDonation = Donation::create(Arr::except($request->all(), ['title']));
+
         $newDonation = 'newDonation';
 
         \Midtrans\Config::$serverKey = config('midtrans.server_key');
@@ -24,27 +40,18 @@ class DonationController extends Controller
         \Midtrans\Config::$isSanitized = true;
         \Midtrans\Config::$is3ds = true;
 
-//        $params = array(
-//            'transaction_details' => array(
-//                'order_id' => $newDonation->id,
-//                'gross_amount' => $newDonation->amount,
-//            ),
-//            'customer_details' => array(
-//                'first_name' => Auth::user()->name,
-//                'email' => Auth::user()->email,
-//            ),
-//        );
+
         // temp data
-        $params = array(
-            'transaction_details' => array(
-                'order_id' => 1,
-                'gross_amount' => 100000,
-            ),
-            'customer_details' => array(
-                'first_name' => 'Paijo',
-                'email' => 'paijo@mail.com',
-            ),
-        );
+        // $params = array(
+        //     'transaction_details' => array(
+        //         'order_id' => 1,
+        //         'gross_amount' => 100000,
+        //     ),
+        //     'customer_details' => array(
+        //         'first_name' => 'Paijo',
+        //         'email' => 'paijo@mail.com',
+        //     ),
+        // );
 
         $snapToken = \Midtrans\Snap::getSnapToken($params);
 
@@ -66,4 +73,11 @@ class DonationController extends Controller
         $donations = Donation::where('donor_id', $user)->orderBy('paid_at', 'desc')->get();
         return redirect()->route('')->with('success', 'Some success message'); // TODO: need route
     }
+
+    // public function show($id){
+    //     $campaign = Campaign::find($id);
+
+    //     // Jika kampanye ditemukan, Anda dapat melakukan tindakan lain, misalnya menampilkan data kampanye ke view
+    //     return view('donations', compact('campaign'));
+    // }
 }

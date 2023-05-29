@@ -121,9 +121,8 @@
                           <form method="POST" action="{{ route('donations.donate') }}">
                               @csrf
 
-                              <label for="title">Judul program</label>
-                              <div class="input-group">
-                                {{-- <input type="text" value="{{ $campaign->title }}" disabled> --}}
+                              <div>
+                                  <label for="title">Judul program</label>
                               </div>
 
                               <br>
@@ -181,7 +180,6 @@
         </div>
     </div>
 
-    <br>
     <br>
 
 

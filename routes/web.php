@@ -51,6 +51,10 @@ Route::get('/chart', function () {
     return view('chart');
 });
 
+Route::get('/daftarpengguna', function () {
+    return view('daftarpengguna');
+});
+
 Route::get('/donasi-single', function () {
     return view('donasi-single');
 });
@@ -131,12 +135,12 @@ Route::get('/google/redirect', [SocialAuthController::class, 'googleCallback'])
 
 // TODO: route dikelompokan seperti dibawah. Buat baru jika dibutuhkan!
 // Admin
-Route::group([
-    'prefix' => '/admin',
-    'as' => 'admin.'
-], function () {
-    Route::get('/campaign/approve/{data}', [\App\Http\Controllers\CampaignController::class, 'approveCampaign'])->name('campaign.approve');
-});
+// Route::group([
+//     'prefix' => '/admin',
+//     'as' => 'admin.'
+// ], function () {
+//     Route::get('/campaign/approve/{data}', [\App\Http\Controllers\CampaignController::class, 'approveCampaign'])->name('campaign.approve');
+// });
 
 // User
 Route::group([
@@ -187,6 +191,8 @@ Route::middleware(['auth', 'cekrole'])->group(function () {
     // });
 
     Route::get('/dashboardadmin', [App\Http\Controllers\UsersController::class, 'count']);
+    Route::get('/daftarpengguna', [App\Http\Controllers\UsersController::class, 'showUser']);
+
     // Route::get('/dashboardadmin', [App\Http\Controllers\CampaignController::class, 'campaignCount'])->name('campaignCount');
 
 
@@ -215,6 +221,11 @@ Route::middleware(['auth', 'cekrole'])->group(function () {
     Route::post('/campaigns/store', [\App\Http\Controllers\CampaignController::class, 'store'])->name('store');
     Route::get('/campaigns/show/{id}', [\App\Http\Controllers\CampaignController::class, 'show'])->name('show');
     Route::get('/campaigns/shows/{id}', [\App\Http\Controllers\CampaignController::class, 'shows'])->name('shows');
+    Route::post('/campaigns/approveCampaign/{data}', [\App\Http\Controllers\CampaignController::class, 'approveCampaign'])->name('approveCampaign');
+
+
+
+
 
 
     // Route::get('/addcampaigns', function () {

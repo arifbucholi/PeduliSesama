@@ -10,6 +10,7 @@ use App\Http\Controllers\DonationController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CampaignUserController;
 use App\Http\Controllers\API\SocialAuthController;
+use App\Http\Controllers\EditProfilUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +29,6 @@ use App\Http\Controllers\API\SocialAuthController;
 
 
 
-// Route::get('/profil', function () {
-//     return view('profil');
-// });
 
 // Route::get('/daftar', function () {
     //     return view('daftar');
@@ -273,12 +271,6 @@ Route::get('/donasi', [\App\Http\Controllers\CampaignController::class, 'index2'
 
 
 
-// Route::get('/donasi', function () {
-//     return view('donasi');
-// });
-
-
-
 // ------------------------------------Halaman User---------------------------------------------//
 
 
@@ -286,14 +278,13 @@ Route::get('/donasi', [\App\Http\Controllers\CampaignController::class, 'index2'
 Route::middleware(['auth'])->group(function(){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+    Route::get('/userProfiles', [App\Http\Controllers\HomeController::class, 'userProfile'])->name('userProfiles');
+    Route::get('/profilepage/{id}', [EditProfilUserController::class, 'edit']);
+    Route::post('profilepage.update', [EditProfilUserController::class, 'update']);
 
     Route::get('/transaksiuser', function () {
         return view('transaksiuser');
     });
-
-    // Route::get('/programuser', function () {
-    //     return view('programuser');
-    // });
 
 
     Route::get('/addprogramuser', [\App\Http\Controllers\CampaignUserController::class, 'createprogram'])->name('createprogram');

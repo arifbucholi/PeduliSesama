@@ -162,9 +162,9 @@
               </button>
               <ul class="navbar-nav w-100">
                 <li class="nav-item w-100">
-                  <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+                  {{-- <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
                     <input type="text" class="form-control" placeholder="Search products">
-                  </form>
+                  </form> --}}
                 </li>
               </ul>
               <ul class="navbar-nav navbar-nav-right">
@@ -409,29 +409,10 @@
                                 <?php endif; ?>
 
                                 <td>
-                                  <a
-                                      href="javascript:void(0)"
-                                      id="show-user"
-                                      data-url="{{ route('shows', $campaign->id) }}"
-                                      class="btn btn-info"
-                                      >Show</a>
-                              </td>
+                                    <a href="javascript:void(0)" id="show-user" data-id="{{ $campaign->id }}" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#userShowModal">Show</a>
+                                </td>
                             </tr>
                             @endforeach
-                          {{-- <tr>
-                            <td> 1 </td>
-                            <td>
-                              <img src="assets2/images/faces/face1.jpg" alt="image" />
-                              <span class="ps-2">Henry Klein</span>
-                            </td>
-                            <td> Bantuan Semeru </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              <div class="badge badge-outline-success">Approved</div>
-                            </td>
-                            <td class="mdi mdi-table-edit text-center"></td>
-                          </tr> --}}
-
                         </tbody>
                       </table>
                     </div>
@@ -449,10 +430,15 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <p><strong>Judul :</strong> <span id="user-title" style="word-wrap:break-word"></span></p>
-                  <div id="user-image" class="img-fluid" style="padding-bottom:20px"></div>
-                  <p><strong>Deskripsi :</strong> <span id="user-desc" style="word-wrap:break-word"></span></p>
-                  <p><strong>Target Donasi:</strong> <span id="user-target_amount" style="word-wrap:break-word"></span></p>
+                    <form id="approveCampaign" method="POST">
+                        @csrf
+                        <input type="hidden" name="status" value="0">
+                        <p><strong>Judul :</strong> <span id="user-title" style="word-wrap:break-word"></span></p>
+                        <div id="user-image" class="img-fluid" style="padding-bottom:20px"></div>
+                        <p><strong>Deskripsi :</strong> <span id="user-desc" style="word-wrap:break-word"></span></p>
+                        <p><strong>Target Donasi:</strong> <span id="user-target_amount" style="word-wrap:break-word"></span></p>
+                        <button type="submit" class="btn btn-primary">Approve</button>
+                    </form>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -480,26 +466,24 @@
     <script src="assets2/js/jquery.cookie.js" type="text/javascript"></script>
     @section('script')
     <script type="text/javascript">
-
         $(document).ready(function () {
-
             $('body').on('click', '#show-user', function () {
-              var userURL = $(this).data('url');
-              $.get(userURL, function (data) {
-                  $('#userShowModal').modal('show');
-                  $('#user-title').text(data.title);
-                  $('#user-desc').text(data.desc);
-                  $('#user-target_amount').text(data.target_amount);
-
-                  var imgElement = $('<img>').attr('src', data.img_url).addClass('img-fluid');
+                var campaignId = $(this).data('id');
+                var userURL = '{{ route('shows', ':id') }}'.replace(':id', campaignId);
+                $('#approveCampaign').attr('action', '{{ route('approveCampaign', ':id') }}'.replace(':id', campaignId));
+                $.get(userURL, function (data) {
+                    $('#user-title').text(data.title);
+                    $('#user-desc').text(data.desc);
+                    $('#user-target_amount').text(data.target_amount);
+                    var imgElement = $('<img>').attr('src', data.img_url).addClass('img-fluid');
                     $('#user-image').empty().append(imgElement);
-              })
-          });
-
+                });
+                $('#userShowModal').modal('show');
+            });
         });
-
     </script>
     @endsection
+
     <!-- End plugin js for this page -->
     <!-- inject:js -->
     <script src="assets2/js/off-canvas.js"></script>

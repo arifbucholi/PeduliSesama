@@ -142,4 +142,11 @@ class UsersController extends Controller
             'campaignCount' => $campaignCount
         ]);
     }
+
+    public function showUser()
+    {
+        $users = Users::all();
+        $no = 1;
+        return view('daftarpengguna', compact('users','no'));
+    }
 }

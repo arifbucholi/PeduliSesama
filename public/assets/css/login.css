@@ -95,7 +95,7 @@ ul.social-network li {
 }
 
 .social-network a.icoGoogle:hover {
-    background-color: #0d6efd
+    background-color: #ffffff
     /* background-color: #BD3518 */
 
 }
@@ -131,7 +131,7 @@ a.socialIcon:hover,
 .social-circle li a:hover i,
 .triggeredHover {
     transform: rotate(360deg);
-    transition: all 0.2s
+    transition: all 0.8s
 }
 
 .social-circle i {

@@ -19,7 +19,7 @@
 
 
 </head>
-<body style="background-image: url(assets/images/bg_7.jpg); " data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+<body data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
 {{-- <body style="background:rgb(38, 38, 38)"> --}}
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">

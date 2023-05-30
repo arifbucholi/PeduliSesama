@@ -29,8 +29,8 @@
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-          <a class="sidebar-brand brand-logo" href="/index"><img src="assets2/images/logo.svg" alt="logo" /></a>
-          <a class="sidebar-brand brand-logo-mini" href="/index"><img src="assets2/images/logo-mini.svg" alt="logo" /></a>
+          <a class="sidebar-brand brand-logo" href="index.html"><img src="assets2/images/logo.svg" alt="logo" /></a>
+          <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets2/images/logo-mini.svg" alt="logo" /></a>
         </div>
         <ul class="nav">
 
@@ -47,7 +47,7 @@
             </a>
             <div class="collapse" id="ddd">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="/daftarpengguna">Daftar Pengguna</a></li>
+                <li class="nav-item active"> <a class="nav-link" href="/daftarpengguna">Daftar Pengguna</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/dropdowns">Dropdowns</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/typography">Typography</a></li>
               </ul>
@@ -87,14 +87,14 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="/buttons">Buttons</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/dropdowns">Dropdowns</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/typography">Typography</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
               </ul>
             </div>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="/basic_elements">
+            <a class="nav-link" href="pages/forms/basic_elements.html">
               <span class="menu-icon">
                 <i class="mdi mdi-playlist-play"></i>
               </span>
@@ -102,7 +102,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="/basic-table">
+            <a class="nav-link" href="pages/tables/basic-table.html">
               <span class="menu-icon">
                 <i class="mdi mdi-table-large"></i>
               </span>
@@ -110,7 +110,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="/chartjs">
+            <a class="nav-link" href="pages/charts/chartjs.html">
               <span class="menu-icon">
                 <i class="mdi mdi-chart-bar"></i>
               </span>
@@ -118,7 +118,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="/mdi">
+            <a class="nav-link" href="pages/icons/mdi.html">
               <span class="menu-icon">
                 <i class="mdi mdi-contacts"></i>
               </span>
@@ -135,11 +135,11 @@
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="/blank-page"> Blank Page </a></li>
-                <li class="nav-item"> <a class="nav-link" href="/error-404"> 404 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="/error-500"> 500 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="/login"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link" href="/register"> Register </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
               </ul>
             </div>
           </li>
@@ -158,7 +158,7 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
           <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo-mini" href="/index"><img src="assets2/images/logo-mini.svg" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets2/images/logo-mini.svg" alt="logo" /></a>
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -339,10 +339,10 @@
                     </div>
                     </a>
                   <div class="dropdown-divider"></div>
-                  <a href="/logout" class="dropdown-item preview-item">
+                  <a class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
-                            <i class="mdi mdi-logout text-danger"></i>
+                        <i class="mdi mdi-logout text-danger"></i>
                       </div>
                     </div>
                     <div class="preview-item-content">
@@ -363,201 +363,48 @@
         <div class="main-panel">
           <div class="content-wrapper" style="border-radius: 10px">
 
-            <div class="row">
-                <div class="col-sm-12 grid-margin">
-                  <div class="card">
-                    <div class="card-body text-center">
-                      <h1>Total Donasi Saat Ini</h1>
-                      <br>
-                      <div class="row">
-                        {{-- <div class="col-8 col-sm-12 col-xl-8 my-auto"> --}}
-                        <div class="col-12 col-sm-12 col-xl-12 my-auto">
-                          {{-- <div class="d-flex d-sm-block d-md-flex align-items-center"> --}}
-                          <div class="text-center">
-                            <h1 class="mb-0">Rp3.000.000</h1>
-                            {{-- <p class="text-success ms-2 mb-0 font-weight-medium">+3.5%</p> --}}
-                          </div>
-                          {{-- <h6 class="text-muted font-weight-normal">11.38% Since last month</h6> --}}
-                        </div>
-                        {{-- <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                          <i class="icon-lg mdi mdi-codepen text-primary ms-auto"></i>
-                        </div> --}}
-                      </div>
+            <div class="row ">
+              <div class="col-12 grid-margin">
+                <div class="card" style="border-radius: 10px">
+                  <div class="card-body">
+                    <h1 class="card-title text-center">Daftar Pengguna</h1>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th> No </th>
+                            <th> Nama </th>
+                            <th> Email</th>
+                            <th> Jumlah Donasi </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($users as $user)
+
+                        <tr>
+                            <td> {{ $no++ }} </td>
+                            <td>
+                                <img src="assets2/images/faces/face1.jpg" alt="image" />
+                                <span class="ps-2">{{ $user->name }}</span>
+                            </td>
+                            <td> {{ $user->email }} </td>
+                            {{-- <td>
+                                Rp6.000,00
+                            </td> --}}
+                        </tr>
+                        @endforeach
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
+              </div>
             </div>
 
-            <div class="row">
-                <div class="col-sm-6 grid-margin">
-                  <div class="card">
-                    <div class="card-body">
-                      <h2>Jumlah User</h2>
-                      <div class="row">
-                        <div class="col-8 col-sm-12 col-xl-8 my-auto">
-                          <div class="d-flex d-sm-block d-md-flex align-items-center">
-                            <h2 class="mb-0">{{ $userCount }}</h2>
-                            {{-- <p class="text-success ms-2 mb-0 font-weight-medium">+3.5%</p> --}}
-                          </div>
-                          {{-- <h6 class="text-muted font-weight-normal">11.38% Since last month</h6> --}}
-                        </div>
-                        <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                          <i class="icon-lg mdi mdi-codepen text-primary ms-auto"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6 grid-margin">
-                  <div class="card">
-                    <div class="card-body">
-                      <h2>Jumlah Program</h2>
-                      <div class="row">
-                        <div class="col-8 col-sm-12 col-xl-8 my-auto">
-                          <div class="d-flex d-sm-block d-md-flex align-items-center">
-                            <h2 class="mb-0">{{ $campaignCount }}</h2>
-                            {{-- <p class="text-success ms-2 mb-0 font-weight-medium">+8.3%</p> --}}
-                          </div>
-                          {{-- <h6 class="text-muted font-weight-normal"> 9.61% Since last month</h6> --}}
-                        </div>
-                        <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                          <i class="icon-lg mdi mdi-wallet-travel text-danger ms-auto"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
+          </div>
+          <!-- content-wrapper ends -->
 
-
-            <div class="row">
-                <div class="col-lg-12 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body ">
-                      <h3 class="card-title">5 Donatur Total Nominal Tertinggi</h3>
-                      <br>
-                      <div class="table-responsive">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th>Nama</th>
-                              <th>Nominal</th>
-                              <th>Keterangan</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Henry Klein</span>
-                              </td>
-                              <td>10.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Messy</span>
-                              </td>
-                              <td>9.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">John</span>
-                              </td>
-                              <td>5.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Peter</span>
-                              </td>
-                              <td>3.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Reyes</span>
-                              </td>
-                              <td>2.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
-
-
-            <div class="row">
-                <div class="col-lg-12 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body ">
-                      <h3 class="card-title">5 Donatur Sering Melakukan Donasi</h3>
-                      <br>
-                      <div class="table-responsive">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th>Nama</th>
-                              <th>Nominal</th>
-                              <th>Keterangan</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Henry Klein</span>
-                              </td>
-                              <td>10.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Messy</span>
-                              </td>
-                              <td>9.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">John</span>
-                              </td>
-                              <td>5.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Peter</span>
-                              </td>
-                              <td>3.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Reyes</span>
-                              </td>
-                              <td>2.000.000</td>
-                              <td><a href="/">Detail</a></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
+        </div>
         <!-- main-panel ends -->
       </div>
       <!-- page-body-wrapper ends -->
@@ -584,16 +431,5 @@
     <!-- Custom js for this page -->
     <script src="assets2/js/dashboard.js"></script>
     <!-- End custom js for this page -->
-
-    {{-- <script>
-        window.addEventListener('DOMContentLoaded', (event) => {
-            fetch('{{ route("dashboardadmin.count") }}')
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('userCount').innerText = data.count;
-                });
-        });
-    </script> --}}
-
   </body>
 </html>

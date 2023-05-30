@@ -9,8 +9,8 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-7">
-            <div class="card" style="background: rgb(235 235 235 / 59%);">
+        <div class="col-md-8">
+            <div class="card border">
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
@@ -79,8 +79,11 @@
                                 <a style="color:rgb(65, 65, 65)">Login with :</a>
                                 <br>
                                 <ul class="social-network social-circle">
-                                    <li><a href="{{ route('google.redirect') }}" class="icoGoogle" title="Google +"><i class="fab fa-google-plus" style="color:rgb(255, 255, 255)"></i></a></li>
+                                    <li><a href="{{ route('google.redirect') }}" class="icoGoogle" title="Google +"><i class="fab fa-google-plus" style="color:rgb(7, 83, 235); font-size: 30px "></i></a></li>
                                 </ul>
+                                {{-- <a href="{{ route('google.redirect') }}" class="btn btn-primary">
+                                    Login with Google
+                                </a> --}}
                             </div>
                         </div>
 

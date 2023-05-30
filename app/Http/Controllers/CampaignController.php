@@ -183,10 +183,15 @@ class CampaignController extends Controller
         //
     }
 
-    public function approveCampaign(Campaign $data) {
-        $data->status = 'Diterima';
-        $data->save();
-        return redirect()->route('')->with('success', 'Some success message'); // TODO: need route
+    public function approveCampaign($data) {
+        // 0 diterima
+        // 1 ditolak
+        // 2 proses
+        $campaign = Campaign::findOrFail($data);
+        $campaign->status = 0;
+        // dd ($campaign);
+        $campaign->save();
+        return redirect()->route('index')->with('success', 'Campaign approved successfully');
     }
 
 

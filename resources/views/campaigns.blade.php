@@ -393,17 +393,17 @@
                                 <td>{{ $campaign->start_date }}</td>
 
                                 <?php if($campaign->status == '0') : ?>
-                                <td class="text-center">
+                                <td>
                                   <span class="btn btn-success" >Diterima</span>
                                 </td>
 
                                 <?php elseif($campaign->status == '1') : ?>
-                                <td class="text-center">
+                                <td>
                                   <span class="btn btn-danger" >Ditolak</span>
                                 </td>
 
                                 <?php elseif($campaign->status == '2') : ?>
-                                <td class="text-center">
+                                <td>
                                   <span class="btn btn-warning" >Proses</span>
                                 </td>
                                 <?php endif; ?>
@@ -424,20 +424,23 @@
 
           <div class="modal fade" id="userShowModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
-              <div class="modal-content">
+              <div class="modal-content"  style="background:#191c24" >
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Permintaan Program</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <h3 class="modal-title" id="exampleModalLabel">Permintaan Program</h3>
+                  {{-- <button type="button" style="color:white" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
                 </div>
                 <div class="modal-body">
                     <form id="approveCampaign" method="POST">
                         @csrf
-                        <input type="hidden" name="status" value="0">
+                        {{-- <input type="hidden" name="status" value="0"> --}}
                         <p><strong>Judul :</strong> <span id="user-title" style="word-wrap:break-word"></span></p>
                         <div id="user-image" class="img-fluid" style="padding-bottom:20px"></div>
                         <p><strong>Deskripsi :</strong> <span id="user-desc" style="word-wrap:break-word"></span></p>
                         <p><strong>Target Donasi:</strong> <span id="user-target_amount" style="word-wrap:break-word"></span></p>
-                        <button type="submit" class="btn btn-primary">Approve</button>
+                        <button type="submit" class="btn btn-primary" name="status" value="0">Terima</button>
+
+                        <button type="submit" class="btn btn-danger" name="status" value="1">Tolak</button>
+
                     </form>
                 </div>
                 <div class="modal-footer">

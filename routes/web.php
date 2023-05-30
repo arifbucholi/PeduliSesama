@@ -220,6 +220,8 @@ Route::middleware(['auth', 'cekrole'])->group(function () {
     Route::get('/campaigns/show/{id}', [\App\Http\Controllers\CampaignController::class, 'show'])->name('show');
     Route::get('/campaigns/shows/{id}', [\App\Http\Controllers\CampaignController::class, 'shows'])->name('shows');
     Route::post('/campaigns/approveCampaign/{data}', [\App\Http\Controllers\CampaignController::class, 'approveCampaign'])->name('approveCampaign');
+    // Route::post('/campaigns/updateCampaign/{data}', [\App\Http\Controllers\CampaignController::class, 'updateCampaign'])->name('updateCampaign');
+
 
 
 

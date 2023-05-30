@@ -29,6 +29,9 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <link rel="stylesheet" href="assets2/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets2/vendors/flag-icon-css/css/flag-icon.min.css">
+
     <style>
     /* Style the input field */
     #myInput {
@@ -66,50 +69,50 @@
             {{-- <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-bars"></i></a></li> --}}
             @if (Auth::check())
             <li class="nav-item dropdown">
-              <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
-                <div class="navbar-profile">
-                  <i class="fa fa-bars"></i>
-                </div>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
-                  <div class="dropdown-divider"></div>
-                  <a href="#" class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon">
-                        <i class="mdi mdi-settings text-success" style="padding: 5px"></i>
-                        <i>Profil</i>
-                      </div>
-                    </div>
-                    {{-- <div class="preview-item-content">
-                      <p class="preview-subject mb-1">Profile</p>
-                    </div> --}}
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a href="#" class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                        <div class="preview-icon">
-                        <i class="mdi mdi-onepassword text-info" style="padding: 5px"></i>
-                        <i>Ubah Password</i>
+                <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
+                  <div class="navbar-profile">
+                    <i class="fa fa-bars"></i>
+                  </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
+                    <div class="dropdown-divider"></div>
+                    <a href="{{ route('userProfiles') }}" class="dropdown-item preview-item">
+                        <div class="preview-thumbnail">
+                          <div class="preview-icon">
+                          <i class="mdi mdi-settings text-success" style="padding: 5px"></i>
+                          <i>Profil</i>
                         </div>
-                    </div>
-                    {{-- <div class="preview-item-content">
-                        <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
-                    </div> --}}
+                      </div>
+                      {{-- <div class="preview-item-content">
+                        <p class="preview-subject mb-1">Profile</p>
+                      </div> --}}
                     </a>
-                  <div class="dropdown-divider"></div>
-                  {{-- <a href="#" class="dropdown-item preview-item"> --}}
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item preview-item">
                       <div class="preview-thumbnail">
                           <div class="preview-icon">
-                              <a href="/logout" style="padding-left: 30px">
-                                  <i class="mdi mdi-logout text-danger"> Logout</i>
-                                  {{-- <i>Log out</i> --}}
-                              </a>
+                          <i class="mdi mdi-onepassword text-info" style="padding: 5px"></i>
+                          <i>Ubah Password</i>
                           </div>
                       </div>
-                  {{-- </a> --}}
-                  <div class="dropdown-divider"></div>
-                  {{-- <p class="p-3 mb-0 text-center">Advanced settings</p> --}}
-              </div>
+                      {{-- <div class="preview-item-content">
+                          <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
+                      </div> --}}
+                      </a>
+                    <div class="dropdown-divider"></div>
+                    {{-- <a href="#" class="dropdown-item preview-item"> --}}
+                        <div class="preview-thumbnail">
+                            <div class="preview-icon">
+                                <a href="/logout" style="padding-left: 30px">
+                                    <i class="mdi mdi-logout text-danger"> Logout</i>
+                                    {{-- <i>Log out</i> --}}
+                                </a>
+                            </div>
+                        </div>
+                    {{-- </a> --}}
+                    <div class="dropdown-divider"></div>
+                    {{-- <p class="p-3 mb-0 text-center">Advanced settings</p> --}}
+                </div>
             </li>
             @endif
           </ul>

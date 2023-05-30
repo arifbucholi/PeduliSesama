@@ -183,16 +183,43 @@ class CampaignController extends Controller
         //
     }
 
-    public function approveCampaign($data) {
-        // 0 diterima
-        // 1 ditolak
-        // 2 proses
+    // public function approveCampaign($data) {
+    //     // 0 diterima
+    //     // 1 ditolak
+    //     // 2 proses
+    //     $campaign = Campaign::findOrFail($data);
+    //     $campaign->status = 0;
+    //     // dd ($campaign);
+    //     $campaign->save();
+    //     return redirect()->route('index')->with('success', 'Campaign approved successfully');
+    // }
+
+    // public function declineCampaign($data) {
+    //     // 0 diterima
+    //     // 1 ditolak
+    //     // 2 proses
+    //     $campaign = Campaign::findOrFail($data);
+    //     $campaign->status = 1;
+    //     // dd ($campaign);
+    //     $campaign->save();
+    //     return redirect()->route('index')->with('success', 'Campaign decline');
+    // }
+
+    public function approveCampaign(Request $request, $data) {
         $campaign = Campaign::findOrFail($data);
-        $campaign->status = 0;
-        // dd ($campaign);
+
+        if ($request->input('status') == 0) {
+            $campaign->status = 0;
+            $message = 'Campaign approved successfully';
+        } else if ($request->input('status') == 1) {
+            $campaign->status = 1;
+            $message = 'Campaign declined';
+        }
+        // dd($campaign);
         $campaign->save();
-        return redirect()->route('index')->with('success', 'Campaign approved successfully');
+        return redirect()->route('index')->with('success', $message);
     }
+
 
 
 

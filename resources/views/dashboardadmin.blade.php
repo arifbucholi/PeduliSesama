@@ -40,31 +40,34 @@
           <li class="nav-item menu-items">
             <a class="nav-link" data-bs-toggle="collapse" href="#ddd" aria-expanded="false" aria-controls="ddd">
               <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
+                <i class="mdi mdi-view-grid"></i>
               </span>
               <span class="menu-title">Dashboard</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ddd">
               <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/dashboardadmin">Halaman Utama</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/campaigns">Program</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/daftarpengguna">Daftar Pengguna</a></li>
+
                 <li class="nav-item"> <a class="nav-link" href="/dropdowns">Dropdowns</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/typography">Typography</a></li>
               </ul>
             </div>
           </li>
-          <li class="nav-item menu-items">
+          {{-- <li class="nav-item menu-items">
             <a class="nav-link" href="/campaigns">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
               <span class="menu-title">Program</span>
             </a>
-          </li>
+          </li> --}}
           <li class="nav-item menu-items">
             <a class="nav-link" href="/beritaadmin">
               <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
+                <i class="mdi mdi-file-document-box"></i>
               </span>
               <span class="menu-title">Berita</span>
             </a>
@@ -363,30 +366,30 @@
         <div class="main-panel">
           <div class="content-wrapper" style="border-radius: 10px">
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-sm-12 grid-margin">
                   <div class="card">
                     <div class="card-body text-center">
                       <h1>Total Donasi Saat Ini</h1>
                       <br>
                       <div class="row">
-                        {{-- <div class="col-8 col-sm-12 col-xl-8 my-auto"> --}}
+                        <div class="col-8 col-sm-12 col-xl-8 my-auto">
                         <div class="col-12 col-sm-12 col-xl-12 my-auto">
-                          {{-- <div class="d-flex d-sm-block d-md-flex align-items-center"> --}}
+                          <div class="d-flex d-sm-block d-md-flex align-items-center">
                           <div class="text-center">
                             <h1 class="mb-0">Rp3.000.000</h1>
-                            {{-- <p class="text-success ms-2 mb-0 font-weight-medium">+3.5%</p> --}}
+                            <p class="text-success ms-2 mb-0 font-weight-medium">+3.5%</p>
                           </div>
-                          {{-- <h6 class="text-muted font-weight-normal">11.38% Since last month</h6> --}}
+                          <h6 class="text-muted font-weight-normal">11.38% Since last month</h6>
                         </div>
-                        {{-- <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                        <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
                           <i class="icon-lg mdi mdi-codepen text-primary ms-auto"></i>
-                        </div> --}}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="row">
                 <div class="col-sm-6 grid-margin">
@@ -402,8 +405,9 @@
                           {{-- <h6 class="text-muted font-weight-normal">11.38% Since last month</h6> --}}
                         </div>
                         <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                          <i class="icon-lg mdi mdi-codepen text-primary ms-auto"></i>
+                          <i class="icon-lg mdi mdi-account text-primary ms-auto"></i>
                         </div>
+                        <a href="/daftarpengguna">Lihat</a>
                       </div>
                     </div>
                   </div>
@@ -423,6 +427,7 @@
                         <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
                           <i class="icon-lg mdi mdi-wallet-travel text-danger ms-auto"></i>
                         </div>
+                        <a href="/campaigns">Lihat</a>
                       </div>
                     </div>
                   </div>

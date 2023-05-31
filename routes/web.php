@@ -157,14 +157,12 @@ Route::group([
     'prefix' => '/donations',
     'as' => 'donations.'
 ], function () {
-    Route::get('/', [\App\Http\Controllers\DonationController::class, 'index'])->name('index');
+    Route::get('/form/{id}', [\App\Http\Controllers\DonationController::class, 'index']);
     // Route::get('/', [\App\Http\Controllers\DonationController::class, 'show'])->name('show');
-    Route::post('/', [\App\Http\Controllers\DonationController::class, 'donate'])->name('donate');
-    Route::get('/donate', [\App\Http\Controllers\DonationController::class, 'donate'])->name('donate');
-
-
-    Route::post('/', [\App\Http\Controllers\DonationController::class, 'donate'])->name('donate');
-    Route::get('/user-donation', [\App\Http\Controllers\DonationController::class, 'getUserDonation'])->name('user');
+    Route::get('donasi-single/{id}',[DonationController::class,'detail']);
+    // Route::post('/', [\App\Http\Controllers\DonationController::class, 'donate'])->name('donate');
+    Route::post('/confirm', [\App\Http\Controllers\DonationController::class, 'donate']);
+    // Route::get('/user-donation', [\App\Http\Controllers\DonationController::class, 'getUserDonation']);
 });
 
 
@@ -284,10 +282,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/profilepage/{id}', [EditProfilUserController::class, 'edit']);
     Route::post('profilepage.update', [EditProfilUserController::class, 'update']);
 
-    Route::get('/transaksiuser', function () {
-        return view('transaksiuser');
-    });
-
+    Route::get('/transaksiuser', [DonationController::class, 'getUserDonation']);
 
     Route::get('/addprogramuser', [\App\Http\Controllers\CampaignUserController::class, 'createprogram'])->name('createprogram');
     Route::post('/programuser/storeprogramuser', [\App\Http\Controllers\CampaignUserController::class, 'storeprogramuser'])->name('storeprogramuser');

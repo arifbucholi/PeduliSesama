@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('donor_id')->constrained('users');
             $table->foreignId('campaign_id')->constrained('campaigns');
-            $table->integer('amount');
+            $table->bigInteger('amount');
             $table->text('desc');
             $table->string('category');
             $table->enum('status', ['SUCCESS', 'PENDING', 'CANCEL'])->default('PENDING');

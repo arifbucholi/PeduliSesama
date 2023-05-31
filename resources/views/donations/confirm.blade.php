@@ -8,27 +8,29 @@
     <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,400i,600,700" rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/open-iconic-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">
 
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}">
 
-    <link rel="stylesheet" href="assets/css/aos.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/aos.css') }}">
 
-    <link rel="stylesheet" href="assets/css/ionicons.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/ionicons.min.css') }}">
 
-    <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="assets/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery.timepicker.css') }}">
 
 
-    <link rel="stylesheet" href="assets/css/flaticon.css">
-    <link rel="stylesheet" href="assets/css/icomoon.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/icomoon.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <script type="text/javascript"
+            src="https://app.sandbox.midtrans.com/snap/snap.js"
+            data-client-key="{{config('midtrans.client_key')}}"></script>
   </head>
   <body style="overflow-x:hidden">
 
@@ -118,68 +120,57 @@
                   <div class="card" style="border-radius: 10px">
                     <div class="card-body" style=" background:#252525;border-radius:7px; padding-top:10px">
                       <div>
-                          <form method="POST" action="{{ route('donations.donate') }}">
-                              @csrf
-
-                              <label for="title">Judul program</label>
-                              <div class="input-group">
-                                {{-- <input type="text" value="{{ $campaign->title }}" disabled> --}}
-                              </div>
-
-                              <br>
-
-                              <label for="gross_amount">Nominal Donasi</label>
-                              <div class="input-group">
-                                  <div class="input-group-prepend">
-                                      <span class="input-group-text" style="padding:11.5px; background:white">Rp</span>
-                                  </div>
-                                  <input class="form-control" type="number" id="angkaInput" name="gross_amount" placeholder="Masukkan nominal. Contoh : 10.000" style="color:#FFFFFD" required>
-                                  @if ($errors->has('gross_amount'))
-                                      <span class="text-danger">{{ $errors->first('gross_amount') }}</span>
-                                  @endif
-                              </div>
-                              <br>
-
-                              <label for="name">Nama</label>
-                              <div class="row justify content-center col-8">
-                                <div class="form-check col-6">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                        Asli
-                                    </label>
-                                </div>
-                                <div class="form-check col-6">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                    <label class="form-check-label" for="flexRadioDefault2">
-                                        Anonimus
-                                    </label>
-                                </div>
-                              </div>
-                              <br>
-
-                              <div class="input-group">
-                                <input class="form-control" type="text" name="desc" placeholder="Masukkan doa atau deskripsi" style="color:#FFFFFD" required>
-                                  @if ($errors->has('desc'))
-                                      <span class="text-danger">{{ $errors->first('desc') }}</span>
-                                  @endif
-                              </div>
-                              <br>
-                              <div class="row justify-content-center">
-                                <button class="nav-link btn btn-success create-new-button" type="submit">Submit</button>
-                              </div>
-
-                          </form>
+                        <table>
+                            <tr>
+                                <td>Nama</td>
+                                <td>{{ $newDonation->campaign_id }}</td>
+                            </tr>
+                            <tr>
+                                <td>E-Mail</td>
+                                <td>{{ $newDonation->donor_id }}</td>
+                            </tr>
+                            <tr>
+                                <td>Harga</td>
+                                <td>Rp {{ number_format($newDonation->amount) }}</td>
+                            </tr>
+                            <button class="btn btn-primary" id="donate-btn">Bayar</button>
+                        </table>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-
             </div>
             <!-- content-wrapper ends -->
-
         </div>
     </div>
+
+    <script type="text/javascript">
+        // For example trigger on button clicked, or any time you need
+        var payButton = document.getElementById('donate-btn');
+        payButton.addEventListener('click', function () {
+            // Trigger snap popup. TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
+            window.snap.pay('{{$snapToken}}', {
+                onSuccess: function(result){
+                    /* You may add your own implementation here */
+                    window.location.href = '/donasi'
+                    alert("payment success!"); console.log(result);
+                },
+                onPending: function(result){
+                    /* You may add your own implementation here */
+                    alert("wating your payment!"); console.log(result);
+                },
+                onError: function(result){
+                    /* You may add your own implementation here */
+                    alert("payment failed!"); console.log(result);
+                },
+                onClose: function(){
+                    /* You may add your own implementation here */
+                    alert('you closed the popup without finishing the payment');
+                }
+            })
+        });
+    </script>
 
     <br>
     <br>
@@ -272,23 +263,23 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-  <script src="assets/js/jquery.easing.1.3.js"></script>
-  <script src="assets/js/jquery.waypoints.min.js"></script>
-  <script src="assets/js/jquery.stellar.min.js"></script>
-  <script src="assets/js/owl.carousel.min.js"></script>
-  <script src="assets/js/jquery.magnific-popup.min.js"></script>
-  <script src="assets/js/aos.js"></script>
-  <script src="assets/js/jquery.animateNumber.min.js"></script>
-  <script src="assets/js/bootstrap-datepicker.js"></script>
-  <script src="assets/js/jquery.timepicker.min.js"></script>
-  <script src="assets/js/scrollax.min.js"></script>
-  <script src="assets/https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="assets/js/google-map.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+  <script src="{{ asset('assets/js/jquery-migrate-3.0.1.min.js') }}"></script>
+  <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+  <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('assets/js/jquery.easing.1.3.js') }}"></script>
+  <script src="{{ asset('assets/js/jquery.waypoints.min.js') }}"></script>
+  <script src="{{ asset('assets/js/jquery.stellar.min.js') }}"></script>
+  <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
+  <script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
+  <script src="{{ asset('assets/js/aos.js') }}"></script>
+  <script src="{{ asset('assets/js/jquery.animateNumber.min.js') }}"></script>
+  <script src="{{ asset('assets/js/bootstrap-datepicker.js') }}"></script>
+  <script src="{{ asset('assets/js/jquery.timepicker.min.js') }}"></script>
+  <script src="{{ asset('assets/js/scrollax.min.js') }}"></script>
+  <script src="{{ asset('assets/https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false') }}"></script>
+  <script src="{{ asset('assets/js/google-map.js') }}"></script>
+  <script src="{{ asset('assets/js/main.js') }}"></script>
 
   </body>
 </html>

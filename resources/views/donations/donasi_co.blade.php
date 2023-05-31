@@ -17,7 +17,7 @@
             window.snap.pay('{{$snapToken}}', {
                 onSuccess: function(result){
                     /* You may add your own implementation here */
-                    window.location('/donations/user-donation');
+                    window.location.href = '/donasi'
                     alert("payment success!"); console.log(result);
                 },
                 onPending: function(result){

@@ -192,7 +192,7 @@
 
                         {{-- <a href="#" class="img" ></a> --}}
                         <div class="text p-3 p-md-4">
-                            <h3 style="margin-bottom:4px"><a href="#">{{ $campaign->title }}</a></h3>
+                            <h3 style="margin-bottom:4px"><a>{{ $campaign->title }}</a></h3>
                             <p style="margin-bottom:-5px">Pembuat Program:</p>
                             <p>{{ $campaign->user->name }}</p>
                             {{-- <p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p> --}}
@@ -215,7 +215,7 @@
                             <span class="fund-raised d-block" style="padding-bottom:15px">Rp28,000 Terkumpul dari Rp {{ number_format($campaign->target_amount,0,',','.') }}</span>
                             {{-- {{ number_format($attributes['goal'], 0, ',', '.')  --}}
                             {{-- <a href="/donations">Donasi Sekarang</a> --}}
-                            <a href="/donations/donate?title={{ $campaign->id }}" class="row justify-content-center">
+                            <a href="/donations/donasi-single/{{ $campaign->id }}" class="row justify-content-center">
                                 <button class="btn btn-primary d-flex" style="border-radius:25px">Donasi Sekarang</button>
                             </a>
                         </div>

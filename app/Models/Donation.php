@@ -12,7 +12,7 @@ class Donation extends Model
 
     public function campaigns()
     {
-        return $this->belongsTo(Campaign::class);
+        return $this->belongsTo(Campaign::class, 'campaign_id');
     }
 }
 

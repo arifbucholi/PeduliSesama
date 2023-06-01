@@ -33,8 +33,8 @@
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-          <a class="sidebar-brand brand-logo" href="index.html"><img src="assets2/images/logo.svg" alt="logo" /></a>
-          <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets2/images/logo-mini.svg" alt="logo" /></a>
+          <a class="sidebar-brand brand-logo" href="/index"><img src="assets2/images/logo.svg" alt="logo" /></a>
+          <a class="sidebar-brand brand-logo-mini" href="/index"><img src="assets2/images/logo-mini.svg" alt="logo" /></a>
         </div>
         <ul class="nav">
 
@@ -42,25 +42,36 @@
             <span class="nav-link">Navigasi</span>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="/dashboardadmin">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ddd" aria-expanded="false" aria-controls="ddd">
               <span class="menu-icon">
                 <i class="mdi mdi-view-grid"></i>
               </span>
               <span class="menu-title">Dashboard</span>
+              <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="ddd">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/dashboardadmin">Halaman Utama</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/campaigns">Program</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/daftarpengguna">Daftar Pengguna</a></li>
+
+                {{-- <li class="nav-item"> <a class="nav-link" href="/dropdowns">Dropdowns</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/typography">Typography</a></li> --}}
+              </ul>
+            </div>
           </li>
-          <li class="nav-item menu-items active">
-            <a class="nav-link" href="/program">
+          {{-- <li class="nav-item menu-items">
+            <a class="nav-link" href="/campaigns">
               <span class="menu-icon">
-                <i class="mdi mdi-wallet-travel"></i>
+                <i class="mdi mdi-speedometer"></i>
               </span>
               <span class="menu-title">Program</span>
             </a>
-          </li>
+          </li> --}}
           <li class="nav-item menu-items">
             <a class="nav-link" href="/beritaadmin">
               <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
+                <i class="mdi mdi-file-document-box"></i>
               </span>
               <span class="menu-title">Berita</span>
             </a>
@@ -73,7 +84,7 @@
               <span class="menu-title">Transaksi</span>
             </a>
           </li>
-          <li class="nav-item menu-items">
+          {{-- <li class="nav-item menu-items">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <span class="menu-icon">
                 <i class="mdi mdi-laptop"></i>
@@ -83,14 +94,14 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/buttons">Buttons</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/dropdowns">Dropdowns</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/typography">Typography</a></li>
               </ul>
             </div>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="pages/forms/basic_elements.html">
+            <a class="nav-link" href="/basic_elements">
               <span class="menu-icon">
                 <i class="mdi mdi-playlist-play"></i>
               </span>
@@ -98,7 +109,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="pages/tables/basic-table.html">
+            <a class="nav-link" href="/basic-table">
               <span class="menu-icon">
                 <i class="mdi mdi-table-large"></i>
               </span>
@@ -106,7 +117,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="pages/charts/chartjs.html">
+            <a class="nav-link" href="/chartjs">
               <span class="menu-icon">
                 <i class="mdi mdi-chart-bar"></i>
               </span>
@@ -114,7 +125,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="pages/icons/mdi.html">
+            <a class="nav-link" href="/mdi">
               <span class="menu-icon">
                 <i class="mdi mdi-contacts"></i>
               </span>
@@ -131,11 +142,11 @@
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
+                <li class="nav-item"> <a class="nav-link" href="/blank-page"> Blank Page </a></li>
+                <li class="nav-item"> <a class="nav-link" href="/error-404"> 404 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="/error-500"> 500 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="/login"> Login </a></li>
+                <li class="nav-item"> <a class="nav-link" href="/register"> Register </a></li>
               </ul>
             </div>
           </li>
@@ -146,7 +157,7 @@
               </span>
               <span class="menu-title">Documentation</span>
             </a>
-          </li>
+          </li> --}}
         </ul>
       </nav>
       <!-- partial -->

@@ -80,10 +80,12 @@ class DonationController extends Controller
 
     public function getUserDonation() {
         $user = Auth::id();
-        $user = 1;
-        $d = Donation::where('donor_id', $user)->orderBy('paid_at')->get();
-        return view('transaksiuser', compact('d')); // TODO: need route
-     }
+        // $user = 1;
+        $no=1;
+        $d = Donation::where('donor_id', $user)->with('campaigns')->orderBy('paid_at')->get();
+        // dd($d);
+        return view('transaksiuser', compact('d','no')); // TODO: need route
+    }
 
     // public function show($id){
     //     $campaign = Campaign::find($id);

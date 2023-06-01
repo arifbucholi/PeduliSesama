@@ -9,6 +9,7 @@ use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CampaignUserController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\API\SocialAuthController;
 use App\Http\Controllers\EditProfilUserController;
 
@@ -219,6 +220,11 @@ Route::middleware(['auth', 'cekrole'])->group(function () {
     Route::get('/campaigns/shows/{id}', [\App\Http\Controllers\CampaignController::class, 'shows'])->name('shows');
     Route::post('/campaigns/approveCampaign/{data}', [\App\Http\Controllers\CampaignController::class, 'approveCampaign'])->name('approveCampaign');
     // Route::post('/campaigns/updateCampaign/{data}', [\App\Http\Controllers\CampaignController::class, 'updateCampaign'])->name('updateCampaign');
+
+    // Route::get('/transaksiuser', [\App\Http\Controllers\CampaignController::class, 'create'])->name('create');
+
+
+
 
 
 

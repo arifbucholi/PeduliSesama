@@ -47,24 +47,27 @@
             </a>
             <div class="collapse" id="ddd">
               <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/dashboardadmin">Halaman Utama</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/campaigns">Program</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/daftarpengguna">Daftar Pengguna</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/dropdowns">Dropdowns</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/typography">Typography</a></li>
+
+                {{-- <li class="nav-item"> <a class="nav-link" href="/dropdowns">Dropdowns</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/typography">Typography</a></li> --}}
               </ul>
             </div>
           </li>
-          <li class="nav-item menu-items">
+          {{-- <li class="nav-item menu-items">
             <a class="nav-link" href="/campaigns">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
               <span class="menu-title">Program</span>
             </a>
-          </li>
+          </li> --}}
           <li class="nav-item menu-items">
             <a class="nav-link" href="/beritaadmin">
               <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
+                <i class="mdi mdi-file-document-box"></i>
               </span>
               <span class="menu-title">Berita</span>
             </a>
@@ -77,7 +80,7 @@
               <span class="menu-title">Transaksi</span>
             </a>
           </li>
-          <li class="nav-item menu-items">
+          {{-- <li class="nav-item menu-items">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <span class="menu-icon">
                 <i class="mdi mdi-laptop"></i>
@@ -150,7 +153,7 @@
               </span>
               <span class="menu-title">Documentation</span>
             </a>
-          </li>
+          </li> --}}
         </ul>
       </nav>
       <!-- partial -->

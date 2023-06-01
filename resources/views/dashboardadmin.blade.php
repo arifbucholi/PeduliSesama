@@ -51,8 +51,8 @@
                 <li class="nav-item"> <a class="nav-link" href="/campaigns">Program</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/daftarpengguna">Daftar Pengguna</a></li>
 
-                <li class="nav-item"> <a class="nav-link" href="/dropdowns">Dropdowns</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/typography">Typography</a></li>
+                {{-- <li class="nav-item"> <a class="nav-link" href="/dropdowns">Dropdowns</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/typography">Typography</a></li> --}}
               </ul>
             </div>
           </li>
@@ -80,7 +80,7 @@
               <span class="menu-title">Transaksi</span>
             </a>
           </li>
-          <li class="nav-item menu-items">
+          {{-- <li class="nav-item menu-items">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <span class="menu-icon">
                 <i class="mdi mdi-laptop"></i>
@@ -153,7 +153,7 @@
               </span>
               <span class="menu-title">Documentation</span>
             </a>
-          </li>
+          </li> --}}
         </ul>
       </nav>
       <!-- partial -->
@@ -167,16 +167,21 @@
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
               <span class="mdi mdi-menu"></span>
             </button>
-            <ul class="navbar-nav w-100">
+            {{-- <ul class="navbar-nav w-100">
               <li class="nav-item w-100">
                 <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
                   <input type="text" class="form-control" placeholder="Search products">
                 </form>
               </li>
+            </ul> --}}
+            <ul class="navbar-nav navbar-nav-center">
+                <li class="nav-item dropdown d-none d-lg-block">
+                    <a class="nav-link btn btn-success create-new-button" aria-expanded="false" href="/addcampaigns">+ Buat Program</a>
+                </li>
             </ul>
             <ul class="navbar-nav navbar-nav-right">
               <li class="nav-item dropdown d-none d-lg-block">
-                <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" data-bs-toggle="dropdown" aria-expanded="false" href="#">+ Create New Project</a>
+                {{-- <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" data-bs-toggle="dropdown" aria-expanded="false" href="/addcampaigns">+ Buat Program</a> --}}
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="createbuttonDropdown">
                   <h6 class="p-3 mb-0">Projects</h6>
                   <div class="dropdown-divider"></div>
@@ -320,7 +325,7 @@
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
                   <h6 class="p-3 mb-0">Profile</h6>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
+                  {{-- <a class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-settings text-success"></i>
@@ -340,7 +345,7 @@
                     <div class="preview-item-content">
                         <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
                     </div>
-                    </a>
+                    </a> --}}
                   <div class="dropdown-divider"></div>
                   <a href="/logout" class="dropdown-item preview-item">
                     <div class="preview-thumbnail">

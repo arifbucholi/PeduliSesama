@@ -6,6 +6,7 @@ use App\Models\Campaign;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use App\Notifications\CampaignSubmitted;
 
 class CampaignController extends Controller
 {
@@ -122,6 +123,8 @@ class CampaignController extends Controller
         // return view('addcampaigns', [
         //     'campaigns' => $campaigns
         // ]);
+        $admin = User::where('is_admin', true)->first();
+        $admin->notify(new CampaignSubmitted($campaigns));
         return redirect('/campaigns')->with('success', 'Some success message'); // TODO: need route
     }
 

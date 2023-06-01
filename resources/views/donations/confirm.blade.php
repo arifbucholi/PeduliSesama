@@ -121,19 +121,22 @@
                     <div class="card-body" style=" background:#252525;border-radius:7px; padding-top:10px">
                       <div>
                         <table>
-                            <tr>
-                                <td>Nama</td>
-                                <td>{{ $newDonation->campaign_id }}</td>
-                            </tr>
-                            <tr>
-                                <td>E-Mail</td>
-                                <td>{{ $newDonation->donor_id }}</td>
-                            </tr>
-                            <tr>
-                                <td>Harga</td>
-                                <td>Rp {{ number_format($newDonation->amount) }}</td>
-                            </tr>
-                            <button class="btn btn-primary" id="donate-btn">Bayar</button>
+                          <tr>Jumlah Donasi</tr>
+                          <br>
+                          <tr>Rp {{ number_format($newDonation->amount) }}</tr>
+                          <br>
+                          <br>
+                          <tr>E-Mail Anda</tr>
+                          <br>
+                          <tr>{{ $newDonation->userd->email }}</tr>
+                          <br>
+                          <br>
+                          <tr>Kampanye yang anda pilih</tr>
+                          <br>
+                          <tr>{{ $newDonation->campaigns->title }}</tr>
+                          <br>
+                          <br>
+                          <button class="btn btn-primary" id="donate-btn">Bayar</button>
                         </table>
                       </div>
                     </div>

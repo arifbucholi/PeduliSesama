@@ -60,7 +60,7 @@ class User extends Authenticatable
         return $this->hasMany(Campaign::class);
     }
 
-    public function donations()
+    public function donation()
     {
         return $this->hasMany(Donation::class);
     }

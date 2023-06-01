@@ -45,10 +45,12 @@ class DonationController extends Controller
         \Midtrans\Config::$isSanitized = true;
         \Midtrans\Config::$is3ds = true;
 
+
+        $strDonation = substr($newDonation->campaigns->title,0,3);
         // temp data
         $params = array(
             'transaction_details' => array(
-                'order_id' => "don".$newDonation->id,
+                'order_id' => $strDonation.str_pad($newDonation->id,5,"0",STR_PAD_LEFT),
                 'gross_amount' => $newDonation->amount,
             ),
             'customer_details' => array(

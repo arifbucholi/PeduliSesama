@@ -237,13 +237,13 @@
                                 <div class="progress-bar bg-primary" role="progressbar" style="width: 98.5%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                             </div> --}}
                             @php
-                                $totalAmount = $campaigns->sum('amount');
+                                $totalDonation = App\Models\Donation::where('campaign_id', $campaign->id)->sum('amount');
                             @endphp
                             <div class="progress custom-progress-success">
-                                <div id="progress-bar" class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{ ($totalAmount / $campaign->target_amount) * 100 }}%"></div>
+                                <div id="progress-bar" class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{ ($totalDonation / $campaign->target_amount) * 100 }}%"></div>
                             </div>
                             <span class="fund-raised d-block text-center" style="padding-bottom:15px; word-wrap:break-word">
-                                Rp {{ number_format($totalAmount, 0, ',', '.') }} Terkumpul dari Rp {{ number_format($campaign->target_amount,0,',','.') }}
+                                Rp {{ number_format($totalDonation, 0, ',', '.') }} Terkumpul dari Rp {{ number_format($campaign->target_amount,0,',','.') }}
                             </span>
                             {{-- {{ number_format($attributes['goal'], 0, ',', '.')  --}}
                             {{-- <a href="/donations">Donasi Sekarang</a> --}}

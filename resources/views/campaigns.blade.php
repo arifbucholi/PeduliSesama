@@ -165,22 +165,27 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
             <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-              <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets2/images/logo-mini.svg" alt="logo" /></a>
+              <a class="navbar-brand brand-logo-mini" href="/index"><img src="assets2/images/logo-mini.svg" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
               <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                 <span class="mdi mdi-menu"></span>
               </button>
-              <ul class="navbar-nav w-100">
+              {{-- <ul class="navbar-nav w-100">
                 <li class="nav-item w-100">
-                  {{-- <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+                  <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
                     <input type="text" class="form-control" placeholder="Search products">
-                  </form> --}}
+                  </form>
                 </li>
+              </ul> --}}
+              <ul class="navbar-nav navbar-nav-center">
+                  <li class="nav-item dropdown d-none d-lg-block">
+                      <a class="nav-link btn btn-success create-new-button" aria-expanded="false" href="/addcampaigns">+ Buat Program</a>
+                  </li>
               </ul>
               <ul class="navbar-nav navbar-nav-right">
                 <li class="nav-item dropdown d-none d-lg-block">
-                  <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" data-bs-toggle="dropdown" aria-expanded="false" href="#">+ Create New Project</a>
+                  {{-- <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" data-bs-toggle="dropdown" aria-expanded="false" href="/addcampaigns">+ Buat Program</a> --}}
                   <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="createbuttonDropdown">
                     <h6 class="p-3 mb-0">Projects</h6>
                     <div class="dropdown-divider"></div>
@@ -324,7 +329,7 @@
                   <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
                     <h6 class="p-3 mb-0">Profile</h6>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item preview-item">
+                    {{-- <a class="dropdown-item preview-item">
                       <div class="preview-thumbnail">
                         <div class="preview-icon bg-dark rounded-circle">
                           <i class="mdi mdi-settings text-success"></i>
@@ -344,12 +349,12 @@
                       <div class="preview-item-content">
                           <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
                       </div>
-                      </a>
+                      </a> --}}
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item preview-item">
+                    <a href="/logout" class="dropdown-item preview-item">
                       <div class="preview-thumbnail">
                         <div class="preview-icon bg-dark rounded-circle">
-                          <i class="mdi mdi-logout text-danger"></i>
+                              <i class="mdi mdi-logout text-danger"></i>
                         </div>
                       </div>
                       <div class="preview-item-content">
@@ -365,7 +370,7 @@
                 <span class="mdi mdi-format-line-spacing"></span>
               </button>
             </div>
-        </nav>
+          </nav>
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper" style="border-radius: 10px">

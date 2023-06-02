@@ -7,6 +7,7 @@ use App\Models\Users;
 use App\Models\Campaign;
 use App\Models\Donation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreUsersRequest;
 use App\Http\Requests\UpdateUsersRequest;
@@ -140,10 +141,23 @@ class UsersController extends Controller
         $campaignCount = Campaign::count();
         $userCount = User::count();
         $donations = Donation::orderBy('amount', 'desc')->take(5)->get();
+        $donations2 = Donation::select('donor_id', DB::raw('COUNT(*) as total_donations'), DB::raw('SUM(amount) as total_amount'))
+        ->groupBy('donor_id')
+        ->orderBy('total_donations', 'desc')
+        ->take(5)
+        ->get();
+
+        // Ambil data user berdasarkan donor_id
+        $userIds = $donations->pluck('donor_id');
+        $users = User::whereIn('id', $userIds)->get();
+
         return view('dashboardadmin', [
             'userCount' => $userCount,
-            'campaignCount' => $campaignCount
-        ], compact('donations'));
+            'campaignCount' => $campaignCount,
+            'donations' => $donations,
+            'donations2' => $donations2,
+            'users' => $users
+        ]);
     }
 
     public function showUser()

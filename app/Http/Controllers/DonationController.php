@@ -17,7 +17,8 @@ class DonationController extends Controller
     public function index($id)
     {
         $data = Campaign::find($id);
-        return view('donations.form',['c'=>$data]);
+        $totalDonation = Donation::where('campaign_id', $id)->sum('amount');
+        return view('donations.form',['c'=>$data, 'toalDonation'=>$totalDonation]);
     }
 
     function detail($id)

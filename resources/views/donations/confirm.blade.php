@@ -128,7 +128,7 @@
                           <br>
                           <tr>E-Mail Anda</tr>
                           <br>
-                          <tr>{{ $newDonation->userd->email }}</tr>
+                          <tr>{{ $newDonation->user->email }}</tr>
                           <br>
                           <br>
                           <tr>Kampanye yang anda pilih</tr>

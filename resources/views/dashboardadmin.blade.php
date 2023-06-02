@@ -463,7 +463,7 @@
                                     <img src="assets2/images/faces/face1.jpg" alt="image" />
                                     <span class="ps-2">{{ $donation->user->name }}</span>
                                 </td>
-                                <td>amount</td>
+                                <td>{{ number_format($donation->amount) }}</td>
                             </tr>
                             @endforeach
 

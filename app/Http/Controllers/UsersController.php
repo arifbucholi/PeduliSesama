@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\Fortify\UpdateUserPassword;
 use App\Models\User;
-use App\Models\Donation;
 use App\Models\Users;
 use App\Models\Campaign;
+use App\Models\Donation;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreUsersRequest;
 use App\Http\Requests\UpdateUsersRequest;
-use Illuminate\Http\Request;
+use App\Actions\Fortify\UpdateUserPassword;
 
 class UsersController extends Controller
 {
@@ -138,10 +139,11 @@ class UsersController extends Controller
     {
         $campaignCount = Campaign::count();
         $userCount = User::count();
+        $donations = Donation::orderBy('amount', 'desc')->take(5)->get();
         return view('dashboardadmin', [
             'userCount' => $userCount,
             'campaignCount' => $campaignCount
-        ]);
+        ], compact('donations'));
     }
 
     public function showUser()
@@ -149,15 +151,5 @@ class UsersController extends Controller
         $users = Users::all();
         $no = 1;
         return view('daftarpengguna', compact('users','no'));
-    }
-
-    public function indexAdmin()
-    {
-        $donations = Donation::with('user')
-            ->orderBy('amount', 'desc')
-            ->take(5)
-            ->get();
-
-        return view('dashboardadmin', compact('donations'));
     }
 }

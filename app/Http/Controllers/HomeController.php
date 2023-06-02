@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Campaign;
+use App\Models\Donation;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -27,11 +30,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // if (Auth::check() && Auth::user()->is_admin) {
-        //     return redirect()->route('dashboardadmin');
-        // } else {
-        //     return redirect()->route('index');
-        // }
         $campaigns = Campaign::all();
         return view('index', compact('campaigns'));
     }
@@ -41,25 +39,6 @@ class HomeController extends Controller
         return view('profil');
     }
 
-    public function indexAdmin()
-    {
-    //     if (Auth::check() && Auth::user()->is_admin) {
-    //         return redirect()->route('dashboardadmin');
-    //     } else {
-    //         return redirect()->route('index');
-    //     }
-        return view('dashboardadmin');
-    }
 
-    // public function userCount()
-    // {
-    //     $userCount = User::count();
-    //     return view('dashboardadmin', compact('userCount'));
-    // }
 
-    // public function campaignCount()
-    // {
-    //     $campaignCount = Campaign::count();
-    //     return view('dashboardadmin', compact('campaignCount'));
-    // }
 }

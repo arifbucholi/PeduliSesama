@@ -178,7 +178,15 @@ Route::group([
 
 // Route::middleware(['auth'])->group(function(){
 Route::middleware(['auth', 'cekrole'])->group(function () {
-    Route::get('/dashboardadmin', [App\Http\Controllers\HomeController::class, 'indexAdmin'])->name('indexAdmin');
+    // Route::get('/dashboardadmin', [App\Http\Controllers\HomeController::class, 'indexAdmin'])->name('indexAdmin');
+    // Route::get('/dashboardadmin', [App\Http\Controllers\HomeController::class, 'indexAdmin']);
+
+    Route::get('/dashboardadmin', [App\Http\Controllers\UsersController::class, 'indexAdmin']);
+
+    // Route::get('/dashboardadmin', [App\Http\Controllers\HomeController::class, 'dashboardAdmin']);
+    // Route::get('/dashboardadmin', [App\Http\Controllers\HomeController::class, 'laravelDonatur']);
+
+
 
     // Dashboard Admin
     // Route::get('/dashboardadmin', [LoginController::class, 'authenticated'])->name('dashboardadmin');

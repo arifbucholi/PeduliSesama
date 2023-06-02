@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Actions\Fortify\UpdateUserPassword;
 use App\Models\User;
+use App\Models\Donation;
 use App\Models\Users;
 use App\Models\Campaign;
 use App\Http\Requests\StoreUsersRequest;
@@ -148,5 +149,15 @@ class UsersController extends Controller
         $users = Users::all();
         $no = 1;
         return view('daftarpengguna', compact('users','no'));
+    }
+
+    public function indexAdmin()
+    {
+        $donations = Donation::with('user')
+            ->orderBy('amount', 'desc')
+            ->take(5)
+            ->get();
+
+        return view('dashboardadmin', compact('donations'));
     }
 }

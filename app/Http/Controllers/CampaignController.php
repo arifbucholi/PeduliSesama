@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Campaign;
+use App\Models\Donation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -28,12 +29,19 @@ class CampaignController extends Controller
     }
 
     // view user
+    // public function index2()
+    // {
+
+    //     $campaigns =Campaign::all();
+    //     return view('donasi', compact('campaigns')); // TODO: need view
+
+    // }
+
     public function index2()
     {
+        $campaigns = Campaign::withSum('donations', 'amount')->get();
 
-        $campaigns =Campaign::all();
-        return view('donasi', compact('campaigns')); // TODO: need view
-
+        return view('donasi', compact('campaigns'));
     }
 
     //view dashboard

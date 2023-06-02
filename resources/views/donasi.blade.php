@@ -46,6 +46,32 @@
     }
     </style>
 
+    <style>
+        .search-input {
+            position: relative;
+            display: inline-block;
+
+        }
+
+        .search-input input[type="text"] {
+            padding-right: 30px;
+        }
+
+        .search-input::before {
+            content: "";
+            position: absolute;
+            top: 49%;
+            right: 10px;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            background-image: url( https://cdn-icons-png.flaticon.com/512/482/482631.png);
+            background-size: cover;
+        }
+
+    </style>
+
+
   </head>
   <body>
 
@@ -166,7 +192,9 @@
             <div class="col-md-12">
                 <div class="row justify-content-center filter-btns">
                     <div class="col-md-6 mb-3">
-                        <input type="text" id="campaign-filter" placeholder="Filter berdasarkan judul..." oninput="filterCampaigns('all')">
+                        <div class="search-input" >
+                            <input type="text" id="campaign-filter" placeholder="Filter berdasarkan judul..." oninput="filterCampaigns('all')" class="form-control" style="border-radius: 25px; height:30px">
+                        </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <button class="btn btn-primary mr-2 mb-3" style="border-radius:25px;" onclick="filterCampaigns('all')">Semua</button>
@@ -198,7 +226,7 @@
                             {{-- <p>Teks tentang program atau deskripsi program ada disini Teks tentang program atau deskripsi program ada disini</p> --}}
 
                             <p style="margin-bottom:0px; word-wrap:break-word">{{ Str::limit($campaign->desc, 90, '...') }}</p>
-                            <a href="">Baca Selengkapnya</a>
+                            <a href="/donations/donasi-single/{{ $campaign->id }}">Baca Selengkapnya</a>
 
                             @php
                                 $endDate = \Carbon\Carbon::parse($campaign->dateline);
@@ -208,11 +236,15 @@
                             {{-- <div class="progress custom-progress-success">
                                 <div class="progress-bar bg-primary" role="progressbar" style="width: 98.5%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                             </div> --}}
+                            @php
+                                $totalAmount = $campaigns->sum('amount');
+                            @endphp
                             <div class="progress custom-progress-success">
-                                <div id="progress-bar" class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div id="progress-bar" class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{ ($totalAmount / $campaign->target_amount) * 100 }}%"></div>
                             </div>
-
-                            <span class="fund-raised d-block" style="padding-bottom:15px">Rp28,000 Terkumpul dari Rp {{ number_format($campaign->target_amount,0,',','.') }}</span>
+                            <span class="fund-raised d-block text-center" style="padding-bottom:15px; word-wrap:break-word">
+                                Rp {{ number_format($totalAmount, 0, ',', '.') }} Terkumpul dari Rp {{ number_format($campaign->target_amount,0,',','.') }}
+                            </span>
                             {{-- {{ number_format($attributes['goal'], 0, ',', '.')  --}}
                             {{-- <a href="/donations">Donasi Sekarang</a> --}}
                             <a href="/donations/donasi-single/{{ $campaign->id }}" class="row justify-content-center">

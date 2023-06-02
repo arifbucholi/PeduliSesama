@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Donation;
 
 class Campaign extends Model
 {
@@ -39,6 +40,6 @@ class Campaign extends Model
 
     public function donations()
     {
-        return $this->hasMany(Donations::class);
+        return $this->hasMany(Donation::class);
     }
 }

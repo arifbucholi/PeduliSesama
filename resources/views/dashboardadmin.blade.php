@@ -452,19 +452,22 @@
                             <tr>
                               <th>Nama</th>
                               <th>Nominal</th>
-                              <th>Keterangan</th>
+                              {{-- <th>Keterangan</th> --}}
                             </tr>
                           </thead>
                           <tbody>
+
+                            @foreach ($donations as $donation)
                             <tr>
-                              <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                <span class="ps-2">Henry Klein</span>
-                              </td>
-                              <td>10.000.000</td>
-                              <td><a href="/">Detail</a></td>
+                                <td>
+                                    <img src="assets2/images/faces/face1.jpg" alt="image" />
+                                    <span class="ps-2">{{ $donation->user->name }}</span>
+                                </td>
+                                <td>amount</td>
                             </tr>
-                            <tr>
+                            @endforeach
+
+                            {{-- <tr>
                               <td>
                                 <img src="assets2/images/faces/face1.jpg" alt="image" />
                                 <span class="ps-2">Messy</span>
@@ -495,7 +498,7 @@
                               </td>
                               <td>2.000.000</td>
                               <td><a href="/">Detail</a></td>
-                            </tr>
+                            </tr> --}}
                           </tbody>
                         </table>
                       </div>

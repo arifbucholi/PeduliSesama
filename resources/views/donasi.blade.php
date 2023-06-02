@@ -211,7 +211,12 @@
                 Tidak ada kampanye dalam kategori ini.
             </div>
             @foreach ($campaigns as $campaign)
-                @if ($campaign->status == 0)
+                @php
+                    $dateline = \Carbon\Carbon::parse($campaign->dateline);
+                    // $remainingDays = $dateline->diffInDays(\Carbon\Carbon::now());
+                @endphp
+
+                @if ($campaign->status == 0 && $dateline >= \Carbon\Carbon::now())
       		    {{-- <div class="col-md-4 ftco-animate filter-item {{ $campaign->category }}"> --}}
       		    <div class="col-md-4 filter-item {{ $campaign->category }}">
 
@@ -233,9 +238,6 @@
                                 $remainingDays = $endDate->diffInDays(\Carbon\Carbon::now());
                             @endphp
                             <span class="donation-time mb-3 d-block">Sisa : {{ $remainingDays }} hari</span>
-                            {{-- <div class="progress custom-progress-success">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 98.5%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div> --}}
                             @php
                                 $totalDonation = App\Models\Donation::where('campaign_id', $campaign->id)->sum('amount');
                             @endphp
@@ -245,8 +247,7 @@
                             <span class="fund-raised d-block text-center" style="padding-bottom:15px; word-wrap:break-word">
                                 Rp {{ number_format($totalDonation, 0, ',', '.') }} Terkumpul dari Rp {{ number_format($campaign->target_amount,0,',','.') }}
                             </span>
-                            {{-- {{ number_format($attributes['goal'], 0, ',', '.')  --}}
-                            {{-- <a href="/donations">Donasi Sekarang</a> --}}
+
                             <a href="/donations/donasi-single/{{ $campaign->id }}" class="row justify-content-center">
                                 <button class="btn btn-primary d-flex" style="border-radius:25px">Donasi Sekarang</button>
                             </a>

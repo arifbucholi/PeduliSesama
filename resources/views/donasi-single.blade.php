@@ -106,13 +106,13 @@
     <!-- END nav -->
 
     <section class="ftco-section" style="padding:10px; padding:47px; background:#252525"></section>
-    <section class="ftco-section" style="padding-bottom:20px;">
-        <div class="container justify-content-center" style="padding:10 110px">
+    <section class="ftco-section" style="padding-bottom:20px;padding-top:47px">
+        <div class="container justify-content-center">
           {{-- @foreach ($campaigns as $campaign) --}}
           <h1 class="text-center">{{ $c->title }}</h1>
           <br>
           <div class="row">
-            <div class="col-md-12 ftco-animate">
+            <div class="col-md-12 ftco-animate"  style="padding: 140px; padding-bottom:20px; padding-top:5px">
                 <div style="text-align: center">
                     <img src="{{ $c->img_url }}"  class="img-fluid" style="display: inline-block; max-width:500px" alt="">
                 </div>

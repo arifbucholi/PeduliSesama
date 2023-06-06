@@ -163,7 +163,12 @@ class UsersController extends Controller
     public function showUser()
     {
         $users = Users::all();
+        $totalAmount = Donation::select('donor_id', DB::raw('COUNT(*) as total_donations'), DB::raw('SUM(amount) as total_amount'))
+        ->groupBy('donor_id')
+        ->orderBy('total_donations', 'desc')
+        ->get();
+
         $no = 1;
-        return view('daftarpengguna', compact('users','no'));
+        return view('daftarpengguna', compact('users','no','totalAmount'));
     }
 }

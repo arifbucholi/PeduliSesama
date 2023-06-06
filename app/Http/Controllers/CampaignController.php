@@ -28,7 +28,7 @@ class CampaignController extends Controller
 
     }
 
-    // view user
+    // view donasi user
     // public function index2()
     // {
 
@@ -40,7 +40,7 @@ class CampaignController extends Controller
     public function index2()
     {
         $campaigns = Campaign::withSum('donations', 'amount')->get();
-
+        // dd($campaigns);
         return view('donasi', compact('campaigns'));
     }
 

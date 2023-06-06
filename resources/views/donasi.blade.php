@@ -196,12 +196,12 @@
                             <input type="text" id="campaign-filter" placeholder="Filter berdasarkan judul..." oninput="filterCampaigns('all')" class="form-control" style="border-radius: 25px; height:30px">
                         </div>
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <button class="btn btn-primary mr-2 mb-3" style="border-radius:25px;" onclick="filterCampaigns('all')">Semua</button>
-                        <button class="btn btn-primary mr-2 mb-3" style="border-radius:25px;" onclick="filterCampaigns('Sosial')">Sosial</button>
-                        <button class="btn btn-primary mr-2 mb-3" style="border-radius:25px;" onclick="filterCampaigns('Kesehatan')">Kesehatan</button>
-                        <button class="btn btn-primary mr-2 mb-3" style="border-radius:25px;" onclick="filterCampaigns('Pendidikan')">Pendidikan</button>
-                        <button class="btn btn-primary mr-2 mb-3" style="border-radius:25px;" onclick="filterCampaigns('BencanaAlam')">Bencana Alam</button>
+                    <div class="col-md-6 pt-3">
+                        <button class="btn btn-primary mr-2" style="border-radius:25px;" onclick="filterCampaigns('all')">Semua</button>
+                        <button class="btn btn-primary mr-2" style="border-radius:25px;" onclick="filterCampaigns('Sosial')">Sosial</button>
+                        <button class="btn btn-primary mr-2" style="border-radius:25px;" onclick="filterCampaigns('Kesehatan')">Kesehatan</button>
+                        <button class="btn btn-primary mr-2" style="border-radius:25px;" onclick="filterCampaigns('Pendidikan')">Pendidikan</button>
+                        <button class="btn btn-primary mr-2" style="border-radius:25px;" onclick="filterCampaigns('BencanaAlam')">Bencana Alam</button>
                     </div>
                 </div>
             </div>
@@ -213,7 +213,7 @@
             @foreach ($campaigns as $campaign)
                 @php
                     $dateline = \Carbon\Carbon::parse($campaign->dateline);
-                    // $remainingDays = $dateline->diffInDays(\Carbon\Carbon::now());
+                    $remainingDays = $dateline->diffInDays(\Carbon\Carbon::now());
                 @endphp
 
                 @if ($campaign->status == 0 && $dateline >= \Carbon\Carbon::now())

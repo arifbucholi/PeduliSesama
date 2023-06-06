@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Date;
 use Midtrans\Config;
 use Midtrans\Snap;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 
 
 class DonationController extends Controller
@@ -18,13 +19,26 @@ class DonationController extends Controller
     {
         $data = Campaign::find($id);
         $totalDonation = Donation::where('campaign_id', $id)->sum('amount');
-        return view('donations.form',['c'=>$data, 'toalDonation'=>$totalDonation]);
+        // dd($data);
+        return view('donations.form',['c'=>$data, 'totalDonation'=>$totalDonation]);
     }
 
     function detail($id)
     {
         $data = Campaign::find($id);
-        return view('donasi-single',['c'=>$data]) ;
+        $totalDonation = Donation::where('campaign_id', $id)->sum('amount');
+        // dd($totalDonation);
+        $desc = Donation::where('campaign_id',$id)->get();
+        $descCount = Donation::where('campaign_id', $id)->count();
+
+        // dd($desc);
+        return view('donasi-single',[
+            'c'=>$data,
+            'totalDonation'=>$totalDonation,
+            'desc' => $desc,
+            'descCount' => $descCount
+
+            ]) ;
     }
 
     public function donate(Request $request) {
@@ -96,4 +110,29 @@ class DonationController extends Controller
     //     // Jika kampanye ditemukan, Anda dapat melakukan tindakan lain, misalnya menampilkan data kampanye ke view
     //     return view('donations', compact('campaign'));
     // }
+
+    public function categoryList()
+    {
+        // Mendapatkan data kategori dan jumlahnya dari tabel Campaign
+        $categoryCounts = Campaign::select('category', DB::raw('COUNT(*) as count'))
+        ->groupBy('category')
+        ->pluck('count', 'category')
+        ->toArray();
+
+        // Mengirimkan data ke tampilan (view)
+
+        // dd($categoryCounts);
+        return view('donasi-single', compact('categoryCounts'));
+
+    }
+
+    public function sideProgram()
+    {
+
+        $campaigns =Campaign::all();
+        // dd($campaigns);
+        return view('donasi-single', compact('campaigns'));
+
+    }
+
 }

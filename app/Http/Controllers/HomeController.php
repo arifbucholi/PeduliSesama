@@ -30,8 +30,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $campaigns = Campaign::all();
-        return view('index', compact('campaigns'));
+        $campaigns = Campaign::all()
+        ->get();
+        $donations2 = Donation::select('donor_id', DB::raw('COUNT(*) as total_donations'), DB::raw('SUM(amount) as total_amount'))
+        ->get();
+        // $campaignCount = Campaign::count();
+
+
+        return view('index', compact('campaigns','donations2'));
     }
 
     public function userProfile()

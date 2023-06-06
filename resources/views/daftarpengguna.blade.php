@@ -396,9 +396,9 @@
                                 <span class="ps-2">{{ $user->name }}</span>
                             </td>
                             <td> {{ $user->email }} </td>
-                            {{-- <td>
-                                Rp6.000,00
-                            </td> --}}
+                            <td>
+                                {{ $user->totalAmount }}
+                            </td>
                         </tr>
                         @endforeach
                         </tbody>

@@ -106,13 +106,16 @@
     <!-- END nav -->
 
     <section class="ftco-section" style="padding:10px; padding:47px; background:#252525"></section>
-    <section class="ftco-section ftco-degree-bg">
-        <div class="container">
+    <section class="ftco-section" style="padding-bottom:20px;">
+        <div class="container justify-content-center" style="padding:10 110px">
+          {{-- @foreach ($campaigns as $campaign) --}}
           <h1 class="text-center">{{ $c->title }}</h1>
           <br>
           <div class="row">
-            <div class="col-md-8 ftco-animate">
-                <img src="https://www.yuksinau.id/wp-content/uploads/2019/05/Serigala.jpg" class="img-fluid" alt="">
+            <div class="col-md-12 ftco-animate">
+                <div style="text-align: center">
+                    <img src="{{ $c->img_url }}"  class="img-fluid" style="display: inline-block; max-width:500px" alt="">
+                </div>
                 <br>
                 <br>
                 {{-- @php
@@ -130,125 +133,43 @@
                     </a>
                     </div>
                 </div>
-                <span class="donation-time mb-3 d-block">Sisa : {{ $c->dateline }}</span>
+                @php
+                $endDate = \Carbon\Carbon::parse($c->dateline);
+                $remainingDays = $endDate->diffInDays(\Carbon\Carbon::now());
+                @endphp
+                <span class="donation-time mb-3 d-block">Sisa : {{ $remainingDays }} Hari</span>
 
-              {{-- <div class="progress custom-progress-success">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 98.5%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-              </div> --}}
-              <div class="progress custom-progress-success">
-                  <div id="progress-bar" class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
+                <div class="progress custom-progress-success" style="height:7px;">
+                    <div id="progress-bar" class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{ $totalDonation}}%; "></div>
+                </div>
+
               {{-- <span class="fund-raised d-block" style="padding-bottom:15px">Rp28,000 Terkumpul dari Rp {{ number_format($campaign->target_amount,0,',','.') }}</span> --}}
-              <span class="fund-raised d-block" style="padding-bottom:15px">Rp28,000 Terkumpul dari {{ number_format($c->target_amount) }}</span>
+              <span class="fund-raised d-block" style="padding-bottom:15px;padding-top:5px">Rp {{ number_format($totalDonation, 0, ',', '.')}} Terkumpul dari {{ number_format($c->target_amount, 0, ',', '.') }}</span>
 
               {{-- {{ number_format($attributes['goal'], 0, ',', '.')  --}}
               {{-- <a href="/donations">Donasi Sekarang</a> --}}
 
               <p style="word-wrap:break-word">{{ $c->desc }}</p>
 
-
-              {{-- <div class="tag-widget post-tag-container mb-5 mt-5">
-                <div class="tagcloud">
-                  <a href="#" class="tag-cloud-link">Life</a>
-                  <a href="#" class="tag-cloud-link">Sport</a>
-                  <a href="#" class="tag-cloud-link">Tech</a>
-                  <a href="#" class="tag-cloud-link">Travel</a>
-                </div>
-              </div> --}}
-
-              {{-- <div class="about-author d-flex p-5 bg-light">
-                <div class="bio align-self-md-center mr-5">
-                  <img src="images/person_1.jpg" alt="Image placeholder" class="img-fluid mb-4">
-                </div>
-                <div class="desc align-self-md-center">
-                  <h3>Lance Smith</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
-                </div>
-              </div> --}}
-
-
-              <div class="pt-5 mt-5">
+              <div class="pt-5 mt-3">
                 <h3 class="mb-5">Komentar dan Doa</h3>
+                @foreach ($desc as $item)
                 <ul class="comment-list">
-                  <li class="comment">
-                    <div class="vcard bio">
-                      <img src="images/person_1.jpg" alt="Image placeholder">
-                    </div>
-                    <div class="comment-body">
-                      <h3>John Doe</h3>
-                      {{-- <div class="meta">June 27, 2018 at 2:21pm</div> --}}
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                      {{-- <p><a href="#" class="reply">Reply</a></p> --}}
-                    </div>
-                  </li>
-
-                  {{-- <li class="comment">
-                    <div class="vcard bio">
-                      <img src="images/person_1.jpg" alt="Image placeholder">
-                    </div>
-                    <div class="comment-body">
-                      <h3>John Doe</h3>
-                      <div class="meta">June 27, 2018 at 2:21pm</div>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                      <p><a href="#" class="reply">Reply</a></p>
-                    </div>
-
-                    <ul class="children">
-                      <li class="comment">
-                        <div class="vcard bio">
-                          <img src="images/person_1.jpg" alt="Image placeholder">
+                    <li class="comment">
+                      <div class="vcard bio">
+                          <img src="   https://cdn-icons-png.flaticon.com/512/3024/3024605.png " alt="Image placeholder" width="30" height="48">
                         </div>
                         <div class="comment-body">
-                          <h3>John Doe</h3>
-                          <div class="meta">June 27, 2018 at 2:21pm</div>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                          <p><a href="#" class="reply">Reply</a></p>
+                            <h3>{{ $item->user->name }}</h3>
+                            {{-- <div class="meta">June 27, 2018 at 2:21pm</div> --}}
+                            <p>{{ $item->desc }}</p>
+                            {{-- <p><a href="#" class="reply">Reply</a></p> --}}
                         </div>
-
-
-                        <ul class="children">
-                          <li class="comment">
-                            <div class="vcard bio">
-                              <img src="images/person_1.jpg" alt="Image placeholder">
-                            </div>
-                            <div class="comment-body">
-                              <h3>John Doe</h3>
-                              <div class="meta">June 27, 2018 at 2:21pm</div>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                              <p><a href="#" class="reply">Reply</a></p>
-                            </div>
-
-                              <ul class="children">
-                                <li class="comment">
-                                  <div class="vcard bio">
-                                    <img src="images/person_1.jpg" alt="Image placeholder">
-                                  </div>
-                                  <div class="comment-body">
-                                    <h3>John Doe</h3>
-                                    <div class="meta">June 27, 2018 at 2:21pm</div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                                    <p><a href="#" class="reply">Reply</a></p>
-                                  </div>
-                                </li>
-                              </ul>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li> --}}
-
-                  <li class="comment">
-                    <div class="vcard bio">
-                      <img src="images/person_1.jpg" alt="Image placeholder">
-                    </div>
-                    <div class="comment-body">
-                      <h3>John Doe</h3>
-                      {{-- <div class="meta">June 27, 2018 at 2:21pm</div> --}}
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                      {{-- <p><a href="#" class="reply">Reply</a></p> --}}
-                    </div>
-                  </li>
+                    </li>
                 </ul>
+                @endforeach
+                <p style="text-align: center">---------------------------------------------------------------</p>
+
                 <!-- END comment-list -->
 
                 {{-- <div class="comment-form-wrap pt-5">
@@ -280,7 +201,9 @@
               </div>
 
             </div> <!-- .col-md-8 -->
-            <div class="col-md-4 sidebar ftco-animate">
+           {{-- @endforeach --}}
+
+            {{-- <div class="col-md-4 sidebar ftco-animate"> --}}
               {{-- <div class="sidebar-box">
                 <form action="#" class="search-form">
                   <div class="form-group">
@@ -289,19 +212,21 @@
                   </div>
                 </form>
               </div> --}}
-              <div class="sidebar-box ftco-animate">
+              {{-- <div class="sidebar-box ftco-animate">
                 <div class="categories">
-                  <h3>Kategori</h3>
-                  <li><a href="#">Sosial <span>(12)</span></a></li>
-                  <li><a href="#">Kesehatan <span>(22)</span></a></li>
-                  <li><a href="#">Bencana Alam <span>(37)</span></a></li>
+                    <h3>Kategori</h3>
+                    <li><a href="/donasi">Sosial <span>({{ $categoryCount['Sosial'] ?? 0 }})</span></a></li>
+                    <li><a href="/donasi">Kesehatan <span>({{ $categoryCount['Kesehatan'] ?? 0 }})</span></a></li>
+                    <li><a href="/donasi">Bencana Alam <span>({{ $categoryCount['BencanaAlam'] ?? 0 }})</span></a></li>
+                    <li><a href="/donasi">Pendidikan <span>({{ $categoryCount['Pendidikan'] ?? 0 }})</span></a></li>
                 </div>
-              </div>
+              </div> --}}
 
-              <div class="sidebar-box ftco-animate">
+              {{-- <div class="sidebar-box ftco-animate">
                 <h3>Program lainnya</h3>
                 <div class="block-21 mb-4 d-flex">
-                  <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+                  @foreach ($campaigns as $campaign)
+                  <a class="blog-img mr-4" style="{{ $campaign->img_url }}"></a>
                   <div class="text">
                     <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
                     <div class="meta">
@@ -310,6 +235,7 @@
                       <div><a href="#"><span class="icon-chat"></span> 19</a></div>
                     </div>
                   </div>
+                  @endforeach
                 </div>
                 <div class="block-21 mb-4 d-flex">
                   <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
@@ -333,7 +259,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> --}}
 
               {{-- <div class="sidebar-box ftco-animate">
                 <h3>Tag Cloud</h3>
@@ -353,13 +279,13 @@
                 <h3>Paragraph</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
               </div> --}}
-            </div>
+            {{-- </div> --}}
 
           </div>
         </div>
-      </section> <!-- .section -->
+    </section> <!-- .section -->
 
-    <section class="ftco-section" style="padding:50px">
+    <section class="ftco-section" style="padding:0px">
     	<div class="container">
     	    <div class="row">
                 <div class="col-md-6 d-flex align-self-stretch ftco-animate">

@@ -50,14 +50,6 @@ Route::get('/chart', function () {
     return view('chart');
 });
 
-Route::get('/daftarpengguna', function () {
-    return view('daftarpengguna');
-});
-
-Route::get('/donasi-single', function () {
-    return view('donasi-single');
-});
-
 Route::get('/asdw', function () {
     return view('asdw');
 });
@@ -153,18 +145,7 @@ Route::group([
 
 
 
-// Donation
-Route::group([
-    'prefix' => '/donations',
-    'as' => 'donations.'
-], function () {
-    Route::get('/form/{id}', [\App\Http\Controllers\DonationController::class, 'index']);
-    // Route::get('/', [\App\Http\Controllers\DonationController::class, 'show'])->name('show');
-    Route::get('donasi-single/{id}',[DonationController::class,'detail']);
-    // Route::post('/', [\App\Http\Controllers\DonationController::class, 'donate'])->name('donate');
-    Route::post('/confirm', [\App\Http\Controllers\DonationController::class, 'donate']);
-    // Route::get('/user-donation', [\App\Http\Controllers\DonationController::class, 'getUserDonation']);
-});
+
 
 
 // Blog
@@ -183,24 +164,9 @@ Route::middleware(['auth', 'cekrole'])->group(function () {
 
     Route::get('/dashboardadmin', [App\Http\Controllers\UsersController::class, 'indexAdmin']);
 
-    // Route::get('/dashboardadmin', [App\Http\Controllers\HomeController::class, 'dashboardAdmin']);
-    // Route::get('/dashboardadmin', [App\Http\Controllers\HomeController::class, 'laravelDonatur']);
-
-
-
-    // Dashboard Admin
-    // Route::get('/dashboardadmin', [LoginController::class, 'authenticated'])->name('dashboardadmin');
-    // Route::get('/dashboardadmin', [App\Http\Controllers\HomeController::class, 'indexAdmin'])->name('dashboardadmin.indexAdmin');
-    // Route::get('/dashboardadmin', function () {
-    //     return view('dashboardadmin');
-    // });
-
     Route::get('/dashboardadmin', [App\Http\Controllers\UsersController::class, 'count']);
     Route::get('/daftarpengguna', [App\Http\Controllers\UsersController::class, 'showUser']);
-
-    // Route::get('/dashboardadmin', [App\Http\Controllers\CampaignController::class, 'campaignCount'])->name('campaignCount');
-
-
+    // Route::get('/daftarpengguna', [App\Http\Controllers\UsersController::class, 'count']);
 
     // Program Admin
     Route::get('/programadmin', function () {
@@ -229,21 +195,8 @@ Route::middleware(['auth', 'cekrole'])->group(function () {
     Route::post('/campaigns/approveCampaign/{data}', [\App\Http\Controllers\CampaignController::class, 'approveCampaign'])->name('approveCampaign');
     // Route::post('/campaigns/updateCampaign/{data}', [\App\Http\Controllers\CampaignController::class, 'updateCampaign'])->name('updateCampaign');
 
-    // Route::get('/transaksiuser', [\App\Http\Controllers\CampaignController::class, 'create'])->name('create');
 
 
-
-
-
-
-
-
-
-
-    // Route::get('/addcampaigns', function () {
-    //     return view('addcampaigns');
-    // });
-    // Route::get('/addcampaigns', [\App\Http\Controllers\CampaignController::class, 'store']);
 
     // // addCampaign
     // Route::group([
@@ -272,12 +225,24 @@ Route::get('/', function () {
     return view('index');
 })->name('hal.utama');
 
+// Home
 Route::get('/', [\App\Http\Controllers\CampaignController::class, 'index3'])->name('index3');
 
-
+// Berita
 Route::get('/berita', [App\Http\Controllers\BlogController::class, 'index2'])->name('blogs.index2');
 
+// Donasi
 Route::get('/donasi', [\App\Http\Controllers\CampaignController::class, 'index2'])->name('index2');
+Route::get('/donations/donasi-single/{id}',[DonationController::class,'detail']);
+// Route::get('/donations//donasi-single', [\App\Http\Controllers\DonationController::class, 'categoryList']);
+// Route::get('/donations/donasi-single/{id}/sideProgram', [\App\Http\Controllers\DonationController::class, 'sideProgram'])->name('sideProgram');
+
+
+
+
+
+
+
 
 // Route::get('/donasi', [\App\Http\Controllers\CampaignController::class, 'filter2'])->name('filter2');
 
@@ -302,6 +267,20 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/programuser/storeprogramuser', [\App\Http\Controllers\CampaignUserController::class, 'storeprogramuser'])->name('storeprogramuser');
     Route::get('/programuser', [\App\Http\Controllers\CampaignUserController::class, 'showprogramuser'])->name('showprogramuser');
     Route::get('/programuser/{id}', [\App\Http\Controllers\CampaignUserController::class, 'detailprogram'])->name('detailprogram');
+
+    // Donation
+    Route::group([
+        'prefix' => '/donations',
+        'as' => 'donations.'
+    ], function () {
+        Route::get('/form/{id}', [\App\Http\Controllers\DonationController::class, 'index']);
+        // Route::get('/', [\App\Http\Controllers\DonationController::class, 'show'])->name('show');
+        // Route::get('donasi-single/{id}',[DonationController::class,'detail']);
+        // Route::post('/', [\App\Http\Controllers\DonationController::class, 'donate'])->name('donate');
+        Route::post('/confirm', [\App\Http\Controllers\DonationController::class, 'donate']);
+        // Route::get('/user-donation', [\App\Http\Controllers\DonationController::class, 'getUserDonation']);
+    });
+
 
 
 

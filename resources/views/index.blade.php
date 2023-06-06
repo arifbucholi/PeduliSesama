@@ -175,12 +175,19 @@
     		<div class="row">
                 <div class="col-md-12 ftco-animate" style="padding:20px">
     				<div class="carousel-cause owl-carousel">
+                        {{-- mendadak --}}
                         @php
-                        $urgentCampaigns = \App\Models\Campaign::orderBy('dateline', 'asc')->limit(10)->get();
+                        $campaigns = \App\Models\Campaign::orderBy('dateline', 'asc')->limit(10)->get();
                         @endphp
 
-                        @foreach ($urgentCampaigns as $campaign )
-                            @if ($campaign->status == 0)
+
+
+                        @foreach ($campaigns as $campaign )
+                        @php
+                        $dateline1 = \Carbon\Carbon::parse($campaign->dateline);
+                        $remainingDays = $dateline1->diffInDays(\Carbon\Carbon::now());
+                        @endphp
+                            @if ($campaign->status == 0 && $dateline1 >= \Carbon\Carbon::now())
                             <div class="item">
                                 <div class="cause-entry">
                                     <a href="#" class="img" style="background-image: url('{{ $campaign->img_url }}'); z-index: -1;"></a>
@@ -198,10 +205,17 @@
                                             $remainingDays = $endDate->diffInDays(\Carbon\Carbon::now());
                                             @endphp
                                             <span class="donation-time mb-3 d-block">Sisa : {{ $remainingDays }} hari</span>
+                                            @php
+                                                $totalDonation = App\Models\Donation::where('campaign_id', $campaign->id)->sum('amount');
+                                            @endphp
                                             <div class="progress custom-progress-success">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 100%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div id="progress-bar" class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{ ($totalDonation / $campaign->target_amount) * 100 }}%"></div>
                                             </div>
-		                                <span class="fund-raised d-block">Rp75,000 Terkumpul dari Rp{{ $campaign->target_amount }}</span>
+		                                <span class="fund-raised d-block">Rp {{ number_format($totalDonation, 0, ',', '.')}} Terkumpul dari Rp{{ number_format($campaign->target_amount, 0, ',', '.') }}</span>
+
+                                        <a href="/donations/donasi-single/{{ $campaign->id }}" class="row justify-content-center" style="padding-top:10px">
+                                            <button class="btn btn-primary d-flex" style="border-radius:25px">Donasi Sekarang</button>
+                                        </a>
 		    			    		</div>
 		    			    	</div>
 

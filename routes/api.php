@@ -18,4 +18,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/donations/midtrans-cb', [\App\Http\Controllers\DonationController::class, 'midtrans_cb']);
+Route::post('/mcallback', [\App\Http\Controllers\DonationController::class, 'midtrans_cb']);

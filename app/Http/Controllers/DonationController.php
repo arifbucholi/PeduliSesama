@@ -61,11 +61,12 @@ class DonationController extends Controller
         \Midtrans\Config::$is3ds = true;
 
 
-        $strDonation = substr($newDonation->campaigns->title,0,3);
+        // $strDonation = substr($newDonation->campaigns->title,0,3);
         // temp data
         $params = array(
             'transaction_details' => array(
-                'order_id' => $strDonation.str_pad($newDonation->id,5,"0",STR_PAD_LEFT),
+                // 'order_id' => $strDonation.str_pad($newDonation->id,5,"0",STR_PAD_LEFT),
+                'order_id' => $newDonation->id,
                 'gross_amount' => $newDonation->amount,
             ),
             'customer_details' => array(
@@ -82,7 +83,7 @@ class DonationController extends Controller
     public function midtrans_cb(Request $request) {
         $serverKey = config('midtrans.server_key');
         $hashed = hash('sha512', $request->order_id . $request->status_code . $request->gross_amound . $serverKey);
-        if ($hashed == $request->signature_key and $request->transaction_status == 'capture' or $request->transaction_status == 'settlement') {
+        if ($hashed == $request->signature_key && $request->transaction_status == 'capture' || $request->transaction_status == 'settlement') {
             $donation = Donation::find($request->order_id);
             $donation->update(['status' => 'SUCCESS', 'paid_at' => Date::now()]);
         }

@@ -11,13 +11,8 @@ class Donation extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'amount',
-        'donor_id',
-        'campaign_id',
-        'is_donor_hidden',
-        'desc',
-        'category',
+    protected $guarded = [
+
     ];
 
     public function campaigns()

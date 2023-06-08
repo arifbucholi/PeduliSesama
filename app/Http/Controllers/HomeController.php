@@ -30,10 +30,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $campaigns = Campaign::all()
-        ->get();
-        $donations2 = Donation::select('donor_id', DB::raw('COUNT(*) as total_donations'), DB::raw('SUM(amount) as total_amount'))
-        ->get();
+        $campaigns = Campaign::get();
+        $donations2 = Donation::get('donor_id', DB::raw('COUNT(*) as total_donations'), DB::raw('SUM(amount) as total_amount'))
+        ;
         // $campaignCount = Campaign::count();
 
 

@@ -502,7 +502,7 @@
                             <tr>
                                 <td>
                                     <img src="assets2/images/faces/face1.jpg" alt="image" />
-                                    <span class="ps-2">{{ $users->where('id', $donation->donor_id)->first()->name }}</span>
+                                    <span class="ps-2">{{ $donation->user->where('id', $donation->donor_id)->first()->name }}</span>
                                 </td>
                                 <td>{{ $donation->total_donations }} Donasi</td>
                                 <td>{{ number_format($donation->total_amount) }}</td>

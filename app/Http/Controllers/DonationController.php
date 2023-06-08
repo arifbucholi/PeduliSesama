@@ -82,7 +82,7 @@ class DonationController extends Controller
 
     public function midtrans_cb(Request $request) {
         $serverKey = config('midtrans.server_key');
-        $hashed = hash('sha512', $request->order_id . $request->status_code . $request->gross_amound . $serverKey);
+        $hashed = hash('sha512', $request->order_id . $request->status_code . $request->gross_amount . $serverKey);
         if ($hashed == $request->signature_key && $request->transaction_status == 'capture' || $request->transaction_status == 'settlement') {
             $donation = Donation::find($request->order_id);
             $donation->update(['status' => 'SUCCESS', 'paid_at' => Date::now()]);

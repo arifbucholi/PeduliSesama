@@ -649,6 +649,50 @@
     <footer class="ftco-footer ftco-section img" style="padding:50px">
     	<div class="overlay"></div>
       <div class="container">
+        <div class="row mb-0">
+          <div class="col-md-6">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">About Us</h2>
+              <p style="padding-right:80px">PeduliSesama adalah sebuah organisasi nirlaba yang berkomitmen
+                untuk meningkatkan kualitas hidup masyarakat yang membutuhkan.
+                Dalam upaya kami untuk menciptakan perubahan positif, kami menyediakan
+                bantuan dan dukungan kepada individu dan komunitas yang terpinggirkan,
+                termasuk penyandang disabilitas, kaum miskin,
+                dan mereka yang terdampak bencana alam.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">Jl. Gubeng Airlangga no.1 Surabaya, Indonesia</span></li>
+	                <li><span class="icon icon-phone"></span><span class="text">+62 392 3929 210</span></li>
+	                <li><span class="icon icon-envelope"></span><span class="text">pedulisesama@gmail.com</span></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+            <div class="container text-center">
+                <div class="row mb-5">
+                  <div class="col-md-12">
+                    <div class="ftco-footer-widget mb-4 text-center"  id="social-icons">
+                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5 d-flex justify-content-center">
+                            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+            </div>
+      </div>
+    </footer>
+
+    {{-- <footer class="ftco-footer ftco-section img" style="padding:50px">
+    	<div class="overlay"></div>
+      <div class="container">
         <div class="row mb-5">
           <div class="col-md-3">
             <div class="ftco-footer-widget mb-4">
@@ -714,16 +758,16 @@
             </div>
           </div>
         </div>
-        <!-- <div class="row">
-          <div class="col-md-12 text-center"> -->
+        <div class="row">
+          <div class="col-md-12 text-center">
 
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  <!-- Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> -->
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-          <!-- </div>
-        </div> -->
+            <p>Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.</p>
+          </div>
+        </div>
       </div>
-    </footer>
+    </footer> --}}
 
 
 
@@ -748,6 +792,17 @@
   <script src="assets/https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="assets/js/google-map.js"></script>
   <script src="assets/js/main.js"></script>
+
+  <style>
+    #social-icons {
+        display: flex;
+        justify-content: center;
+    }
+
+    #social-icons li {
+        margin-right: 10px;
+    }
+  </style>
 
 
   </body>

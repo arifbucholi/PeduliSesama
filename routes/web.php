@@ -162,7 +162,7 @@ Route::middleware(['auth', 'cekrole'])->group(function () {
     // Route::get('/dashboardadmin', [App\Http\Controllers\HomeController::class, 'indexAdmin'])->name('indexAdmin');
     // Route::get('/dashboardadmin', [App\Http\Controllers\HomeController::class, 'indexAdmin']);
 
-    Route::get('/dashboardadmin', [App\Http\Controllers\UsersController::class, 'indexAdmin']);
+    Route::get('/dashboardadmin', [App\Http\Controllers\UsersController::class, 'indexAdmin'])->name('dashboardadmin');
 
     Route::get('/dashboardadmin', [App\Http\Controllers\UsersController::class, 'count']);
     Route::get('/daftarpengguna', [App\Http\Controllers\UsersController::class, 'showUser']);

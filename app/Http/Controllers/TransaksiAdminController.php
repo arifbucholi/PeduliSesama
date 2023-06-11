@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Donation;
+use App\Models\Campaign;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 
 class TransaksiAdminController extends Controller
@@ -14,7 +17,10 @@ class TransaksiAdminController extends Controller
      */
     public function index()
     {
-        //
+        $donations= Donation::get();
+        $no=1;
+        // dd($donations);
+        return view('transaksiadmin', compact('donations','no'));
     }
 
     /**

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Notifications\CampaignSubmitted;
+use Illuminate\Support\Facades\DB;
 
 class CampaignController extends Controller
 {
@@ -39,7 +40,10 @@ class CampaignController extends Controller
 
     public function index2()
     {
-        $campaigns = Campaign::withSum('donations', 'amount')->get();
+        // $campaigns = Campaign::withSum('donations', 'amount')->get();
+        $campaigns = Campaign::withSum(['donations' => function ($query) {
+            $query->where('status', 'success');
+        }], 'amount')->get();
         // dd($campaigns);
         return view('donasi', compact('campaigns'));
     }
@@ -48,7 +52,10 @@ class CampaignController extends Controller
     public function index3()
     {
 
-        $campaigns =Campaign::all();
+        $campaigns = Campaign::withSum(['donations' => function ($query) {
+            $query->where('status', 'success');
+        }], 'amount')->get();
+        // dd($campaigns);
         return view('index', compact('campaigns')); // TODO: need view
 
     }

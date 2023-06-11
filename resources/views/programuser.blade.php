@@ -233,18 +233,11 @@
             @endif
         </div>
         <br>
-
-
     </div>
 
-
-    <br>
     <br>
 
-
-
-
-    <section class="ftco-section" style="padding:10px; padding-bottom:50px">
+    <section class="ftco-section" style="padding:10px; padding-bottom:0px">
       <div class="container">
 
 
@@ -338,6 +331,8 @@
               <p><strong>Judul :</strong> <span id="user-title"></span></p>
               <div id="user-image" class="img-fluid" style="padding-bottom:20px"></div>
               <p><strong>Deskripsi :</strong> <span id="user-desc"></span></p>
+              <p><strong>Tanggal mulai :</strong> <span id="user-start_date"></span></p>
+              <p><strong>Tanggal selesai :</strong> <span id="user-dateline"></span></p>
               <p><strong>Target dana :</strong> <span id="user-target_amount"></span></p>
 
             </div>
@@ -407,6 +402,8 @@
               $('#userShowModal').modal('show');
               $('#user-title').text(data.title);
               $('#user-desc').text(data.desc);
+              $('#user-start_date').text(data.start_date);
+              $('#user-dateline').text(data.dateline);
               $('#user-target_amount').text(data.target_amount);
 
               var imgElement = $('<img>').attr('src', data.img_url).addClass('img-fluid');

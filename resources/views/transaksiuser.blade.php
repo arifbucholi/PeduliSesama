@@ -125,10 +125,12 @@
 
     <div class="overlay"></div>
     <br>
+    <br>
+    <h1 class="row justify-content-center">Transaksi Anda</h1>
+    @if(count($d->where('donor_id', Auth::user()->id)) > 0)
     <div class="container">
         <br>
-        <h1 class="row justify-content-center">Transaksi Anda</h1>
-        <div class="container">
+        {{-- <div class="container">
             <div class="row ">
                 <div class="col">
                     <div class="dropdown">
@@ -137,7 +139,7 @@
                 </div>
             </div>
         </div>
-        <br>
+        <br> --}}
         <div class="container" style=" background:#252525; border-radius:7px; padding-top:10px">
             <table class="table table-hover table-dark" style="background:#252525">
                 <thead>
@@ -151,34 +153,37 @@
                   </tr>
                 </thead>
                 <tbody>
+
                   @foreach ($d as $d)
                   <tr>
                       <th scope="row">{{ $no++ }}</th>
                       <td>{{ $d->campaigns->title }}</td>
                       <td>{{ $d->created_at->format('Y-m-d') }}</td>
-                      <td>{{ number_format($d->amount,0,',','.') }}</td>
+                      <td>Rp{{ number_format($d->amount,0,',','.') }},00</td>
                       {{-- <td>{{ $d->campaigns->pdf_url }}</td> --}}
                   </tr>
                   @endforeach
-                  {{-- <tr>
-                    <th scope="row">2</th>
-                    <td>22-02-2023</td>
-                    <td>Della Found</td>
-                    <td>Rp2000</td>
-                    <td class="text-center">
-                        <a href="#">Lihat</a>
-                    </td>
-                    <td>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                        </svg>
-                    </td>
-                  </tr> --}}
                 </tbody>
             </table>
         </div>
     </div>
+    @else
+    <!-- Kode jika belum membuat program -->
+    <section class="ftco-section" style="padding:50px">
+        <div class="containerr" style="display: flex; justify-content: center; align-items: center;">
+            <div class="media block-6 d-flex services p-3 py-4 d-block">
+                <div class="media-body text-center">
+                    <p>Anda belum melakukan donasi.</p>
+                    {{-- <div class="dropdown"> --}}
+                        <a href="/donasi">
+                            <button class="btn btn-primary" type="button" style="border-radius:25px">Donasi Sekarang
+                        {{-- </a> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @endif
 
 
     <br>

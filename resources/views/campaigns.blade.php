@@ -452,6 +452,9 @@
                         <p><strong>Judul :</strong> <span id="user-title" style="word-wrap:break-word"></span></p>
                         <div id="user-image" class="img-fluid" style="padding-bottom:20px"></div>
                         <p><strong>Deskripsi :</strong> <span id="user-desc" style="word-wrap:break-word"></span></p>
+                        <p><strong>Tanggal mulai :</strong> <span id="user-start_date"></span></p>
+                        <p><strong>Tanggal selesai :</strong> <span id="user-dateline"></span></p>
+                        <p><strong>Nomor Rekening :</strong> <span id="user-no_rekening" style="word-wrap:break-word"></span></p>
                         <p><strong>Target Donasi:</strong> <span id="user-target_amount" style="word-wrap:break-word"></span></p>
                         <button type="submit" class="btn btn-primary" name="status" value="0">Terima</button>
 
@@ -492,7 +495,10 @@
                 $('#approveCampaign').attr('action', '{{ route('approveCampaign', ':id') }}'.replace(':id', campaignId));
                 $.get(userURL, function (data) {
                     $('#user-title').text(data.title);
+                    $('#user-no_rekening').text(data.no_rekening);
                     $('#user-desc').text(data.desc);
+                    $('#user-start_date').text(data.start_date);
+                    $('#user-dateline').text(data.dateline);
                     $('#user-target_amount').text(data.target_amount);
                     var imgElement = $('<img>').attr('src', data.img_url).addClass('img-fluid');
                     $('#user-image').empty().append(imgElement);

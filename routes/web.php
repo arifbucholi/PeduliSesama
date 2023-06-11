@@ -210,9 +210,11 @@ Route::middleware(['auth', 'cekrole'])->group(function () {
     // });
 
     // Transaksi Admin
-    Route::get('/transaksiadmin', function () {
-        return view('transaksiadmin');
-    });
+    Route::get('/transaksiadmin', [\App\Http\Controllers\TransaksiAdminController::class, 'index'])->name('index');
+
+    // Route::get('/transaksiadmin', function () {
+    //     return view('transaksiadmin');
+    // });
 
 });
 
@@ -221,12 +223,13 @@ Route::middleware(['auth', 'cekrole'])->group(function () {
 // ------------------------------------Halaman Guest---------------------------------------------//
 
 // Google
-Route::get('/', function () {
-    return view('index');
-})->name('hal.utama');
+// Route::get('/', function () {
+//     return view('index');
+// })->name('hal.utama');
 
 // Home
 Route::get('/', [\App\Http\Controllers\CampaignController::class, 'index3'])->name('index3');
+// Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index3'])->name('hal.utama');
 
 // Berita
 Route::get('/berita', [App\Http\Controllers\BlogController::class, 'index2'])->name('blogs.index2');

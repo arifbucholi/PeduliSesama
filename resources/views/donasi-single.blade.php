@@ -108,7 +108,7 @@
     <section class="ftco-section" style="padding:10px; padding:47px; background:#252525"></section>
     <section class="ftco-section" style="padding-bottom:20px;padding-top:47px">
         <div class="container justify-content-center">
-          {{-- @foreach ($campaigns as $campaign) --}}
+          {{-- @foreach ($c as $c) --}}
           <h1 class="text-center">{{ $c->title }}</h1>
           <br>
           <div class="row">
@@ -138,9 +138,12 @@
                 $remainingDays = $endDate->diffInDays(\Carbon\Carbon::now());
                 @endphp
                 <span class="donation-time mb-3 d-block">Sisa : {{ $remainingDays }} Hari</span>
+                @php
+                    $totalDonation = $c->donations_sum_amount ?? 0;
+                @endphp
 
                 <div class="progress custom-progress-success" style="height:7px;">
-                    <div id="progress-bar" class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{ $totalDonation}}%; "></div>
+                    <div id="progress-bar" class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{ ($totalDonation / $c->target_amount) * 100 }}%"></div>
                 </div>
 
               {{-- <span class="fund-raised d-block" style="padding-bottom:15px">Rp28,000 Terkumpul dari Rp {{ number_format($campaign->target_amount,0,',','.') }}</span> --}}
@@ -157,7 +160,7 @@
                 <ul class="comment-list">
                     <li class="comment">
                       <div class="vcard bio">
-                          <img src="   https://cdn-icons-png.flaticon.com/512/3024/3024605.png " alt="Image placeholder" width="30" height="48">
+                          <img src=" https://cdn-icons-png.flaticon.com/512/3024/3024605.png " alt="Image placeholder" width="30" height="48">
                         </div>
                         <div class="comment-body">
                             <h3>{{ $item->user->name }}</h3>

@@ -28,21 +28,29 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+     // index login user
     public function index()
     {
-        $campaigns = Campaign::get();
-        $donations2 = Donation::get('donor_id', DB::raw('COUNT(*) as total_donations'), DB::raw('SUM(amount) as total_amount'))
-        ;
-        // $campaignCount = Campaign::count();
-
-
-        return view('index', compact('campaigns','donations2'));
+        // $campaigns = Campaign::withSum('donations', 'amount')->get();
+        $campaigns = Campaign::withSum(['donations' => function ($query) {
+            $query->where('status', 'success');
+        }], 'amount')->get();
+        // dd($campaigns);
+        return view('index', compact('campaigns'));
     }
 
     public function userProfile()
     {
         return view('profil');
     }
+
+    // protected $appends = ['donations_sum_amount'];
+
+    // public function getDonationsSumAmountAttribute()
+    // {
+    //     return $this->donations->sum('amount');
+    // }
 
 
 

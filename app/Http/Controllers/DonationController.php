@@ -19,27 +19,54 @@ class DonationController extends Controller
     {
         $data = Campaign::find($id);
         $totalDonation = Donation::where('campaign_id', $id)->sum('amount');
-        // dd($data);
+        // dd($totalDonation);
         return view('donations.form',['c'=>$data, 'totalDonation'=>$totalDonation]);
     }
 
     function detail($id)
     {
-        $data = Campaign::find($id);
-        $totalDonation = Donation::where('campaign_id', $id)->sum('amount');
-        // dd($totalDonation);
-        $desc = Donation::where('campaign_id',$id)->get();
+        $data = Campaign::withSum(['donations' => function ($query) {
+            $query->where('status', 'success');
+        }], 'amount')->find($id);
+
+        $desc = Donation::where('campaign_id', $id)->get();
         $descCount = Donation::where('campaign_id', $id)->count();
 
-        // dd($desc);
-        return view('donasi-single',[
-            'c'=>$data,
-            'totalDonation'=>$totalDonation,
-            'desc' => $desc,
-            'descCount' => $descCount
+        $endDate = \Carbon\Carbon::parse($data->dateline);
+        $remainingDays = $endDate->diffInDays(\Carbon\Carbon::now());
 
-            ]) ;
+        $totalDonation = $data->donations_sum_amount ?? 0;
+
+        return view('donasi-single', [
+            'c' => $data,
+            'desc' => $desc,
+            'descCount' => $descCount,
+            'remainingDays' => $remainingDays,
+            'totalDonation' => $totalDonation
+        ]);
     }
+    // {
+    //     $data = Campaign::find($id);
+    //     // $data = Campaign::find($id)->withSum(['donations' => function ($query) {
+    //     //     $query->where('status', 'success');
+    //     // }], 'amount')->get();
+    //     // $totalDonation = Donation::where('campaign_id', $id)->sum('amount');
+    //     // dd($campaigns);
+
+    //     // komentar
+    //     $desc = Donation::where('campaign_id',$id)->get();
+    //     $descCount = Donation::where('campaign_id', $id)->count();
+
+    //     // dd($desc);
+    //     return view('donasi-single',[
+    //         'c'=>$data,
+    //         // 'campaigns'=>$campaigns,
+    //         // 'totalDonation'=>$totalDonation,
+    //         'desc' => $desc,
+    //         'descCount' => $descCount
+
+    //         ]) ;
+    // }
 
     public function donate(Request $request) {
         // insert donation

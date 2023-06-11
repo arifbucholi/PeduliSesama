@@ -437,7 +437,7 @@
                                     <img src="assets2/images/faces/face1.jpg" alt="image" />
                                     <span class="ps-2">{{ $donation->user->name }}</span>
                                 </td>
-                                <td>{{ number_format($donation->amount) }}</td>
+                                <td>Rp{{ number_format($donation->amount, 0, ',', '.') }},00</td>
                             </tr>
                             @endforeach
 
@@ -505,7 +505,7 @@
                                     <span class="ps-2">{{ $donation->user->where('id', $donation->donor_id)->first()->name }}</span>
                                 </td>
                                 <td>{{ $donation->total_donations }} Donasi</td>
-                                <td>{{ number_format($donation->total_amount) }}</td>
+                                <td>Rp{{ number_format($donation->total_amount, 0, ',', '.') }},00</td>
                             </tr>
                             @endforeach
                             {{-- <tr>

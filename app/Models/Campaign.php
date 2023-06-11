@@ -42,4 +42,9 @@ class Campaign extends Model
     {
         return $this->hasMany(Donation::class);
     }
+
+    // public function getTotalDonationAttribute()
+    // {
+    //     return $this->donations_sum_amount ?? 0;
+    // }
 }

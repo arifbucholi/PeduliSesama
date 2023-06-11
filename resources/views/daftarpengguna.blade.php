@@ -383,7 +383,7 @@
                             <th> No </th>
                             <th> Nama </th>
                             <th> Email</th>
-                            <th> Jumlah Donasi </th>
+                            {{-- <th> Jumlah Donasi </th> --}}
                           </tr>
                         </thead>
                         <tbody>
@@ -392,7 +392,7 @@
                         <tr>
                             <td> {{ $no++ }} </td>
                             <td>
-                                <img src="assets2/images/faces/face1.jpg" alt="image" />
+                                <img src="   https://cdn-icons-png.flaticon.com/512/3870/3870822.png " alt="image" />
                                 <span class="ps-2">{{ $user->name }}</span>
                             </td>
                             <td> {{ $user->email }} </td>

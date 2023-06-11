@@ -176,18 +176,18 @@
                 <div class="col-md-12 ftco-animate" style="padding:20px">
     				<div class="carousel-cause owl-carousel">
                         {{-- mendadak --}}
-                        @php
-                        $campaigns = \App\Models\Campaign::orderBy('dateline', 'asc')->limit(10)->get();
-                        @endphp
 
 
 
                         @foreach ($campaigns as $campaign )
                         @php
-                        $dateline1 = \Carbon\Carbon::parse($campaign->dateline);
-                        $remainingDays = $dateline1->diffInDays(\Carbon\Carbon::now());
+                        $campaigns = \App\Models\Campaign::orderBy('dateline', 'asc')->limit(10)->get();
                         @endphp
-                            @if ($campaign->status == 0 && $dateline1 >= \Carbon\Carbon::now())
+                        @php
+                        $dateline = \Carbon\Carbon::parse($campaign->dateline);
+                        $remainingDays = $dateline->diffInDays(\Carbon\Carbon::now());
+                        @endphp
+                            @if ($campaign->status == 0 && $dateline >= \Carbon\Carbon::now())
                             <div class="item">
                                 <div class="cause-entry">
                                     <a href="#" class="img" style="background-image: url('{{ $campaign->img_url }}'); z-index: -1;"></a>
@@ -205,8 +205,11 @@
                                             $remainingDays = $endDate->diffInDays(\Carbon\Carbon::now());
                                             @endphp
                                             <span class="donation-time mb-3 d-block">Sisa : {{ $remainingDays }} hari</span>
-                                            @php
+                                            {{-- @php
                                                 $totalDonation = App\Models\Donation::where('campaign_id', $campaign->id)->sum('amount');
+                                            @endphp --}}
+                                            @php
+                                                $totalDonation = $campaign->donations_sum_amount ?? 0;
                                             @endphp
                                             <div class="progress custom-progress-success">
                                                 <div id="progress-bar" class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{ ($totalDonation / $campaign->target_amount) * 100 }}%"></div>

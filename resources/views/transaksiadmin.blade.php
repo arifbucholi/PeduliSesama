@@ -385,69 +385,93 @@
                             <th> Nama Program </th>
                             <th> Tanggal Donasi </th>
                             <th> Nominal</th>
+                            <th> Status</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td> 1 </td>
-                            <td>
-                              <img src="assets2/images/faces/face1.jpg" alt="image" />
-                              <span class="ps-2">Henry Klein</span>
-                            </td>
-                            <td> Bantuan Semeru </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              Rp6.000,00
-                            </td>
-                          </tr>
-                          <tr>
-                            <td> 2 </td>
-                            <td>
-                              <img src="assets2/images/faces/face2.jpg" alt="image" />
-                              <span class="ps-2">Estella Bryan</span>
-                            </td>
-                            <td> Merapi Meletus </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              Rp5000,0000000000000000000000
-                            </td>
-                          </tr>
-                          <tr>
-                            <td> 3 </td>
-                            <td>
-                              <img src="assets2/images/faces/face5.jpg" alt="image" />
-                              <span class="ps-2">Lucy Abbott</span>
-                            </td>
-                            <td> Dadang Kena Kanker Ganas </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              Rp5000,0000000000000000000000
-                            </td>
-                          </tr>
-                          <tr>
-                            <td> 4 </td>
-                            <td>
-                              <img src="assets2/images/faces/face3.jpg" alt="image" />
-                              <span class="ps-2">Peter Gill</span>
-                            </td>
-                            <td> Diablo Nakal Anaknya </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              Rp6.000,00
-                            </td>
-                          </tr>
-                          <tr>
-                            <td> 5 </td>
-                            <td>
-                              <img src="assets2/images/faces/face4.jpg" alt="image" />
-                              <span class="ps-2">Sallie Reyes</span>
-                            </td>
-                            <td> Surabaya Butuh Makanan </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              Rp6.000,00
-                            </td>
-                          </tr>
+                            @foreach ($donations as $donation)
+                            <tr>
+                                <td>{{$no++}}</td>
+                                <td>
+                                    <img src="   https://cdn-icons-png.flaticon.com/512/3870/3870822.png " alt="image" width="30" height="48"/>
+                                    <span class="ps-2">{{$donation->user->name}}</span>
+                                </td>
+                                <td>{{ $donation->campaigns->title }}</td>
+                                <td>{{ $donation->created_at->format('d M Y') }}</td>
+                                <td>
+                                    Rp{{ number_format($donation->amount, 0, ',', '.') }},00
+                                </td>
+                                <td>
+                                    @if ($donation->status == 'SUCCESS')
+                                        <button class="btn btn-success">Success</button>
+                                    @elseif ($donation->status == 'PENDING')
+                                        <button class="btn btn-warning">Pending</button>
+                                    @elseif ($donation->status == 'CANCEL')
+                                        <button class="btn btn-danger">Cancel</button>
+                                    @endif
+                                </td>
+                            </tr>
+                            @endforeach
+                            {{-- <tr>
+                                <td> 1 </td>
+                                <td>
+                                <img src="assets2/images/faces/face1.jpg" alt="image" />
+                                <span class="ps-2">Henry Klein</span>
+                                </td>
+                                <td> Bantuan Semeru </td>
+                                <td> 04 Dec 2019 </td>
+                                <td>
+                                Rp6.000,00
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> 2 </td>
+                                <td>
+                                <img src="assets2/images/faces/face2.jpg" alt="image" />
+                                <span class="ps-2">Estella Bryan</span>
+                                </td>
+                                <td> Merapi Meletus </td>
+                                <td> 04 Dec 2019 </td>
+                                <td>
+                                Rp5000,0000000000000000000000
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> 3 </td>
+                                <td>
+                                <img src="assets2/images/faces/face5.jpg" alt="image" />
+                                <span class="ps-2">Lucy Abbott</span>
+                                </td>
+                                <td> Dadang Kena Kanker Ganas </td>
+                                <td> 04 Dec 2019 </td>
+                                <td>
+                                Rp5000,0000000000000000000000
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> 4 </td>
+                                <td>
+                                <img src="assets2/images/faces/face3.jpg" alt="image" />
+                                <span class="ps-2">Peter Gill</span>
+                                </td>
+                                <td> Diablo Nakal Anaknya </td>
+                                <td> 04 Dec 2019 </td>
+                                <td>
+                                Rp6.000,00
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> 5 </td>
+                                <td>
+                                <img src="assets2/images/faces/face4.jpg" alt="image" />
+                                <span class="ps-2">Sallie Reyes</span>
+                                </td>
+                                <td> Surabaya Butuh Makanan </td>
+                                <td> 04 Dec 2019 </td>
+                                <td>
+                                Rp6.000,00
+                                </td>
+                            </tr> --}}
                         </tbody>
                       </table>
                     </div>

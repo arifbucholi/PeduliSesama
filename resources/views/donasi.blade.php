@@ -238,8 +238,11 @@
                                 $remainingDays = $endDate->diffInDays(\Carbon\Carbon::now());
                             @endphp
                             <span class="donation-time mb-3 d-block">Sisa : {{ $remainingDays }} hari</span>
-                            @php
+                            {{-- @php
                                 $totalDonation = App\Models\Donation::where('campaign_id', $campaign->id)->sum('amount');
+                            @endphp --}}
+                            @php
+                                $totalDonation = $campaign->donations_sum_amount ?? 0;
                             @endphp
                             <div class="progress custom-progress-success">
                                 <div id="progress-bar" class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{ ($totalDonation / $campaign->target_amount) * 100 }}%"></div>

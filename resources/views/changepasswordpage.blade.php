@@ -82,17 +82,6 @@
                                 </div>
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a href="/changepass" class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon">
-                                        <i class="mdi mdi-onepassword text-info"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
                             <a href="#" class="dropdown-item preview-item">
                                 <div class="preview-thumbnail">
                                     <div class="preview-icon">
@@ -114,7 +103,7 @@
     <!-- END nav -->
     <section class="ftco-section" style="padding:10px; padding:47px; background:#252525"></section>
     <br>
-    <h1 class="card-title text-center" >Edit Profil</h1>
+    <h1 class="card-title text-center" >Change Password</h1>
     <br>
     <div class="container">
         <div class="main-panel">
@@ -124,25 +113,20 @@
                         <div class="card" style="border-radius: 10px">
                             <div class="card-body" style=" background:#252525;border-radius:7px; padding-top:10px">
                                 <div>
-                                    <form action="/profilepage.update" method="POST">
-                                        <input type="hidden" name="updater" value="{{ $data->id }}">
+                                    <form action="/updatepass" method="POST">
                                           @csrf
                                           <div class="mb-3">
-                                            <label for="email" class="form-label">Email</label>
-                                            <input type="text" class="form-control" name="email" value="{{ $data->email }}" disabled>
+                                            <label for="oldpw" class="form-label">Old Password</label>
+                                            <input type="password" class="form-control" name="oldpw">
                                           </div>
                                           <div class="mb-3">
-                                            <label for="name" class="form-label">Nama</label>
-                                            <input type="text" class="form-control" name="name" value="{{ $data->name }}">
+                                            <label for="newpw" class="form-label">New Password</label>
+                                            <input type="password" class="form-control" name="newpw">
                                           </div>
                                           <div class="mb-3">
-                                            <label for="no_telp" class="form-label">Nama</label>
-                                            <input type="number" class="form-control" name="no_telp" value="..">
+                                            <label for="renewpw" class="form-label">Retype New Password</label>
+                                            <input type="password" class="form-control" name="renewpw">
                                           </div>
-                                          {{-- <div class="mb-3">
-                                            <label for="password" class="form-label">Password</label>
-                                            <input type="password" class="form-control" name="password" value="{{ $data->password }}">
-                                          </div> --}}
                                           <input type="submit" name="submit" class="btn btn-primary" value="Save">
                                         </form>
                                 </div>

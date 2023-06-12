@@ -87,7 +87,7 @@
                         </div>
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item preview-item">
+                    <a href="/changepass" class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
                             <div class="preview-icon">
                             <i class="mdi mdi-onepassword text-info"></i>

@@ -130,7 +130,7 @@ Route::get('/google/redirect', [SocialAuthController::class, 'googleCallback'])
 //     'prefix' => '/admin',
 //     'as' => 'admin.'
 // ], function () {
-//     Route::get('/campaign/approve/{data}', [\App\Http\Controllers\CampaignController::class, 'approveCampaign'])->name('campaign.approve');
+//     Route::get('/campaign/approve/{data}', [CampaignController::class, 'approveCampaign'])->name('campaign.approve');
 // });
 
 // User
@@ -138,7 +138,7 @@ Route::group([
     'prefix' => '/users',
     'as' => 'users.'
 ], function () {
-    Route::post('/update-password/{user}', [\App\Http\Controllers\UsersController::class, 'updatePassword']);
+    Route::post('/update-password/{user}', [UsersController::class, 'updatePassword']);
 });
 
 
@@ -159,14 +159,14 @@ Route::group([
 
 // Route::middleware(['auth'])->group(function(){
 Route::middleware(['auth', 'cekrole'])->group(function () {
-    // Route::get('/dashboardadmin', [App\Http\Controllers\HomeController::class, 'indexAdmin'])->name('indexAdmin');
-    // Route::get('/dashboardadmin', [App\Http\Controllers\HomeController::class, 'indexAdmin']);
+    // Route::get('/dashboardadmin', [HomeController::class, 'indexAdmin'])->name('indexAdmin');
+    // Route::get('/dashboardadmin', [HomeController::class, 'indexAdmin']);
 
-    Route::get('/dashboardadmin', [App\Http\Controllers\UsersController::class, 'indexAdmin'])->name('dashboardadmin');
+    Route::get('/dashboardadmin', [UsersController::class, 'indexAdmin'])->name('dashboardadmin');
 
-    Route::get('/dashboardadmin', [App\Http\Controllers\UsersController::class, 'count']);
-    Route::get('/daftarpengguna', [App\Http\Controllers\UsersController::class, 'showUser']);
-    // Route::get('/daftarpengguna', [App\Http\Controllers\UsersController::class, 'count']);
+    Route::get('/dashboardadmin', [UsersController::class, 'count']);
+    Route::get('/daftarpengguna', [UsersController::class, 'showUser']);
+    // Route::get('/daftarpengguna', [UsersController::class, 'count']);
 
     // Program Admin
     Route::get('/programadmin', function () {
@@ -186,14 +186,14 @@ Route::middleware(['auth', 'cekrole'])->group(function () {
         return view('tambahberita');
     });
 
-    Route::get('/campaigns', [\App\Http\Controllers\CampaignController::class, 'index'])->name('index');
+    Route::get('/campaigns', [CampaignController::class, 'index'])->name('index');
 
-    Route::get('/addcampaigns', [\App\Http\Controllers\CampaignController::class, 'create'])->name('create');
-    Route::post('/campaigns/store', [\App\Http\Controllers\CampaignController::class, 'store'])->name('store');
-    Route::get('/campaigns/show/{id}', [\App\Http\Controllers\CampaignController::class, 'show'])->name('show');
-    Route::get('/campaigns/shows/{id}', [\App\Http\Controllers\CampaignController::class, 'shows'])->name('shows');
-    Route::post('/campaigns/approveCampaign/{data}', [\App\Http\Controllers\CampaignController::class, 'approveCampaign'])->name('approveCampaign');
-    // Route::post('/campaigns/updateCampaign/{data}', [\App\Http\Controllers\CampaignController::class, 'updateCampaign'])->name('updateCampaign');
+    Route::get('/addcampaigns', [CampaignController::class, 'create'])->name('create');
+    Route::post('/campaigns/store', [CampaignController::class, 'store'])->name('store');
+    Route::get('/campaigns/show/{id}', [CampaignController::class, 'show'])->name('show');
+    Route::get('/campaigns/shows/{id}', [CampaignController::class, 'shows'])->name('shows');
+    Route::post('/campaigns/approveCampaign/{data}', [CampaignController::class, 'approveCampaign'])->name('approveCampaign');
+    // Route::post('/campaigns/updateCampaign/{data}', [CampaignController::class, 'updateCampaign'])->name('updateCampaign');
 
 
 
@@ -203,14 +203,14 @@ Route::middleware(['auth', 'cekrole'])->group(function () {
     //     'prefix' => '/addcampaigns',
     //     'as' => 'addcampaigns.'
     // ], function () {
-    //     // Route::get('/', [\App\Http\Controllers\CampaignController::class, 'index'])->name('index');
-    //     Route::get('/create', [\App\Http\Controllers\CampaignController::class, 'create'])->name('create');
-        // Route::post('/store', [\App\Http\Controllers\CampaignController::class, 'store'])->name('store');
+    //     // Route::get('/', [CampaignController::class, 'index'])->name('index');
+    //     Route::get('/create', [CampaignController::class, 'create'])->name('create');
+        // Route::post('/store', [CampaignController::class, 'store'])->name('store');
 
     // });
 
     // Transaksi Admin
-    Route::get('/transaksiadmin', [\App\Http\Controllers\TransaksiAdminController::class, 'index'])->name('index');
+    Route::get('/transaksiadmin', [TransaksiAdminController::class, 'index'])->name('index');
 
     // Route::get('/transaksiadmin', function () {
     //     return view('transaksiadmin');
@@ -228,17 +228,17 @@ Route::middleware(['auth', 'cekrole'])->group(function () {
 // })->name('hal.utama');
 
 // Home
-Route::get('/', [\App\Http\Controllers\CampaignController::class, 'index3'])->name('index3');
-// Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index3'])->name('hal.utama');
+Route::get('/', [CampaignController::class, 'index3'])->name('index3');
+// Route::get('/home', [\HomeController::class, 'index3'])->name('hal.utama');
 
 // Berita
-Route::get('/berita', [App\Http\Controllers\BlogController::class, 'index2'])->name('blogs.index2');
+Route::get('/berita', [BlogController::class, 'index2'])->name('blogs.index2');
 
 // Donasi
-Route::get('/donasi', [\App\Http\Controllers\CampaignController::class, 'index2'])->name('index2');
+Route::get('/donasi', [CampaignController::class, 'index2'])->name('index2');
 Route::get('/donations/donasi-single/{id}',[DonationController::class,'detail']);
-// Route::get('/donations//donasi-single', [\App\Http\Controllers\DonationController::class, 'categoryList']);
-// Route::get('/donations/donasi-single/{id}/sideProgram', [\App\Http\Controllers\DonationController::class, 'sideProgram'])->name('sideProgram');
+// Route::get('/donations//donasi-single', [\DonationController::class, 'categoryList']);
+// Route::get('/donations/donasi-single/{id}/sideProgram', [\DonationController::class, 'sideProgram'])->name('sideProgram');
 
 
 
@@ -247,9 +247,9 @@ Route::get('/donations/donasi-single/{id}',[DonationController::class,'detail'])
 
 
 
-// Route::get('/donasi', [\App\Http\Controllers\CampaignController::class, 'filter2'])->name('filter2');
+// Route::get('/donasi', [\CampaignController::class, 'filter2'])->name('filter2');
 
-// Route::get('/donasi', [\App\Http\Controllers\CampaignController::class, 'index2'])->name('index2');
+// Route::get('/donasi', [\CampaignController::class, 'index2'])->name('index2');
 
 
 
@@ -258,30 +258,33 @@ Route::get('/donations/donasi-single/{id}',[DonationController::class,'detail'])
 
 // Middleware
 Route::middleware(['auth'])->group(function(){
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-    Route::get('/userProfiles', [App\Http\Controllers\HomeController::class, 'userProfile'])->name('userProfiles');
+    Route::get('/userProfiles', [HomeController::class, 'userProfile'])->name('userProfiles');
     Route::get('/profilepage/{id}', [EditProfilUserController::class, 'edit']);
     Route::post('profilepage.update', [EditProfilUserController::class, 'update']);
 
+    Route::get('/changepass', [EditProfilUserController::class, 'changepass_page']);
+    Route::post('/updatepass', [EditProfilUserController::class, 'update_password']);
+
     Route::get('/transaksiuser', [DonationController::class, 'getUserDonation']);
 
-    Route::get('/addprogramuser', [\App\Http\Controllers\CampaignUserController::class, 'createprogram'])->name('createprogram');
-    Route::post('/programuser/storeprogramuser', [\App\Http\Controllers\CampaignUserController::class, 'storeprogramuser'])->name('storeprogramuser');
-    Route::get('/programuser', [\App\Http\Controllers\CampaignUserController::class, 'showprogramuser'])->name('showprogramuser');
-    Route::get('/programuser/{id}', [\App\Http\Controllers\CampaignUserController::class, 'detailprogram'])->name('detailprogram');
+    Route::get('/addprogramuser', [CampaignUserController::class, 'createprogram'])->name('createprogram');
+    Route::post('/programuser/storeprogramuser', [CampaignUserController::class, 'storeprogramuser'])->name('storeprogramuser');
+    Route::get('/programuser', [CampaignUserController::class, 'showprogramuser'])->name('showprogramuser');
+    Route::get('/programuser/{id}', [CampaignUserController::class, 'detailprogram'])->name('detailprogram');
 
     // Donation
     Route::group([
         'prefix' => '/donations',
         'as' => 'donations.'
     ], function () {
-        Route::get('/form/{id}', [\App\Http\Controllers\DonationController::class, 'index']);
-        // Route::get('/', [\App\Http\Controllers\DonationController::class, 'show'])->name('show');
+        Route::get('/form/{id}', [DonationController::class, 'index']);
+        // Route::get('/', [DonationController::class, 'show'])->name('show');
         // Route::get('donasi-single/{id}',[DonationController::class,'detail']);
-        // Route::post('/', [\App\Http\Controllers\DonationController::class, 'donate'])->name('donate');
-        Route::post('/confirm', [\App\Http\Controllers\DonationController::class, 'donate']);
-        // Route::get('/user-donation', [\App\Http\Controllers\DonationController::class, 'getUserDonation']);
+        // Route::post('/', [DonationController::class, 'donate'])->name('donate');
+        Route::post('/confirm', [DonationController::class, 'donate']);
+        // Route::get('/user-donation', [DonationController::class, 'getUserDonation']);
     });
 
 

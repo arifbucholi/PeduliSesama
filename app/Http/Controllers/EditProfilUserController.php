@@ -46,4 +46,29 @@ class EditProfilUserController extends Controller
         $data->save();
         return back();
     }
+
+    public function changepass_page()
+    {
+        return view('changepasswordpage');
+    }
+
+    public function update_password(Request $request)
+    {
+
+        if(!Hash::check($request->oldpw, auth()->user()->password)) {
+            return back()->with('Password tidak sesuai');
+        }
+
+        // dd(Hash::check($request->oldpw, auth()->user()->password));
+
+        if($request->newpw != $request->renewpw) {
+            return back()->with('Password retype tidak sesuai');
+        }
+
+        auth()->user()->update([
+            'password' => Hash::make($request->newpw)
+        ]);
+
+        return back()->with('success');
+    }
 }

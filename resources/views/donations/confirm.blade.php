@@ -136,7 +136,9 @@
                           <tr>{{ $newDonation->campaigns->title }}</tr>
                           <br>
                           <br>
-                          <button class="btn btn-primary" id="donate-btn">Bayar</button>
+                          <div class="row justify-content-center">
+                              <button class="btn btn-primary" id="donate-btn" style="border-radius:25px">Bayar</button>
+                          </div>
                         </table>
                       </div>
                     </div>

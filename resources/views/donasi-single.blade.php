@@ -157,19 +157,35 @@
               <div class="pt-5 mt-3">
                 <h3 class="mb-5">Komentar dan Doa</h3>
                 @foreach ($desc as $item)
-                <ul class="comment-list">
-                    <li class="comment">
-                      <div class="vcard bio">
-                          <img src=" https://cdn-icons-png.flaticon.com/512/3024/3024605.png " alt="Image placeholder" width="30" height="48">
-                        </div>
-                        <div class="comment-body">
-                            <h3>{{ $item->user->name }}</h3>
-                            {{-- <div class="meta">June 27, 2018 at 2:21pm</div> --}}
-                            <p>{{ $item->desc }}</p>
-                            {{-- <p><a href="#" class="reply">Reply</a></p> --}}
-                        </div>
-                    </li>
-                </ul>
+                @if ($item->is_donor_hidden==0)
+                    <ul class="comment-list">
+                        <li class="comment">
+                            <div class="vcard bio">
+                                <img src=" https://cdn-icons-png.flaticon.com/512/3024/3024605.png " alt="Image placeholder" width="30" height="48">
+                            </div>
+                            <div class="comment-body">
+                                <h3>{{ $item->user->name }}</h3>
+                                {{-- <div class="meta">June 27, 2018 at 2:21pm</div> --}}
+                                <p>{{ $item->desc }}</p>
+                                {{-- <p><a href="#" class="reply">Reply</a></p> --}}
+                            </div>
+                        </li>
+                    </ul>
+                @else
+                    <ul class="comment-list">
+                        <li class="comment">
+                            <div class="vcard bio">
+                                <img src=" https://cdn-icons-png.flaticon.com/512/3024/3024605.png " alt="Image placeholder" width="30" height="48">
+                            </div>
+                            <div class="comment-body">
+                                <h3>Anonimus</h3>
+                                {{-- <div class="meta">June 27, 2018 at 2:21pm</div> --}}
+                                <p>{{ $item->desc }}</p>
+                                {{-- <p><a href="#" class="reply">Reply</a></p> --}}
+                            </div>
+                        </li>
+                    </ul>
+                @endif
                 @endforeach
                 <p style="text-align: center">---------------------------------------------------------------</p>
 

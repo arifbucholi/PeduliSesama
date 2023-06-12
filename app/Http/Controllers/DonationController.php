@@ -30,19 +30,23 @@ class DonationController extends Controller
         }], 'amount')->find($id);
 
         $desc = Donation::where('campaign_id', $id)->get();
-        $descCount = Donation::where('campaign_id', $id)->count();
+        // $descCount = Donation::where('campaign_id', $id)->count();
 
         $endDate = \Carbon\Carbon::parse($data->dateline);
         $remainingDays = $endDate->diffInDays(\Carbon\Carbon::now());
 
         $totalDonation = $data->donations_sum_amount ?? 0;
+        // $donation = Donation::all();
 
         return view('donasi-single', [
             'c' => $data,
             'desc' => $desc,
-            'descCount' => $descCount,
+            // 'descCount' => $descCount,
             'remainingDays' => $remainingDays,
-            'totalDonation' => $totalDonation
+            'totalDonation' => $totalDonation,
+            // 'donation' => $donation,
+
+
         ]);
     }
     // {

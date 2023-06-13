@@ -162,7 +162,7 @@
                 <button type="button" class="btn btn-primary btn-rounded btn-lg">
                   Message now
                 </button> --}}
-                <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                {{-- <div class="d-flex justify-content-between text-center mt-5 mb-2">
                   <div class="px-5">
                     <p class="mb-2 h5" style="color: white">8471</p>
                     <p class="text-muted mb-0">Donasi</p>
@@ -171,11 +171,11 @@
                     <p class="mb-2 h5" style="color: white">8512</p>
                     <p class="text-muted mb-0">Program</p>
                   </div>
-                  {{-- <div>
+                  <div>
                     <p class="mb-2 h5" style="color: white">4751</p>
                     <p class="text-muted mb-0"></p>
-                  </div> --}}
-                </div>
+                  </div>
+                </div> --}}
                 <a href="/profilepage/{{ auth()->user()->id }}">
                   <button class="btn btn-primary" style="border-radius: 20px;">Edit</button>
                 </a>

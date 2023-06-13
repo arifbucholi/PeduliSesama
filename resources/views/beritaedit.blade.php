@@ -31,8 +31,10 @@
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-          <a class="sidebar-brand brand-logo" href="/index"><img src="{{ asset('assets2/images/logo.svg') }}" alt="logo" /></a>
-          <a class="sidebar-brand brand-logo-mini" href="/index"><img src="{{ asset('assets2/images/logo-mini.svg') }}" alt="logo" /></a>
+            {{-- <a class="sidebar-brand brand-logo" href="/index"><img src="{{ asset('assets2/images/logo.svg') }}" alt="logo" /></a> --}}
+            <a class="sidebar-brand brand-logo" href="/index">PeduliSesama</a>
+            {{-- <a class="sidebar-brand brand-logo-mini" href="/index"><img src="{{ asset('assets2/images/logo-mini.svg') }}" alt="logo" /></a> --}}
+            <a class="sidebar-brand brand-logo-mini" href="/index">PS</a>
         </div>
         <ul class="nav">
 
@@ -319,7 +321,7 @@
                 <li class="nav-item dropdown">
                   <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
                     <div class="navbar-profile">
-                      <img class="img-xs rounded-circle" src="assets2/images/faces/face15.jpg" alt="">
+                      <img class="img-xs rounded-circle" src="{{ asset('assets2/images/faces/face15.jpg') }}" alt="">
                       <p class="mb-0 d-none d-sm-block navbar-profile-name">{{ Auth::user()->name }}</p>
                       <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                     </div>

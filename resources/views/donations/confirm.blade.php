@@ -121,20 +121,32 @@
                     <div class="card-body" style=" background:#252525;border-radius:7px; padding-top:10px">
                       <div>
                         <table>
-                          <tr>Jumlah Donasi</tr>
+                          <tr>Jumlah Donasi :</tr>
                           <br>
-                          <tr>Rp {{ number_format($newDonation->amount) }}</tr>
+                          <tr>Rp{{ number_format($newDonation->amount, 0, ',', '.') }},00</tr>
                           <br>
                           <br>
-                          <tr>E-Mail Anda</tr>
+                          <tr>E-Mail Anda :</tr>
                           <br>
                           <tr>{{ $newDonation->user->email }}</tr>
                           <br>
                           <br>
-                          <tr>Kampanye yang anda pilih</tr>
+                          <tr>Kampanye yang anda pilih :</tr>
                           <br>
                           <tr>{{ $newDonation->campaigns->title }}</tr>
                           <br>
+                          <br>
+                          <div class="text-center" style="background:white; border-radius:20px; padding:20px; margin:20px">
+                            <p style="padding:10px">
+                                Perlu diketahui bahwa: <br>
+
+                                PeduliSesama tidak mengenakan biaya administrasi ketika Anda membuat program galang dana.
+
+                                Perolehan donasi yang ditampilkan pada halaman program galang dana merupakan total dari donasi online yang terkumpul.
+
+                                Peduli sesama juga tidak mengenakan biaya administrasi untuk penggunaannya.
+                            </p>
+                          </div>
                           <br>
                           <div class="row justify-content-center">
                               <button class="btn btn-primary" id="donate-btn" style="border-radius:25px">Bayar</button>

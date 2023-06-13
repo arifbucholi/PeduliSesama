@@ -320,7 +320,7 @@
 
     <div class="row justify-content-center" style="padding:20px">
         <div class="col-md-5 heading-section ftco-animate text-center">
-          <h1>Banner Disini</h1>
+          <h2>Wujudkanlah Indonesia yang hebat!!!</h2>
         </div>
       </div>
       <br>
@@ -330,18 +330,18 @@
           <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            {{-- <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> --}}
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="d-block w-100" style="background-image: url('assets/images/pict1.jpg'); height:450px;" alt="First slide">
+              <img class="d-block w-100 img-fluid" style="background-image: url('assets/images/z1.jpeg'); height:450px; background-size:100%">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" style="background-image: url('assets/images/pict2.jpg'); height:450px;" alt="Second slide">
+              <img class="d-block w-100 img-fluid" style="background-image: url('assets/images/z2.jpeg'); height:450px; background-size:100%">
             </div>
-            <div class="carousel-item">
+            {{-- <div class="carousel-item">
               <img class="d-block w-100" style="background-image: url('assets/images/pict3.jpg'); height:450px;" alt="Third slide">
-            </div>
+            </div> --}}
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

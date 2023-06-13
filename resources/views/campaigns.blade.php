@@ -33,8 +33,9 @@
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-          <a class="sidebar-brand brand-logo" href="/index"><img src="assets2/images/logo.svg" alt="logo" /></a>
-          <a class="sidebar-brand brand-logo-mini" href="/index"><img src="assets2/images/logo-mini.svg" alt="logo" /></a>
+          {{-- <a class="sidebar-brand brand-logo" href="/index"><img src="assets2/images/logo.svg" alt="logo" /></a>
+          <a class="sidebar-brand brand-logo-mini" href="/index"><img src="assets2/images/logo-mini.svg" alt="logo" /></a> --}}
+          <p><h2>PeduliSesama</h2></p>
         </div>
         <ul class="nav">
 

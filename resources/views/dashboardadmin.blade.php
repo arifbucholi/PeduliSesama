@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Corona Admin</title>
+    <title>Halaman Utama</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets2/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets2/vendors/css/vendor.bundle.base.css">
@@ -29,8 +29,9 @@
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-          <a class="sidebar-brand brand-logo" href="/index"><img src="assets2/images/logo.svg" alt="logo" /></a>
-          <a class="sidebar-brand brand-logo-mini" href="/index"><img src="assets2/images/logo-mini.svg" alt="logo" /></a>
+          {{-- <a class="sidebar-brand brand-logo" href="/index"><img src="assets2/images/logo.svg" alt="logo" /></a>
+          <a class="sidebar-brand brand-logo-mini" href="/index"><img src="assets2/images/logo-mini.svg" alt="logo" /></a> --}}
+          <p><h2>PeduliSesama</h2></p>
         </div>
         <ul class="nav">
 

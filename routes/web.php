@@ -269,6 +269,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/updatepass', [EditProfilUserController::class, 'update_password']);
 
     Route::get('/transaksiuser', [DonationController::class, 'getUserDonation']);
+    Route::get('/invoice/{id}', [DonationController::class, 'donation_invoice']);
 
     Route::get('/addprogramuser', [CampaignUserController::class, 'createprogram'])->name('createprogram');
     Route::post('/programuser/storeprogramuser', [CampaignUserController::class, 'storeprogramuser'])->name('storeprogramuser');

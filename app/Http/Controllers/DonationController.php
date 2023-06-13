@@ -127,6 +127,12 @@ class DonationController extends Controller
     //     return redirect()->route('')->with('success', 'Some success message'); // TODO: need route
     // }
 
+    public function donation_invoice($id)
+    {
+        $donation = Donation::find($id);
+        return view('donations.invoice', compact(['donation']));
+    }
+
     public function getUserDonation() {
         $user = Auth::id();
         // $user = 1;

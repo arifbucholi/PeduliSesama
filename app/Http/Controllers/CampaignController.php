@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Campaign;
 use App\Models\Donation;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use App\Notifications\CampaignSubmitted;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\CampaignSubmitted;
 
 class CampaignController extends Controller
 {
@@ -122,7 +123,7 @@ class CampaignController extends Controller
         $campaigns->start_date = $request->input('start_date');
         $campaigns->dateline = $request->input('dateline');
         $campaigns->target_amount = $request->input('target_amount');
-        $campaigns->img_url = '/uploadCampaign/' . $imageName;
+        $campaigns->img_url = 'uploadCampaign/' . $imageName;
         $campaigns->status = 0;
         $campaigns->no_rekening = $request->input('no_rekening');
 
@@ -139,7 +140,7 @@ class CampaignController extends Controller
         //     'campaigns' => $campaigns
         // ]);
         $admin = User::where('is_admin', true)->first();
-        $admin->notify(new CampaignSubmitted($campaigns));
+        // $admin->notify(new CampaignSubmitted($campaigns));
         return redirect('/campaigns')->with('success', 'Some success message'); // TODO: need route
     }
 

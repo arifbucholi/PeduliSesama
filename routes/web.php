@@ -12,6 +12,7 @@ use App\Http\Controllers\CampaignUserController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\API\SocialAuthController;
 use App\Http\Controllers\EditProfilUserController;
+use App\Http\Controllers\TransaksiAdminController;
 
 /*
 |--------------------------------------------------------------------------

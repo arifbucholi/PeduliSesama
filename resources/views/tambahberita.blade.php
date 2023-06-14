@@ -399,7 +399,7 @@ Contoh: Lorem ipsum is placeholder text commonly used in the graphic, print, and
                             </div>
                             <br>
 
-                            <button class="nav-link btn btn-success create-new-button" type="submit">Create</button>
+                            <button class="nav-link btn btn-success create-new-button" type="submit">Tambah</button>
                         </form>
 
                     </div>

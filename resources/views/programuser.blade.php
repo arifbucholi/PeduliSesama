@@ -180,7 +180,7 @@
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $campaign->title }}</td>
-                                <td class="text-center">2 Maret - 2 Mei</td>
+                                <td class="text-center">{{ $campaign->created_at->format('d-m-Y') }}</td>
                                 <?php if($campaign->status == '0') : ?>
                                 <td class="text-center">
                                   <span class="btn btn-success" style="border-radius:3px" >Diterima</span>

@@ -158,7 +158,7 @@
                   <tr>
                       <th scope="row">{{ $no++ }}</th>
                       <td>{{ $d->campaigns->title }}</td>
-                      <td>{{ $d->created_at->format('Y-m-d') }}</td>
+                      <td>{{ $d->created_at->format('d-m-Y') }}</td>
                       <td>Rp{{ number_format($d->amount,0,',','.') }},00</td>
                       {{-- <td>{{ $d->campaigns->pdf_url }}</td> --}}
                   </tr>

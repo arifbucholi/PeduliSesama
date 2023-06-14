@@ -62,7 +62,7 @@
             <li class="nav-item"><a href="/berita" class="nav-link">Berita</a></li>
             <li class="nav-item"><a href="/donasi" class="nav-link">Donasi</a></li>
             <li class="nav-item"><a href="/transaksiuser" class="nav-link">Transaksi</a></li>
-            <li class="nav-item active"><a href="/programiuser" class="nav-link">Program</a></li>
+            <li class="nav-item active"><a href="/programuser" class="nav-link">Program</a></li>
             <li class="nav-item">
               @guest
                 <a href="/login" class="nav-link">Login</a>
@@ -206,7 +206,7 @@
                               <br>
                               <div>
                                   <label for="img_url">Foto/gambar : </label>
-                                  <input class="form file-upload-info" type="file" name="img_url" id="img_url" oninvalid="this.setCustomValidity('Pilih gambar/foto')" data-error="Gambar/foto tidak boleh kosong" required>
+                                  <input class="form file-upload-info" type="file" name="img_url" id="img_url" style="color:#FFFFFD" oninvalid="this.setCustomValidity('Pilih gambar/foto')" data-error="Gambar/foto tidak boleh kosong" required>
                                   <p style="padding-top: 8px; margin-bottom:0px">Preview :</p>
                                   <img id="imgPreview" class="d-block" style="height:225px;width:400px">
 

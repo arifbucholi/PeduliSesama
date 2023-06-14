@@ -551,6 +551,29 @@
 
     </script>
 
+    <script>
+        // ambil element input dan img preview
+        const img_url = document.querySelector('#img_url');
+        const imgPreview = document.querySelector('#imgPreview');
+
+        // event listener untuk input file diubah
+        img_url.addEventListener('change', function() {
+        // cek apakah file yang diupload adalah gambar
+        if (this.files && this.files[0]) {
+            const file = this.files[0];
+            const reader = new FileReader();
+
+            // saat file telah dibaca, tampilkan preview gambar
+            reader.addEventListener('load', function() {
+            imgPreview.src = reader.result;
+            });
+
+            // baca file sebagai data URL
+            reader.readAsDataURL(file);
+        }
+        });
+    </script>
+
 
   </body>
 </html>

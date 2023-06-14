@@ -76,25 +76,38 @@
                             <div class="dropdown-divider"></div>
                             <a href="{{ route('userProfiles') }}" class="dropdown-item preview-item">
                                 <div class="preview-thumbnail">
-                                    <div class="preview-icon">
-                                        <i class="mdi mdi-settings text-success"></i>
-                                    </div>
+                                  <div class="preview-icon">
+                                  <i class="mdi mdi-settings text-success" style="padding: 5px"></i>
+                                  <i>Profil</i>
                                 </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject mb-1">Profile</p>
-                                </div>
+                              </div>
+                              {{-- <div class="preview-item-content">
+                                <p class="preview-subject mb-1">Profile</p>
+                              </div> --}}
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a href="/logout" class="dropdown-item preview-item">
+                            <a href="/changepass" class="dropdown-item preview-item">
+                              <div class="preview-thumbnail">
+                                  <div class="preview-icon">
+                                  <i class="mdi mdi-onepassword text-info" style="padding: 5px"></i>
+                                  <i>Ubah Password</i>
+                                  </div>
+                              </div>
+                              {{-- <div class="preview-item-content">
+                                  <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
+                              </div> --}}
+                              </a>
+                            <div class="dropdown-divider"></div>
+                            {{-- <a href="#" class="dropdown-item preview-item"> --}}
                                 <div class="preview-thumbnail">
                                     <div class="preview-icon">
-                                        <i class="mdi mdi-logout text-danger"></i>
+                                        <a href="/logout" style="padding-left: 30px">
+                                            <i class="mdi mdi-logout text-danger"> Logout</i>
+                                            {{-- <i>Log out</i> --}}
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject mb-1">Log out</p>
-                                </div>
-                            </a>
+                            {{-- </a> --}}
                             <div class="dropdown-divider"></div>
                             {{-- <p class="p-3 mb-0 text-center">Advanced settings</p> --}}
                         </div>
